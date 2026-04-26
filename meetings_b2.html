@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meetings — B2 Lesson</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#fff;--bg2:#f6f5f2;--bg3:#f0ede8;--txt:#1a1a18;--txt2:#6b6a66;--bdr:rgba(0,0,0,0.12);--bdr2:rgba(0,0,0,0.22);--rm:8px;--rl:12px}
+  @media(prefers-color-scheme:dark){:root{--bg:#1c1c1a;--bg2:#252523;--bg3:#2e2e2b;--txt:#f0ede8;--txt2:#9a9891;--bdr:rgba(255,255,255,0.12);--bdr2:rgba(255,255,255,0.22)}}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--txt);min-height:100vh;padding:2rem 1rem}
+  .outer{max-width:720px;margin:0 auto}
+  .ph{text-align:center;margin-bottom:2rem}.ph h1{font-size:22px;font-weight:500;margin-bottom:4px}.ph p{font-size:14px;color:var(--txt2)}
+  .lw{background:var(--bg);border-radius:var(--rl);border:0.5px solid var(--bdr);padding:2rem}
+  .pb{display:flex;align-items:center;gap:8px;margin-bottom:2rem}
+  .sd{width:28px;height:28px;border-radius:50%;border:0.5px solid var(--bdr2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--txt2);background:var(--bg2);cursor:pointer;transition:all .2s;flex-shrink:0}
+  .sd.active{background:#7B3FC4;color:#fff;border-color:#7B3FC4}.sd.done{background:#EAF3DE;color:#3B6D11;border-color:#639922}
+  .sl{flex:1;height:0.5px;background:var(--bdr)}
+  .sec{display:none}.sec.active{display:block}
+  .sh{font-size:11px;font-weight:500;color:#7B3FC4;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+  .st{font-size:20px;font-weight:500;color:var(--txt);margin-bottom:4px}.ss{font-size:13px;color:var(--txt2);margin-bottom:1.5rem}
+  .card{background:var(--bg);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:12px}
+  .card-m{background:var(--bg2);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:12px}
+  .vg{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:16px}
+  .vc{background:#F2EBFC;border:0.5px solid #C9A8F0;border-radius:var(--rm);padding:7px 10px;font-size:13px;font-weight:500;color:#4A1980;text-align:center;cursor:pointer;transition:all .15s;user-select:none}
+  .vc:hover{background:#C9A8F0}.vc.used{background:var(--bg2);color:var(--txt2);border-color:var(--bdr);opacity:.5}.vc.selected{outline:2px solid #7B3FC4}
+  .gs{font-size:15px;color:var(--txt);line-height:2.2;margin-bottom:10px}
+  .gap{display:inline-block;min-width:120px;height:26px;border-bottom:2px solid #7B3FC4;margin:0 4px;text-align:center;font-weight:500;color:#7B3FC4;font-size:14px;cursor:pointer;vertical-align:bottom;padding:0 4px;transition:all .15s}
+  .gap.correct{border-bottom-color:#639922;color:#3B6D11;background:#EAF3DE;border-radius:4px 4px 0 0}
+  .gap.wrong{border-bottom-color:#E24B4A;color:#A32D2D;background:#FCEBEB;border-radius:4px 4px 0 0;animation:shake .3s}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .fm{font-size:13px;padding:10px 14px;border-radius:var(--rm);margin-bottom:12px;display:none}
+  .fm.show{display:block}.fm.ok{background:#EAF3DE;color:#3B6D11;border:0.5px solid #C0DD97}.fm.err{background:#FCEBEB;color:#A32D2D;border:0.5px solid #F7C1C1}
+  .dq{font-size:15px;font-weight:500;color:var(--txt);margin-bottom:14px;line-height:1.6}
+  .do{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  @media(max-width:500px){.do{grid-template-columns:1fr}}
+  .ob{background:var(--bg);border:0.5px solid var(--bdr2);border-radius:var(--rm);padding:10px 14px;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s;text-align:left;line-height:1.5}
+  .ob:hover:not(:disabled){background:var(--bg2)}.ob.correct{background:#EAF3DE;border-color:#639922;color:#3B6D11}.ob.wrong{background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}.ob:disabled{cursor:default}
+  .pc{font-size:12px;color:var(--txt2);margin-bottom:8px}
+  .nr{display:flex;gap:8px;margin-top:1.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .nrr{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .btn{background:var(--bg);border:0.5px solid var(--bdr2);border-radius:var(--rm);padding:9px 20px;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s}
+  .btn:hover{background:var(--bg2)}.btn.p{background:#7B3FC4;color:#fff;border-color:#7B3FC4}.btn.p:hover{background:#5A2B96}
+  .tb{font-size:11px;color:var(--txt2);background:var(--bg2);border:0.5px solid var(--bdr);border-radius:var(--rm);padding:5px 10px}
+  .rb{border-left:3px solid #7B3FC4;background:#F2EBFC;border-radius:0 var(--rm) var(--rm) 0;padding:12px 16px;margin-bottom:10px}
+  .rl2{font-size:11px;font-weight:500;color:#7B3FC4;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .rt{font-size:14px;color:#4A1980;line-height:1.7}
+  .ib{border-left:3px solid #639922;background:#EAF3DE;border-radius:0 var(--rm) var(--rm) 0;padding:12px 16px;margin-bottom:10px}
+  .il{font-size:11px;font-weight:500;color:#3B6D11;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .it{font-size:14px;color:#27500A;line-height:1.7}
+  .tip{background:#FAEEDA;border:0.5px solid #FAC775;border-radius:var(--rm);padding:10px 14px;font-size:13px;color:#633806;margin-bottom:14px}
+  .sc{width:84px;height:84px;border-radius:50%;border:3px solid #7B3FC4;display:flex;align-items:center;justify-content:center;flex-direction:column;margin:0 auto 18px}
+  .sn{font-size:24px;font-weight:500;color:#7B3FC4}.sl2{font-size:10px;color:var(--txt2)}
+  .tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 9px;border-radius:var(--rm);margin-right:4px;margin-bottom:4px}
+  .tp{background:#F2EBFC;color:#4A1980;border:0.5px solid #C9A8F0}.tg{background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97}.ta{background:#FAEEDA;color:#633806;border:0.5px solid #FAC775}
+  .br{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
+  .bd{margin-top:6px;width:6px;height:6px;border-radius:50%;flex-shrink:0}
+  .eb{font-size:13px;padding:10px 14px;border-radius:var(--rm);margin-top:8px;display:none}
+  .rcg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+  @media(max-width:480px){.rcg{grid-template-columns:1fr}}
+  .rc{border-radius:var(--rl);padding:1rem 1.25rem;border:0.5px solid}
+  .rca{background:#F2EBFC;border-color:#C9A8F0}.rcb{background:#EAF3DE;border-color:#C0DD97}
+  .rct{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+  .rca .rct{color:#7B3FC4}.rcb .rct{color:#3B6D11}
+  .rc p{font-size:13px;line-height:1.7}.rca p{color:#4A1980}.rcb p{color:#27500A}
+  .lvl{display:inline-block;background:#7B3FC4;color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:8px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="outer">
+  <div class="ph">
+    <div class="lvl">B2 — Upper Intermediate</div>
+    <h1>High-Stakes Meetings</h1>
+    <p>B2 level &nbsp;·&nbsp; 40-minute interactive lesson</p>
+  </div>
+  <div class="lw">
+    <div class="pb" id="pb">
+      <div class="sd active" onclick="goTo(0)">1</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(1)">2</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(2)">3</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(3)">4</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(4)">5</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(5)">6</div>
+    </div>
+
+    <div class="sec active" id="sec0">
+      <div class="sh">Stage 1 — Warm-up</div>
+      <div class="st">Influence, power and meetings</div>
+      <div class="ss">5 minutes · Critical discussion</div>
+      <div class="card-m">
+        <p style="font-size:14px;font-weight:500;margin-bottom:10px">Discuss with your partner:</p>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:4px">1. How do you push back on a decision made by someone more senior than you, without damaging the relationship?</p>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:4px">2. What strategies would you use to maintain control of a meeting if a dominant participant keeps derailing it?</p>
+        <p style="font-size:14px;line-height:1.8">3. How do you handle a meeting where two senior stakeholders disagree and neither will concede?</p>
+      </div>
+      <div class="tip"><strong>Teacher note:</strong> At B2 the focus is on high-stakes meeting dynamics: navigating disagreement between senior stakeholders, diplomatically pushing back, managing a dominant participant, framing difficult decisions, and using language that preserves relationships while advancing outcomes. Emphasise register: formal but human.</div>
+      <div class="card">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:10px">Today's scenario — a <strong>board-level budget review</strong> at Halcyon Capital:</p>
+        <div class="rcg" style="margin-bottom:8px">
+          <div class="rc rca"><div class="rct">Student A — CFO (Chair)</div><p>You are chairing a tense board meeting. Two directors disagree on budget allocation. You must manage both, extract a decision, and record clear accountability — without taking sides publicly.</p></div>
+          <div class="rc rcb"><div class="rct">Student B — Operations Director</div><p>You believe the proposed budget cuts to your department are disproportionate and will compromise delivery. You must make your case assertively, respond to challenge, and either win the argument or negotiate a compromise.</p></div>
+        </div>
+        <div><span class="tag tp">Board-level meeting</span><span class="tag tg">Stakeholder management</span><span class="tag ta">Diplomatic pushback</span></div>
+      </div>
+      <div class="nr"><span class="tb">5 min</span><button class="btn p" onclick="goTo(1)">Next: vocabulary &#x2192;</button></div>
+    </div>
+
+    <div class="sec" id="sec1">
+      <div class="sh">Stage 2 — Vocabulary</div>
+      <div class="st">Advanced meeting and boardroom vocabulary</div>
+      <div class="ss">10 minutes · Gap-fill exercise</div>
+      <div class="tip">Click a word from the box, then click a blank. Hover for definitions.</div>
+      <div class="vg" id="wordBank"></div>
+      <div id="gapFeedback" class="fm"></div>
+      <div class="card">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:14px">Complete the sentences with the correct word from the box.</p>
+        <div id="gapSentences"></div>
+      </div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(0)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">10 min</span><button class="btn" onclick="checkGaps()">Check answers</button><button class="btn p" onclick="goTo(2)">Next &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec2">
+      <div class="sh">Stage 3 — Functional language</div>
+      <div class="st">High-stakes meeting language</div>
+      <div class="ss">8 minutes · Study and practise</div>
+      <div id="funcContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(1)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">8 min</span><button class="btn p" onclick="goTo(3)">Next &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec3">
+      <div class="sh">Stage 4 — Language in use</div>
+      <div class="st">B2 boardroom language drill</div>
+      <div class="ss">10 minutes · Multiple choice</div>
+      <div id="drillWrap"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(2)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">10 min</span><button class="btn p" id="drillNextBtn" onclick="goTo(4)" style="display:none">Next: role play &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec4">
+      <div class="sh">Stage 5 — Role play</div>
+      <div class="st">The board budget review</div>
+      <div class="ss">12 minutes · Pair work</div>
+      <div class="tip"><strong>How to use:</strong> Student A chairs under pressure — keep both sides heard, steer to a decision. Student B argues the case for the operations budget assertively but professionally. Neither should simply capitulate — the best outcome is a reasoned compromise.</div>
+      <div id="roleplayContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(3)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">12 min</span><button class="btn p" onclick="goTo(5)">Finish &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec5">
+      <div class="sh">Stage 6 — Summary</div>
+      <div class="st">Lesson complete!</div>
+      <div class="ss">5 minutes · Review</div>
+      <div id="summaryContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(4)">&#x2190; back</button>
+        <button class="btn p" onclick="restartLesson()">Start again &#x21BA;</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+let cs=0,sw=null,ga={},ds=0,di=0,dd=false;
+const WORDS=[
+  {word:'remit',        def:'the area of responsibility or authority assigned to a person or group'},
+  {word:'accountability',def:'responsibility for outcomes and the obligation to explain them'},
+  {word:'mandate',      def:'official authority to make decisions on behalf of others'},
+  {word:'disproportionate',def:'too large or too small relative to something else'},
+  {word:'prerogative',  def:'an exclusive right or privilege belonging to a person or group'},
+  {word:'governance',   def:'the framework of rules and processes by which an organisation is managed'},
+  {word:'escalate',     def:'to raise an issue to a higher level of authority for resolution'},
+  {word:'impasse',      def:'a situation where no progress is possible because of disagreement'},
+];
+const GAPS=[
+  {id:'g0',before:'Resource allocation falls squarely within the CFO\'s ',blank:'remit',after:' — this is not a decision for the wider board.'},
+  {id:'g1',before:'There must be clear ',blank:'accountability',after:' attached to this decision — we need to know who is responsible if targets are missed.'},
+  {id:'g2',before:'The board has a clear ',blank:'mandate',after:' from shareholders to reduce operating costs by 12% this fiscal year.'},
+  {id:'g3',before:'A 25% cut to operational headcount is ',blank:'disproportionate',after:' — it will have an outsized impact on delivery capacity.'},
+  {id:'g4',before:'Setting departmental priorities is ultimately the director\'s ',blank:'prerogative',after:' — the board sets the envelope, not the detail.'},
+  {id:'g5',before:'The proposed restructuring raises serious ',blank:'governance',after:' concerns — we need legal to review this before we proceed.'},
+  {id:'g6',before:'If we cannot resolve this at this level, I will have no choice but to ',blank:'escalate',after:' it to the executive committee.'},
+  {id:'g7',before:'We appear to have reached an ',blank:'impasse',after:' — I suggest we take a short break and return with a structured proposal from each side.'},
+];
+const FUNC_CATS=[
+  {label:'Framing a difficult position diplomatically',phrases:['I want to be direct with this board: the proposed cuts are not deliverable without significant risk to Q3 targets.','With respect to my colleague, I think this analysis underestimates the operational dependencies involved.','I understand the pressure the board is under. I am not arguing against savings — I am arguing against this particular mechanism.','Before we proceed, I think we owe it to this decision to stress-test the assumptions underpinning it.']},
+  {label:'Chairing a contested discussion',phrases:['I appreciate both positions. What I need from this meeting is a decision, not a debate.','I\'m going to ask each party to state their bottom line so we can identify where there is genuine room for compromise.','Could we park this specific point and return to it after we\'ve heard from both sides in full?','I want to note that we are at risk of exceeding our scheduled time — we need to move toward a resolution.']},
+  {label:'Pushing back with evidence',phrases:['The data I\'ve shared clearly shows that below a certain staffing threshold, delivery SLAs cannot be met.','I\'d ask the board to consider what the liability exposure looks like if we miss contractual commitments.','This is not a theoretical concern — we saw the same pattern in Q2 when the team was reduced by 15%.','I can model three alternative scenarios if the board would find that useful before making a final decision.']},
+  {label:'Navigating towards compromise',phrases:['Would the board consider a phased reduction rather than an immediate cut? That at least preserves optionality.','I can accept a 15% reduction if it is ring-fenced from the delivery team and applied to overhead instead.','The principle of saving is agreed — the question is where. Can we agree to work that out bilaterally before the next board?','I\'d like to propose a 30-day review period before any cuts are implemented, to allow an impact assessment.']},
+  {label:'Closing with accountability',phrases:['To record the decision clearly: we are authorising a 15% budget reduction, with the allocation to be determined bilaterally within 30 days.','I want each action point to have a named owner and a hard deadline — I will not accept "to be confirmed".','This decision will be binding unless either party presents material new information before the next board.','I\'ll ensure these minutes are distributed within 24 hours. I expect acknowledgement from all parties by close of business.']},
+];
+const DRILL_QS=[
+  {q:'You want to challenge a decision diplomatically while acknowledging the constraint. Which is most appropriate at B2?',
+   opts:['I don\'t agree with this.','With respect, I think this analysis underestimates the operational dependencies involved.','This is wrong and I object.','That is not correct in my view.'],
+   ans:1,explain:'"With respect..." is a formal discourse marker that signals polite challenge. "Underestimates the operational dependencies" uses precise noun phrases — characteristic of B2 boardroom register.'},
+  {q:'You want to propose a compromise that preserves flexibility. Which sentence is most sophisticated?',
+   opts:['Let\'s do a smaller cut.','How about we reduce less?','Would the board consider a phased reduction rather than an immediate cut? That at least preserves optionality.','A smaller reduction is better.'],
+   ans:2,explain:'"Phased reduction rather than an immediate cut" is the precise framing. "Preserves optionality" is a high-register idiom meaning the option to act differently later.'},
+  {q:'You are chairing and need to move to a resolution. Which shows the most skilled facilitation?',
+   opts:['We need to decide now.','I appreciate both positions. What I need from this meeting is a decision, not a debate.','Stop arguing and choose.','Both sides — please decide.'],
+   ans:1,explain:'"I appreciate both positions" validates both parties. "A decision, not a debate" reframes the meeting\'s purpose sharply — a classic facilitation technique.'},
+  {q:'You want to describe an outsized negative impact. Which uses vocabulary most precisely?',
+   opts:['The cut will be too big and bad.','A 25% cut is disproportionate — it will have an outsized impact on delivery capacity.','This is a too-large reduction.','Reducing by 25% is very much too big.'],
+   ans:1,explain:'"Disproportionate" and "outsized impact on delivery capacity" are precise, register-appropriate terms for describing asymmetric consequences in a business context.'},
+  {q:'You want to record a meeting decision with clear accountability. Which is correct?',
+   opts:['We decided to cut the budget.','To record the decision clearly: we are authorising a 15% budget reduction, with allocation determined bilaterally within 30 days.','The decision is: less money for operations.','Budget: cut by 15%, someone will sort the details.'],
+   ans:1,explain:'"To record the decision clearly..." is a formal minute-taking register. "Authorising" is the correct verb for board decisions. Named owners and deadlines are essential for accountability.'},
+  {q:'Which sentence correctly uses a conditional perfect to describe risk?',
+   opts:['If we reduce staff, delivery will suffer.','Had we implemented this in Q2, we would have missed our SLAs entirely.','If we had reduce staff, delivery suffered.','We would miss SLAs if staff reduced.'],
+   ans:1,explain:'"Had we + past participle... would have + past participle" is the inverted third conditional — formal, precise, and used for B2 evidence-based argument.'},
+];
+const ROLEPLAY=[
+  {speaker:'A',text:'[Open the meeting formally. State the single objective: reach a binding decision on the Q3 budget reduction. Acknowledge that two positions exist. Set the ground rules: each side will present their case, then the board will decide.]'},
+  {speaker:'B',text:'Before we begin, I want to flag that the figures circulated last night contain an error in the headcount projections. I\'d ask that we work from the corrected version I sent this morning.'},
+  {speaker:'A',text:'[Acknowledge the correction. Note it for the record. Ask the Marketing Director — played by Student A in double role — to present the case for the 25% cut first, then invite Student B to respond.]'},
+  {speaker:'B',text:'The proposed 25% cut to operational headcount is disproportionate. I want to be direct: below a certain staffing threshold, we cannot meet our contractual delivery SLAs. The liability exposure alone should give this board pause.'},
+  {speaker:'A',text:'[The Marketing Director argues the cut is necessary — the board has a mandate from shareholders. Ask Student B to quantify the risk. What specifically breaks below what threshold?]'},
+  {speaker:'B',text:'Below 18 FTEs in the delivery team, average turnaround time increases from 3 days to 7 days. We have six clients with 3-day SLAs written into contract. A breach triggers penalty clauses — I can model the cost if needed.'},
+  {speaker:'A',text:'[Acknowledge this is material new information. Ask: if the headcount cut cannot apply to delivery, where else could the savings come from? Push Student B to propose an alternative, not just reject the original.]'},
+  {speaker:'B',text:'I can accept a 15% reduction overall if it is applied to overhead and management layer rather than frontline delivery. I\'d also propose a 30-day impact review before any cuts are implemented.'},
+  {speaker:'A',text:'[Respond to the compromise. Say it is worth exploring but requires sign-off from the executive committee, which meets next week. Propose a holding decision: agree the principle of 15%, defer the allocation detail for 30 days.]'},
+  {speaker:'B',text:'I can accept that, provided it is recorded that the delivery team headcount is protected pending the impact review, and that I have the right to reopen the discussion if the review identifies further risk.'},
+  {speaker:'A',text:'[Record the decision formally. Name the action points: Student B provides the impact model within 5 working days; you take the revised proposal to the exec committee on Thursday; both parties sign off the minutes by end of day. Close the meeting.]'},
+];
+function goTo(n){
+  document.querySelectorAll('.sec').forEach((s,i)=>s.classList.toggle('active',i===n));
+  document.querySelectorAll('.sd').forEach((d,i)=>{d.classList.remove('active','done');if(i===n)d.classList.add('active');else if(i<n)d.classList.add('done');});
+  cs=n;if(n===1)bG();if(n===2)bF();if(n===3&&!dd)bD();if(n===4)bR();if(n===5)bS();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function bG(){
+  const bank=document.getElementById('wordBank');bank.innerHTML='';
+  WORDS.forEach(w=>{const c=document.createElement('div');c.className='vc';c.textContent=w.word;c.id='chip_'+w.word.replace(/\s/g,'_');c.title=w.def;c.onclick=()=>selW(w.word);bank.appendChild(c);});
+  const ct=document.getElementById('gapSentences');ct.innerHTML='';
+  GAPS.forEach(g=>{const p=document.createElement('p');p.className='gs';p.innerHTML=(g.before||'')+`<span class="gap" id="${g.id}" onclick="fG('${g.id}')"></span>`+(g.after||'');ct.appendChild(p);});
+}
+function selW(w){
+  document.querySelectorAll('.vc').forEach(c=>c.classList.remove('selected'));
+  if(sw===w){sw=null;return;}sw=w;const key=w.replace(/\s/g,'_');const c=document.getElementById('chip_'+key);if(c)c.classList.add('selected');
+}
+function fG(gid){
+  const gap=document.getElementById(gid);if(!gap)return;
+  const cur=gap.textContent.trim();
+  if(cur){const key=cur.replace(/\s/g,'_');const c=document.getElementById('chip_'+key);if(c)c.classList.remove('used');gap.textContent='';gap.classList.remove('correct','wrong');delete ga[gid];return;}
+  if(!sw)return;const key=sw.replace(/\s/g,'_');const chip=document.getElementById('chip_'+key);if(chip&&chip.classList.contains('used'))return;
+  gap.textContent=sw;ga[gid]=sw;if(chip)chip.classList.add('used');sw=null;document.querySelectorAll('.vc').forEach(c=>c.classList.remove('selected'));
+}
+function checkGaps(){
+  let ok=0;GAPS.forEach(g=>{const gap=document.getElementById(g.id);const val=gap?gap.textContent.trim():'';if(val===g.blank){gap.classList.add('correct');gap.classList.remove('wrong');ok++;}else if(val){gap.classList.add('wrong');gap.classList.remove('correct');}});
+  const fb=document.getElementById('gapFeedback');fb.className='fm show '+(ok===GAPS.length?'ok':'err');
+  fb.textContent=ok===GAPS.length?'All '+GAPS.length+' correct! Excellent work.':ok+' of '+GAPS.length+' correct. Check highlighted answers.';
+}
+function bF(){
+  const w=document.getElementById('funcContent');w.innerHTML='';
+  FUNC_CATS.forEach(cat=>{let h='<div class="card"><p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--txt2);margin-bottom:10px">'+cat.label+'</p>';cat.phrases.forEach(ph=>{h+='<div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">'+ph+'</span></div>';});h+='</div>';w.innerHTML+=h;});
+  w.innerHTML+='<div class="tip">At B2, the most powerful meeting skill is knowing when to propose rather than react. When a discussion reaches an impasse, reframe the question: move from "what should we cut?" to "what can we protect?" The person who controls the question controls the meeting.</div>';
+}
+function bD(){di=0;ds=0;rDQ();}
+function rDQ(){
+  const w=document.getElementById('drillWrap');
+  if(di>=DRILL_QS.length){dd=true;document.getElementById('drillNextBtn').style.display='inline-block';w.innerHTML='<div class="card" style="text-align:center;padding:2rem 1.25rem"><p style="font-size:13px;color:var(--txt2);margin-bottom:14px">Quiz complete!</p><div class="sc"><span class="sn">'+ds+'/'+DRILL_QS.length+'</span><span class="sl2">score</span></div><p style="font-size:15px;font-weight:500;color:var(--txt)">'+(ds===DRILL_QS.length?'Excellent!':ds>=4?'Very good!':'Good effort!')+'</p></div>';return;}
+  const q=DRILL_QS[di];
+  w.innerHTML='<p class="pc">Question '+(di+1)+' of '+DRILL_QS.length+'</p><div class="card"><p class="dq">'+q.q+'</p><div class="do">'+q.opts.map((o,i)=>'<button class="ob" onclick="aD('+i+'">'+o+'</button>').join('')+'</div><div id="de" class="eb"></div><button id="dc" style="display:none;margin-top:14px" class="btn p" onclick="nDQ()">Next &#x2192;</button></div>';
+}
+function aD(ch){
+  const q=DRILL_QS[di];document.querySelectorAll('.ob').forEach(b=>b.disabled=true);document.querySelectorAll('.ob')[q.ans].classList.add('correct');
+  const e=document.getElementById('de');e.style.display='block';
+  if(ch===q.ans){ds++;e.style.background='#EAF3DE';e.style.color='#27500A';e.style.border='0.5px solid #C0DD97';e.textContent='Correct! '+q.explain;}
+  else{document.querySelectorAll('.ob')[ch].classList.add('wrong');e.style.background='#FCEBEB';e.style.color='#A32D2D';e.style.border='0.5px solid #F7C1C1';e.textContent='Not quite. '+q.explain;}
+  document.getElementById('dc').style.display='inline-block';
+}
+function nDQ(){di++;rDQ();}
+function bR(){
+  const w=document.getElementById('roleplayContent');w.innerHTML='';
+  ROLEPLAY.forEach(line=>{if(line.speaker==='B'){w.innerHTML+='<div class="ib"><div class="il">Student B — Ops Director</div><div class="it">'+line.text+'</div></div>';}else{w.innerHTML+='<div class="rb"><div class="rl2">Student A — CFO (Chair)</div><div class="rt">'+line.text+'</div></div>';}});
+  w.innerHTML+='<div style="margin-top:14px"><div class="card-m"><p style="font-size:14px;font-weight:500;margin-bottom:6px">Extension: the hostile participant</p><p style="font-size:13px;color:var(--txt2)">Swap roles. This time Student B plays a non-executive director who is openly hostile to the CFO\'s handling of the meeting — questioning the process, not just the outcome. Student A must maintain authority, manage the disruption professionally, and still reach a decision. Neither should lose composure.</p></div></div>';
+}
+function bS(){
+  const items=['8 advanced boardroom vocabulary words: remit, accountability, mandate, disproportionate, impasse, governance','Phrases for 5 high-stakes meeting functions: diplomatic framing, chairing under pressure, evidence-based pushback, navigating compromise, closing with accountability','6 B2 drills: inverted conditionals, "disproportionate impact", impersonal formal register, compromise framing, minute-taking language','A board-level budget dispute requiring diplomatic pushback, evidence deployment, and negotiated compromise'];
+  const hw=['Write the formal minutes of today\'s role play meeting (150-200 words). Use the standard format: attendees, decisions, action points with named owners and deadlines.','You are the Operations Director. Write a briefing note (100-120 words) to the CEO summarising your position on the budget cut, before the next board meeting.','Research the difference between a "decision meeting" and a "discussion meeting". Write 3 sentences on how you would chair each type differently.'];
+  document.getElementById('summaryContent').innerHTML='<div class="card" style="text-align:center;padding:1.75rem 1.25rem"><p style="font-size:13px;color:var(--txt2);margin-bottom:10px">Today\'s lesson</p><div class="lvl">B2 — Upper Intermediate</div><p style="font-size:22px;font-weight:500;margin:8px 0 4px">High-Stakes Meetings</p><p style="font-size:13px;color:var(--txt2)">~40 minutes</p></div><div class="card"><p style="font-size:13px;font-weight:500;margin-bottom:10px">What you practised:</p>'+items.map(i=>'<div class="br"><span class="bd" style="background:#639922"></span><span style="font-size:14px;color:var(--txt)">'+i+'</span></div>').join('')+'</div><div class="card-m"><p style="font-size:13px;font-weight:500;margin-bottom:8px">Homework ideas:</p>'+hw.map((h,i)=>'<div class="br"><span class="bd" style="background:#7B3FC4;margin-top:7px"></span><span style="font-size:13px;color:var(--txt2);line-height:1.7">'+(i+1)+'. '+h+'</span></div>').join('')+'</div><div class="tip" style="margin-bottom:0">Excellent work. Navigating disagreement in English at board level — with precision, composure and appropriate register — is one of the most demanding professional language skills. You practised all of it today.</div>';
+}
+function restartLesson(){dd=false;ds=0;di=0;ga={};sw=null;goTo(0);}
+bG();bF();bR();bS();
+</script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Management — B2 Lesson</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#fff;--bg2:#f6f5f2;--bg3:#f0ede8;--txt:#1a1a18;--txt2:#6b6a66;--bdr:rgba(0,0,0,0.12);--bdr2:rgba(0,0,0,0.22);--rm:8px;--rl:12px}
+  @media(prefers-color-scheme:dark){:root{--bg:#1c1c1a;--bg2:#252523;--bg3:#2e2e2b;--txt:#f0ede8;--txt2:#9a9891;--bdr:rgba(255,255,255,0.12);--bdr2:rgba(255,255,255,0.22)}}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--txt);min-height:100vh;padding:2rem 1rem}
+  .outer{max-width:720px;margin:0 auto}
+  .ph{text-align:center;margin-bottom:2rem}.ph h1{font-size:22px;font-weight:500;margin-bottom:4px}.ph p{font-size:14px;color:var(--txt2)}
+  .lw{background:var(--bg);border-radius:var(--rl);border:0.5px solid var(--bdr);padding:2rem}
+  .pb{display:flex;align-items:center;gap:8px;margin-bottom:2rem}
+  .sd{width:28px;height:28px;border-radius:50%;border:0.5px solid var(--bdr2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--txt2);background:var(--bg2);cursor:pointer;transition:all .2s;flex-shrink:0}
+  .sd.active{background:#7B3FC4;color:#fff;border-color:#7B3FC4}.sd.done{background:#EAF3DE;color:#3B6D11;border-color:#639922}
+  .sl{flex:1;height:0.5px;background:var(--bdr)}
+  .sec{display:none}.sec.active{display:block}
+  .sh{font-size:11px;font-weight:500;color:#7B3FC4;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+  .st{font-size:20px;font-weight:500;color:var(--txt);margin-bottom:4px}.ss{font-size:13px;color:var(--txt2);margin-bottom:1.5rem}
+  .card{background:var(--bg);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:12px}
+  .card-m{background:var(--bg2);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:12px}
+  .vg{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:16px}
+  .vc{background:#F2EBFC;border:0.5px solid #C9A8F0;border-radius:var(--rm);padding:7px 10px;font-size:13px;font-weight:500;color:#4A1980;text-align:center;cursor:pointer;transition:all .15s;user-select:none}
+  .vc:hover{background:#C9A8F0}.vc.used{background:var(--bg2);color:var(--txt2);border-color:var(--bdr);opacity:.5}.vc.selected{outline:2px solid #7B3FC4}
+  .gs{font-size:15px;color:var(--txt);line-height:2.2;margin-bottom:10px}
+  .gap{display:inline-block;min-width:120px;height:26px;border-bottom:2px solid #7B3FC4;margin:0 4px;text-align:center;font-weight:500;color:#7B3FC4;font-size:14px;cursor:pointer;vertical-align:bottom;padding:0 4px;transition:all .15s}
+  .gap.correct{border-bottom-color:#639922;color:#3B6D11;background:#EAF3DE;border-radius:4px 4px 0 0}
+  .gap.wrong{border-bottom-color:#E24B4A;color:#A32D2D;background:#FCEBEB;border-radius:4px 4px 0 0;animation:shake .3s}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .fm{font-size:13px;padding:10px 14px;border-radius:var(--rm);margin-bottom:12px;display:none}
+  .fm.show{display:block}.fm.ok{background:#EAF3DE;color:#3B6D11;border:0.5px solid #C0DD97}.fm.err{background:#FCEBEB;color:#A32D2D;border:0.5px solid #F7C1C1}
+  .dq{font-size:15px;font-weight:500;color:var(--txt);margin-bottom:14px;line-height:1.6}
+  .do{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  @media(max-width:500px){.do{grid-template-columns:1fr}}
+  .ob{background:var(--bg);border:0.5px solid var(--bdr2);border-radius:var(--rm);padding:10px 14px;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s;text-align:left;line-height:1.5}
+  .ob:hover:not(:disabled){background:var(--bg2)}.ob.correct{background:#EAF3DE;border-color:#639922;color:#3B6D11}.ob.wrong{background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}.ob:disabled{cursor:default}
+  .pc{font-size:12px;color:var(--txt2);margin-bottom:8px}
+  .nr{display:flex;gap:8px;margin-top:1.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .nrr{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .btn{background:var(--bg);border:0.5px solid var(--bdr2);border-radius:var(--rm);padding:9px 20px;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s}
+  .btn:hover{background:var(--bg2)}.btn.p{background:#7B3FC4;color:#fff;border-color:#7B3FC4}.btn.p:hover{background:#5A2B96}
+  .tb{font-size:11px;color:var(--txt2);background:var(--bg2);border:0.5px solid var(--bdr);border-radius:var(--rm);padding:5px 10px}
+  .rb{border-left:3px solid #7B3FC4;background:#F2EBFC;border-radius:0 var(--rm) var(--rm) 0;padding:12px 16px;margin-bottom:10px}
+  .rl2{font-size:11px;font-weight:500;color:#7B3FC4;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .rt{font-size:14px;color:#4A1980;line-height:1.7}
+  .ib{border-left:3px solid #639922;background:#EAF3DE;border-radius:0 var(--rm) var(--rm) 0;padding:12px 16px;margin-bottom:10px}
+  .il{font-size:11px;font-weight:500;color:#3B6D11;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .it{font-size:14px;color:#27500A;line-height:1.7}
+  .tip{background:#FAEEDA;border:0.5px solid #FAC775;border-radius:var(--rm);padding:10px 14px;font-size:13px;color:#633806;margin-bottom:14px}
+  .sc{width:84px;height:84px;border-radius:50%;border:3px solid #7B3FC4;display:flex;align-items:center;justify-content:center;flex-direction:column;margin:0 auto 18px}
+  .sn{font-size:24px;font-weight:500;color:#7B3FC4}.sl2{font-size:10px;color:var(--txt2)}
+  .tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 9px;border-radius:var(--rm);margin-right:4px;margin-bottom:4px}
+  .tp{background:#F2EBFC;color:#4A1980;border:0.5px solid #C9A8F0}.tg{background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97}.ta{background:#FAEEDA;color:#633806;border:0.5px solid #FAC775}
+  .br{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
+  .bd{margin-top:6px;width:6px;height:6px;border-radius:50%;flex-shrink:0}
+  .eb{font-size:13px;padding:10px 14px;border-radius:var(--rm);margin-top:8px;display:none}
+  .rcg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+  @media(max-width:480px){.rcg{grid-template-columns:1fr}}
+  .rc{border-radius:var(--rl);padding:1rem 1.25rem;border:0.5px solid}
+  .rca{background:#F2EBFC;border-color:#C9A8F0}.rcb{background:#EAF3DE;border-color:#C0DD97}
+  .rct{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+  .rca .rct{color:#7B3FC4}.rcb .rct{color:#3B6D11}
+  .rc p{font-size:13px;line-height:1.7}.rca p{color:#4A1980}.rcb p{color:#27500A}
+  .lvl{display:inline-block;background:#7B3FC4;color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:8px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="outer">
+  <div class="ph">
+    <div class="lvl">B2 — Upper Intermediate</div>
+    <h1>Project Management</h1>
+    <p>B2 level &nbsp;·&nbsp; 40-minute interactive lesson</p>
+  </div>
+  <div class="lw">
+    <div class="pb" id="pb">
+      <div class="sd active" onclick="goTo(0)">1</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(1)">2</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(2)">3</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(3)">4</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(4)">5</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(5)">6</div>
+    </div>
+
+    <div class="sec active" id="sec0">
+      <div class="sh">Stage 1 — Warm-up</div>
+      <div class="st">Programme-level thinking</div>
+      <div class="ss">5 minutes · Critical discussion</div>
+      <div class="card-m">
+        <p style="font-size:14px;font-weight:500;margin-bottom:10px">Discuss with your partner:</p>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:4px">1. What is the difference between a project manager and a programme manager? At what point does complexity require programme-level governance?</p>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:4px">2. How do you manage competing priorities between multiple stakeholders who each believe their workstream is the most critical?</p>
+        <p style="font-size:14px;line-height:1.8">3. When a project is failing, what are the signs a PM should look for early — and what is the ethical obligation to the client when those signs appear?</p>
+      </div>
+      <div class="tip"><strong>Teacher note:</strong> At B2, focus on programme governance, strategic communication with senior stakeholders, and the language of formal change control. Key structures: passive voice in formal reporting, modal perfect for counterfactual analysis, hedged assertions for recommendations under uncertainty.</div>
+      <div class="card">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:10px">Today's scenario — <strong>Project Meridian: a 3M euro ERP implementation</strong> at a manufacturing firm:</p>
+        <div class="rcg" style="margin-bottom:8px">
+          <div class="rc rca"><div class="rct">Student A — Programme Director</div><p>You have just discovered that the external implementation partner has been concealing delays. The project is 6 weeks behind, 400k over budget, and the client board meets in 48 hours. You must decide: disclose now, manage the fallout, and restructure the delivery plan.</p></div>
+          <div class="rc rcb"><div class="rct">Student B — Client Sponsor</div><p>You are the client executive who commissioned the project. You have just been told there is a problem. You are angry but professional. You need answers: how did this happen, who is accountable, and what guarantee do you have it will be delivered?</p></div>
+        </div>
+        <div><span class="tag tp">Crisis disclosure</span><span class="tag tg">ERP implementation</span><span class="tag ta">Accountability</span></div>
+      </div>
+      <div class="nr"><span class="tb">5 min</span><button class="btn p" onclick="goTo(1)">Next: vocabulary &#x2192;</button></div>
+    </div>
+
+    <div class="sec" id="sec1">
+      <div class="sh">Stage 2 — Vocabulary</div>
+      <div class="st">Advanced programme management vocabulary</div>
+      <div class="ss">10 minutes · Gap-fill exercise</div>
+      <div class="tip">Click a word from the box, then click a blank. Hover for definitions.</div>
+      <div class="vg" id="wordBank"></div>
+      <div id="gapFeedback" class="fm"></div>
+      <div class="card">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:14px">Complete the sentences with the correct word from the box.</p>
+        <div id="gapSentences"></div>
+      </div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(0)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">10 min</span><button class="btn" onclick="checkGaps()">Check answers</button><button class="btn p" onclick="goTo(2)">Next &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec2">
+      <div class="sh">Stage 3 — Functional language</div>
+      <div class="st">High-stakes project communication</div>
+      <div class="ss">8 minutes · Study and practise</div>
+      <div id="funcContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(1)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">8 min</span><button class="btn p" onclick="goTo(3)">Next &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec3">
+      <div class="sh">Stage 4 — Language in use</div>
+      <div class="st">B2 programme management language drill</div>
+      <div class="ss">10 minutes · Multiple choice</div>
+      <div id="drillWrap"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(2)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">10 min</span><button class="btn p" id="drillNextBtn" onclick="goTo(4)" style="display:none">Next: role play &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec4">
+      <div class="sh">Stage 5 — Role play</div>
+      <div class="st">The crisis disclosure conversation</div>
+      <div class="ss">12 minutes · Pair work</div>
+      <div class="tip"><strong>How to use:</strong> Student A must disclose the full situation, own accountability, and present a credible recovery plan. Student B must ask hard questions, express legitimate frustration professionally, and ultimately decide whether to continue the engagement or escalate to the board. Neither should lose composure.</div>
+      <div id="roleplayContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(3)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">12 min</span><button class="btn p" onclick="goTo(5)">Finish &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec5">
+      <div class="sh">Stage 6 — Summary</div>
+      <div class="st">Lesson complete!</div>
+      <div class="ss">5 minutes · Review</div>
+      <div id="summaryContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(4)">&#x2190; back</button>
+        <button class="btn p" onclick="restartLesson()">Start again &#x21BA;</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+let cs=0,sw=null,ga={},ds=0,di=0,dd=false;
+const WORDS=[
+  {word:'remediation',   def:'actions taken to fix a problem or return to an acceptable state'},
+  {word:'RAG status',    def:'Red-Amber-Green: a traffic light system for reporting project health'},
+  {word:'change control',def:'the formal process for managing modifications to project scope or budget'},
+  {word:'critical path', def:'the sequence of tasks that determines the minimum project duration'},
+  {word:'dependency',    def:'a task or outcome that another task relies on before it can begin'},
+  {word:'SLA',           def:'Service Level Agreement: a contract defining the standard of service'},
+  {word:'post-mortem',   def:'a structured review after a project ends to capture lessons learned'},
+  {word:'decommission',  def:'to formally shut down a system or process that is no longer needed'},
+];
+const GAPS=[
+  {id:'g0',before:'A formal ',blank:'remediation',after:' plan has been submitted to the steering committee, with weekly progress checkpoints.'},
+  {id:'g1',before:'The project has been reported as amber ',blank:'RAG status',after:' for three consecutive weeks — it should have been escalated to red by now.'},
+  {id:'g2',before:'Any addition to scope must go through formal ',blank:'change control',after:' — we cannot simply absorb it into the existing timeline.'},
+  {id:'g3',before:'The data migration task sits on the ',blank:'critical path',after:' — any delay there flows directly into the go-live date.'},
+  {id:'g4',before:'The reporting module has a hard ',blank:'dependency',after:' on the data warehouse being live — we cannot start it earlier.'},
+  {id:'g5',before:'We are at risk of breaching the ',blank:'SLA',after:' for system availability — if that happens, penalty clauses are triggered.'},
+  {id:'g6',before:'I would recommend scheduling a formal ',blank:'post-mortem',after:' within two weeks of go-live, while the experience is still fresh.'},
+  {id:'g7',before:'The legacy system will be ',blank:'decommission',after:'ed in phases over six months to reduce transition risk.'},
+];
+const FUNC_CATS=[
+  {label:'Disclosing a serious problem',phrases:['I owe you a direct and complete account of where the project stands, and I want to do that now rather than waiting.','The position is more serious than our recent reports have conveyed, and I take full accountability for that.','There has been a failure of reporting discipline on our side, and I am not going to minimise that.','I want to be transparent about the root cause before we discuss the path forward.']},
+  {label:'Taking and attributing accountability',phrases:['Ultimately, the accountability for delivery rests with my organisation, not the subcontractor.','I should have implemented more rigorous RAG reporting governance at the outset — that is a lesson I will carry forward.','There were systemic failures in our change control process that allowed scope to expand without budget adjustment.','I am not here to assign blame — I am here to fix this — but the root cause analysis is important.']},
+  {label:'Presenting a credible recovery plan',phrases:['We have modelled three recovery scenarios. My recommendation is the one I call Option B.','The critical path has been re-sequenced to protect the go-live date, at the cost of deferring two non-critical workstreams.','I am proposing weekly steering group check-ins for the remainder of the project, with full RAG transparency.','I can commit to that revised timeline with high confidence, provided the dependency on your internal data team is resolved.']},
+  {label:'Responding to client challenge',phrases:['That is a fair challenge and I do not intend to deflect it.','I understand your concern about continuity of leadership. I will personally oversee the remaining delivery.','I recognise that trust has been damaged here. The only way I can rebuild it is through consistent delivery.','If, after hearing the recovery plan, you feel escalation to the board is appropriate, I will fully support that.']},
+  {label:'Agreeing remediation and governance',phrases:['We are agreed: weekly steering group, full RAG reporting, and a formal change control log from this point forward.','I will circulate the revised programme plan and risk register by 9am tomorrow.','The next milestone is a go/no-go gate on the 14th — if we are not ready, we pause and reassess.','I would ask that we agree a communication plan for the board before either of us speaks to them independently.']},
+];
+const DRILL_QS=[
+  {q:'You need to disclose a serious delay without minimising it. Which sentence is most appropriate at B2?',
+   opts:['The project is a bit behind.','I owe you a direct account of where the project stands — the position is more serious than our reports have conveyed.','We have some issues with the project.','There is a small problem I should mention.'],
+   ans:1,explain:'"I owe you a direct account" signals full transparency. "More serious than our reports have conveyed" acknowledges a reporting failure without deflection — essential at B2 accountability register.'},
+  {q:'You want to take accountability without assigning blame. Which is most professionally precise?',
+   opts:['It was the subcontractor\'s fault.','I am not here to assign blame, but the root cause analysis is important for preventing recurrence.','Someone made mistakes and that caused the problem.','Mistakes were made by various parties.'],
+   ans:1,explain:'"Not here to assign blame... root cause analysis important" separates accountability (mine) from attribution (systemic) — the most mature B2 professional framing.'},
+  {q:'You want to describe a task that other tasks depend on. Which uses "dependency" most precisely?',
+   opts:['Other tasks need this task first.','The reporting module has a hard dependency on the data warehouse being live.','This task is important for other tasks.','Tasks depend on this.'],
+   ans:1,explain:'"Hard dependency" is precise PM vocabulary meaning an absolute prerequisite. "On [noun] being live" is the correct grammatical structure.'},
+  {q:'You want to offer a conditional commitment. Which inverted conditional is correct?',
+   opts:['I can commit to that timeline if you resolve the data team dependency.','I could commit to that if you would resolve the dependency.','Provided the dependency on your internal data team is resolved, I can commit to that revised timeline with high confidence.','If dependency resolved, I can commit.'],
+   ans:2,explain:'"Provided + passive clause, I can commit..." uses a formal conditional with "provided" (more formal than "if") and the passive to avoid implying blame.'},
+  {q:'The client challenges your reporting failures. Which response demonstrates the highest accountability?',
+   opts:['We had communication problems.','I should have implemented more rigorous RAG reporting governance at the outset — that is a lesson I will carry forward.','The reporting process was not working properly.','Reporting was not done correctly.'],
+   ans:1,explain:'"I should have..." uses modal perfect for a retrospective obligation — taking personal accountability. "That is a lesson I will carry forward" shows learning without being defensive.'},
+  {q:'You want to propose a formal governance structure going forward. Which is most precise?',
+   opts:['We will have better meetings from now on.','We are agreed: weekly steering group, full RAG reporting, and a formal change control log from this point forward.','Better governance will happen.','More check-ins and better reporting going forward.'],
+   ans:1,explain:'Listing the agreed governance elements precisely ("weekly steering group, full RAG reporting, formal change control log") is how commitments are recorded at programme level.'},
+];
+const ROLEPLAY=[
+  {speaker:'A',text:'[Open by signalling the seriousness of the conversation. Acknowledge that you have asked for this meeting because you owe the client a full and transparent account. Do not minimise. State the headline: 6 weeks behind, 400k over budget.]'},
+  {speaker:'B',text:'I appreciate you coming to me directly. But I have to be honest — I am deeply concerned. We have had three amber RAG reports in a row. Why was I not told about this sooner?'},
+  {speaker:'A',text:'[Take full accountability for the reporting failure. Do not blame the subcontractor initially. Explain the root cause: reporting discipline broke down, scope expanded without proper change control. Own it.]'},
+  {speaker:'B',text:'So scope expanded without authorisation and without adjustment to the budget. How did that pass through governance without anyone flagging it?'},
+  {speaker:'A',text:'[Explain the change control failure honestly: informal requests from the client\'s own internal team were absorbed into delivery without a formal change log. Acknowledge shared causation carefully — without deflecting your own accountability.]'},
+  {speaker:'B',text:'I need to understand the path forward. We have a board meeting in 48 hours. What do I tell them? And more importantly, do you have a credible recovery plan, or are you here to tell me the project is failing?'},
+  {speaker:'A',text:'[Present the recovery plan with clarity: critical path re-sequenced, two non-critical workstreams deferred, new go-live date confirmed, weekly steering group with full RAG transparency. Commit personally to leading delivery from this point.]'},
+  {speaker:'B',text:'If I take this to the board, they will ask me whether I still have confidence in your organisation to deliver. What do I tell them? And what happens if you miss this new date?'},
+  {speaker:'A',text:'[Answer directly and with measured confidence. Propose a governance structure for the remaining period. Offer a joint communication plan for the board. Propose a go/no-go milestone in two weeks. Close by asking the client to tell you what they need to maintain confidence.]'},
+  {speaker:'B',text:'[Decide: after hearing the plan, express cautious conditional confidence. State what you need from the PM going forward. Close by agreeing the next steps and the communication plan for the board.]'},
+];
+function goTo(n){
+  document.querySelectorAll('.sec').forEach((s,i)=>s.classList.toggle('active',i===n));
+  document.querySelectorAll('.sd').forEach((d,i)=>{d.classList.remove('active','done');if(i===n)d.classList.add('active');else if(i<n)d.classList.add('done');});
+  cs=n;if(n===1)bG();if(n===2)bF();if(n===3&&!dd)bD();if(n===4)bR();if(n===5)bS();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function bG(){
+  const bank=document.getElementById('wordBank');bank.innerHTML='';
+  WORDS.forEach(w=>{const c=document.createElement('div');c.className='vc';c.textContent=w.word;c.id='chip_'+w.word.replace(/\s/g,'_');c.title=w.def;c.onclick=()=>selW(w.word);bank.appendChild(c);});
+  const ct=document.getElementById('gapSentences');ct.innerHTML='';
+  GAPS.forEach(g=>{const p=document.createElement('p');p.className='gs';p.innerHTML=(g.before||'')+`<span class="gap" id="${g.id}" onclick="fG('${g.id}')"></span>`+(g.after||'');ct.appendChild(p);});
+}
+function selW(w){
+  document.querySelectorAll('.vc').forEach(c=>c.classList.remove('selected'));
+  if(sw===w){sw=null;return;}sw=w;const key=w.replace(/\s/g,'_');const c=document.getElementById('chip_'+key);if(c)c.classList.add('selected');
+}
+function fG(gid){
+  const gap=document.getElementById(gid);if(!gap)return;
+  const cur=gap.textContent.trim();
+  if(cur){const key=cur.replace(/\s/g,'_');const c=document.getElementById('chip_'+key);if(c)c.classList.remove('used');gap.textContent='';gap.classList.remove('correct','wrong');delete ga[gid];return;}
+  if(!sw)return;const key=sw.replace(/\s/g,'_');const chip=document.getElementById('chip_'+key);if(chip&&chip.classList.contains('used'))return;
+  gap.textContent=sw;ga[gid]=sw;if(chip)chip.classList.add('used');sw=null;document.querySelectorAll('.vc').forEach(c=>c.classList.remove('selected'));
+}
+function checkGaps(){
+  let ok=0;GAPS.forEach(g=>{const gap=document.getElementById(g.id);const val=gap?gap.textContent.trim():'';if(val===g.blank){gap.classList.add('correct');gap.classList.remove('wrong');ok++;}else if(val){gap.classList.add('wrong');gap.classList.remove('correct');}});
+  const fb=document.getElementById('gapFeedback');fb.className='fm show '+(ok===GAPS.length?'ok':'err');
+  fb.textContent=ok===GAPS.length?'All '+GAPS.length+' correct! Excellent.':ok+' of '+GAPS.length+' correct. Check highlighted answers.';
+}
+function bF(){
+  const w=document.getElementById('funcContent');w.innerHTML='';
+  FUNC_CATS.forEach(cat=>{let h='<div class="card"><p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--txt2);margin-bottom:10px">'+cat.label+'</p>';cat.phrases.forEach(ph=>{h+='<div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">'+ph+'</span></div>';});h+='</div>';w.innerHTML+=h;});
+  w.innerHTML+='<div class="tip">At B2, the language of accountability is precise and active: "I should have...", "I take full accountability for...", "The root cause was...". Avoid passive deflection: "Mistakes were made" signals evasion. "I failed to implement governance" signals leadership.</div>';
+}
+function bD(){di=0;ds=0;rDQ();}
+function rDQ(){
+  const w=document.getElementById('drillWrap');
+  if(di>=DRILL_QS.length){dd=true;document.getElementById('drillNextBtn').style.display='inline-block';w.innerHTML='<div class="card" style="text-align:center;padding:2rem 1.25rem"><p style="font-size:13px;color:var(--txt2);margin-bottom:14px">Quiz complete!</p><div class="sc"><span class="sn">'+ds+'/'+DRILL_QS.length+'</span><span class="sl2">score</span></div><p style="font-size:15px;font-weight:500;color:var(--txt)">'+(ds===DRILL_QS.length?'Excellent!':ds>=4?'Very good!':'Good effort!')+'</p></div>';return;}
+  const q=DRILL_QS[di];
+  w.innerHTML='<p class="pc">Question '+(di+1)+' of '+DRILL_QS.length+'</p><div class="card"><p class="dq">'+q.q+'</p><div class="do">'+q.opts.map((o,i)=>'<button class="ob" onclick="aD('+i+'">'+o+'</button>').join('')+'</div><div id="de" class="eb"></div><button id="dc" style="display:none;margin-top:14px" class="btn p" onclick="nDQ()">Next &#x2192;</button></div>';
+}
+function aD(ch){
+  const q=DRILL_QS[di];document.querySelectorAll('.ob').forEach(b=>b.disabled=true);document.querySelectorAll('.ob')[q.ans].classList.add('correct');
+  const e=document.getElementById('de');e.style.display='block';
+  if(ch===q.ans){ds++;e.style.background='#EAF3DE';e.style.color='#27500A';e.style.border='0.5px solid #C0DD97';e.textContent='Correct! '+q.explain;}
+  else{document.querySelectorAll('.ob')[ch].classList.add('wrong');e.style.background='#FCEBEB';e.style.color='#A32D2D';e.style.border='0.5px solid #F7C1C1';e.textContent='Not quite. '+q.explain;}
+  document.getElementById('dc').style.display='inline-block';
+}
+function nDQ(){di++;rDQ();}
+function bR(){
+  const w=document.getElementById('roleplayContent');w.innerHTML='';
+  ROLEPLAY.forEach(line=>{if(line.speaker==='B'){w.innerHTML+='<div class="ib"><div class="il">Student B — Client Sponsor</div><div class="it">'+line.text+'</div></div>';}else{w.innerHTML+='<div class="rb"><div class="rl2">Student A — Programme Director</div><div class="rt">'+line.text+'</div></div>';}});
+  w.innerHTML+='<div style="margin-top:14px"><div class="card-m"><p style="font-size:14px;font-weight:500;margin-bottom:6px">Extension: the board presentation</p><p style="font-size:13px;color:var(--txt2)">Swap roles. Student A is now the client sponsor presenting the situation to the board (Student B plays a board member). Student A must explain what happened, why they still have confidence in the supplier, and what governance is now in place. Student B asks hard questions about decision-making and financial exposure.</p></div></div>';
+}
+function bS(){
+  const items=['8 advanced programme vocabulary words: remediation, RAG status, critical path, change control, SLA, post-mortem','Phrases for 5 high-stakes PM functions: crisis disclosure, taking accountability, presenting recovery plans, responding to challenge, agreeing governance','6 B2 drills: modal perfect for accountability, "provided" conditionals, passive voice in formal reporting, precise governance language','A crisis disclosure role play requiring full accountability, a credible recovery plan, and negotiated governance structure'];
+  const hw=['Write a formal crisis communication email (150-200 words) from the Programme Director to the client board, disclosing the delay and presenting the recovery plan.','Conduct a mock post-mortem. Write 5 lessons learned from the Meridian project scenario, formatted as: What happened / Why it happened / What we will do differently.','Research the difference between a project RAG report and a programme dashboard. Write 3 sentences explaining when you would use each and who the audience is.'];
+  document.getElementById('summaryContent').innerHTML='<div class="card" style="text-align:center;padding:1.75rem 1.25rem"><p style="font-size:13px;color:var(--txt2);margin-bottom:10px">Today\'s lesson</p><div class="lvl">B2 — Upper Intermediate</div><p style="font-size:22px;font-weight:500;margin:8px 0 4px">Project Management</p><p style="font-size:13px;color:var(--txt2)">~40 minutes</p></div><div class="card"><p style="font-size:13px;font-weight:500;margin-bottom:10px">What you practised:</p>'+items.map(i=>'<div class="br"><span class="bd" style="background:#639922"></span><span style="font-size:14px;color:var(--txt)">'+i+'</span></div>').join('')+'</div><div class="card-m"><p style="font-size:13px;font-weight:500;margin-bottom:8px">Homework ideas:</p>'+hw.map((h,i)=>'<div class="br"><span class="bd" style="background:#7B3FC4;margin-top:7px"></span><span style="font-size:13px;color:var(--txt2);line-height:1.7">'+(i+1)+'. '+h+'</span></div>').join('')+'</div><div class="tip" style="margin-bottom:0">Outstanding work. Disclosing a project crisis to a senior client — in a foreign language, under pressure, with precision and accountability — is one of the hardest professional communication challenges there is. You practised all of it today.</div>';
+}
+function restartLesson(){dd=false;ds=0;di=0;ga={};sw=null;goTo(0);}
+bG();bF();bR();bS();
+</script>
+</body>
+</html>
