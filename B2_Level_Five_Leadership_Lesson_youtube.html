@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B2 English Lesson — Level-Five Leadership</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Lato:wght@300;400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #fefcf6;
+  --ivory: #f8f6f0;
+  --sand: #ebe8df;
+  --taupe: #d4cfc4;
+  --charcoal: #2d2d2d;
+  --slate: #4a4a4a;
+  --warmgray: #6b6b6b;
+  --gold: #c9a45c;
+  --gold-dark: #a68548;
+  --gold-light: #f5ead0;
+  --navy: #1a3a52;
+  --navy-light: #e8f0f5;
+  --emerald: #2d7259;
+  --emerald-light: #e8f5f0;
+  --burgundy: #7d3c3c;
+  --burgundy-light: #f5e8e8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(165deg, var(--navy) 0%, #234a65 100%);
+  padding: 4.5rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(201, 164, 92, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.header-inner {
+  max-width: 850px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201, 164, 92, 0.15);
+  border: 1px solid rgba(201, 164, 92, 0.3);
+  padding: 6px 16px;
+  border-radius: 24px;
+  margin-bottom: 1.5rem;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.badge-text {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.header h1 em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 900;
+}
+
+.header-desc {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 650px;
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+.header-meta {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.meta-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.meta-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* NAVIGATION */
+.nav-container {
+  background: #ffffff;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav::-webkit-scrollbar { display: none; }
+
+.nav-item {
+  padding: 1.2rem 1.5rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--warmgray);
+  cursor: pointer;
+  transition: all 0.25s;
+  white-space: nowrap;
+  position: relative;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item:hover {
+  color: var(--charcoal);
+}
+
+.nav-item.active {
+  color: var(--gold);
+}
+
+.nav-item.active::after {
+  transform: scaleX(1);
+}
+
+.nav-spacer { flex: 1; }
+
+.reset-all {
+  margin-left: 1rem;
+  padding: 8px 20px;
+  background: var(--ivory);
+  border: 1px solid var(--taupe);
+  border-radius: 6px;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--slate);
+  cursor: pointer;
+  transition: all 0.2s;
+  align-self: center;
+}
+
+.reset-all:hover {
+  background: var(--sand);
+  border-color: var(--gold);
+}
+
+/* MAIN */
+.main {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 3rem 2rem 6rem;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+  animation: reveal 0.5s ease;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--sand);
+}
+
+.section-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  opacity: 0.3;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+
+/* VIDEO */
+.video-wrapper {
+  background: #ffffff;
+  border: 1px solid var(--taupe);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s;
+}
+
+.video-wrapper:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+.video-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.video-thumbnail {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: linear-gradient(135deg, var(--navy) 0%, #234a65 100%);
+  overflow: hidden;
+}
+
+.video-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.video-wrapper:hover .video-thumbnail img {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  background: rgba(201, 164, 92, 0.95);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 40px rgba(201, 164, 92, 0.4);
+  transition: all 0.3s;
+}
+
+.video-wrapper:hover .play-overlay {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: var(--gold);
+}
+
+.video-details {
+  padding: 1.5rem 2rem;
+  background: #fafaf8;
+}
+
+.video-tag {
+  display: inline-block;
+  background: var(--navy);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.video-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.video-author {
+  font-size: 14px;
+  color: var(--warmgray);
+  font-family: 'Courier Prime', monospace;
+}
+
+
+
+/* ENHANCED YOUTUBE STOCK IMAGE CARD */
+.video-wrapper.featured-video {
+  border: none;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(26, 58, 82, 0.18);
+  position: relative;
+}
+
+.video-wrapper.featured-video::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(201, 164, 92, 0.28);
+  border-radius: 22px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.video-wrapper.featured-video:hover {
+  box-shadow: 0 32px 90px rgba(26, 58, 82, 0.25);
+  transform: translateY(-6px);
+}
+
+.video-wrapper.featured-video .video-thumbnail {
+  background: #102b40;
+}
+
+.video-wrapper.featured-video .video-thumbnail::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(26, 58, 82, 0.82) 0%, rgba(26, 58, 82, 0.26) 46%, rgba(0,0,0,0.16) 100%);
+  z-index: 1;
+}
+
+.video-wrapper.featured-video .video-thumbnail::after {
+  content: 'WATCH ON YOUTUBE';
+  position: absolute;
+  top: 26px;
+  left: 28px;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--navy);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.video-wrapper.featured-video .video-thumbnail img {
+  opacity: 1;
+  filter: saturate(1.04) contrast(1.02);
+}
+
+.video-title-overlay {
+  position: absolute;
+  left: 28px;
+  right: 150px;
+  bottom: 30px;
+  z-index: 2;
+  color: #ffffff;
+}
+
+.video-title-overlay .eyebrow {
+  display: inline-block;
+  color: var(--gold);
+  font-family: 'Courier Prime', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.video-title-overlay h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 3.1rem);
+  line-height: 1.05;
+  max-width: 560px;
+  text-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+.video-wrapper.featured-video .play-overlay {
+  z-index: 3;
+  width: 104px;
+  height: 104px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 18px 55px rgba(0,0,0,0.28);
+}
+
+.video-wrapper.featured-video .play-overlay svg {
+  fill: #cc1f1a;
+  margin-left: 5px;
+}
+
+.video-wrapper.featured-video:hover .play-overlay {
+  background: #ffffff;
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.video-wrapper.featured-video .video-details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 18px;
+  row-gap: 8px;
+  align-items: center;
+  padding: 1.6rem 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #faf7ef 100%);
+}
+
+.video-wrapper.featured-video .video-tag {
+  margin-bottom: 0;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #2d2d2d;
+}
+
+.video-wrapper.featured-video .video-name {
+  margin-bottom: 0;
+}
+
+.video-wrapper.featured-video .video-author {
+  grid-column: 2;
+  color: var(--warmgray);
+}
+
+@media (max-width: 700px) {
+  .video-title-overlay {
+    left: 20px;
+    right: 20px;
+    bottom: 22px;
+  }
+
+  .video-wrapper.featured-video .video-thumbnail::after {
+    top: 18px;
+    left: 20px;
+  }
+
+  .video-wrapper.featured-video .play-overlay {
+    width: 78px;
+    height: 78px;
+  }
+
+  .video-wrapper.featured-video .video-details {
+    grid-template-columns: 1fr;
+  }
+
+  .video-wrapper.featured-video .video-author {
+    grid-column: 1;
+  }
+}
+
+/* TRANSCRIPT */
+.transcript-box {
+  background: #ffffff;
+  border: 1px solid var(--taupe);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.transcript-header {
+  background: linear-gradient(135deg, #fafaf8 0%, #ffffff 100%);
+  padding: 1.2rem 1.8rem;
+  border-bottom: 1px solid var(--sand);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.transcript-icon {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 164, 92, 0.2);
+}
+
+.transcript-label {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--slate);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.transcript-content {
+  padding: 2.5rem 2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  line-height: 2;
+  color: var(--slate);
+}
+
+.transcript-content p {
+  margin-bottom: 1.5rem;
+}
+
+.transcript-content p:last-child {
+  margin-bottom: 0;
+}
+
+.vocab-hl {
+  background: linear-gradient(180deg, transparent 60%, var(--gold-light) 60%);
+  padding: 1px 4px;
+  border-radius: 2px;
+  cursor: help;
+  position: relative;
+  transition: background 0.2s;
+  font-weight: 600;
+}
+
+.vocab-hl:hover {
+  background: var(--gold-light);
+}
+
+/* PANEL */
+.panel {
+  background: #ffffff;
+  border: 1px solid var(--taupe);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.panel-head {
+  background: linear-gradient(135deg, #fafaf8 0%, #ffffff 100%);
+  padding: 1.2rem 1.8rem;
+  border-bottom: 1px solid var(--sand);
+}
+
+.panel-heading {
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.panel-subhead {
+  font-size: 14px;
+  color: var(--warmgray);
+  line-height: 1.6;
+}
+
+.panel-body {
+  padding: 2rem 1.8rem;
+}
+
+/* QUESTION */
+.q-item {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--ivory);
+}
+
+.q-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.q-label {
+  display: inline-block;
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold-dark);
+  background: var(--gold-light);
+  padding: 5px 14px;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.q-question {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+/* CHOICES */
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 2px solid var(--sand);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.25s;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  color: var(--charcoal);
+  text-align: left;
+  line-height: 1.7;
+}
+
+.choice:hover:not(:disabled) {
+  border-color: var(--gold);
+  background: var(--gold-light);
+  transform: translateX(6px);
+}
+
+.choice:disabled {
+  cursor: default;
+}
+
+.choice-mark {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--ivory);
+  color: var(--slate);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  font-family: 'Courier Prime', monospace;
+}
+
+.choice.correct {
+  background: var(--emerald-light);
+  border-color: var(--emerald);
+  color: #1a4d3a;
+}
+
+.choice.incorrect {
+  background: var(--burgundy-light);
+  border-color: var(--burgundy);
+  color: #5a2828;
+}
+
+.choice.correct .choice-mark {
+  background: var(--emerald);
+  color: white;
+}
+
+.choice.incorrect .choice-mark {
+  background: var(--burgundy);
+  color: white;
+}
+
+.answer-note {
+  margin-top: 1rem;
+  padding: 14px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.7;
+  display: none;
+  border-left: 3px solid;
+}
+
+.answer-note.show {
+  display: block;
+  animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.answer-note.correct {
+  background: var(--emerald-light);
+  color: var(--emerald);
+  border-color: var(--emerald);
+}
+
+.answer-note.incorrect {
+  background: var(--burgundy-light);
+  color: var(--burgundy);
+  border-color: var(--burgundy);
+}
+
+/* MATCHING */
+.match-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 700px) {
+  .match-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.match-col-head {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--slate);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--gold-light);
+}
+
+.word-box {
+  background: var(--navy);
+  color: #e8f0f5;
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 14px 20px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.25s;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.word-box:hover {
+  background: #234a65;
+  transform: translateX(6px);
+}
+
+.word-box.chosen {
+  border-color: var(--gold);
+  background: #234a65;
+  box-shadow: 0 0 0 4px rgba(201, 164, 92, 0.15);
+}
+
+.word-box.matched {
+  display: none;
+}
+
+.word-box.match-right {
+  background: var(--emerald);
+  border-color: var(--emerald);
+  cursor: default;
+  display: flex;
+}
+
+.word-box.match-wrong {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+  cursor: default;
+  display: flex;
+}
+
+.word-tag {
+  font-size: 10px;
+  font-family: 'Courier Prime', monospace;
+  opacity: 0.4;
+}
+
+.def-box {
+  background: var(--ivory);
+  border: 2px dashed var(--taupe);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  min-height: 70px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.def-box:hover:not(.frozen) {
+  border-color: var(--gold);
+  background: var(--gold-light);
+  transform: translateX(6px);
+}
+
+.def-description {
+  font-size: 14px;
+  color: var(--slate);
+  line-height: 1.7;
+}
+
+.def-placed {
+  margin-top: 10px;
+}
+
+.placed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--sand);
+  color: var(--charcoal);
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid var(--taupe);
+  transition: all 0.2s;
+}
+
+.placed-badge:hover {
+  background: var(--taupe);
+}
+
+.def-result {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+}
+
+.def-result.right {
+  background: var(--emerald-light);
+  color: var(--emerald);
+}
+
+.def-result.wrong {
+  background: var(--burgundy-light);
+  color: var(--burgundy);
+}
+
+.match-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn-verify, .btn-restart {
+  padding: 14px 28px;
+  border-radius: 6px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s;
+  border: none;
+}
+
+.btn-verify {
+  background: var(--navy);
+  color: white;
+}
+
+.btn-verify:hover {
+  background: #234a65;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26, 58, 82, 0.2);
+}
+
+.btn-restart {
+  background: var(--ivory);
+  color: var(--slate);
+  border: 1px solid var(--taupe);
+}
+
+.btn-restart:hover {
+  background: var(--sand);
+  border-color: var(--gold);
+}
+
+.match-result {
+  font-size: 15px;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 20px;
+  background: var(--emerald-light);
+  color: var(--emerald);
+  display: none;
+  font-family: 'Courier Prime', monospace;
+}
+
+/* GRAMMAR INPUT */
+.grammar-statement {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: var(--charcoal);
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+}
+
+.grammar-field {
+  border: none;
+  border-bottom: 2px solid var(--taupe);
+  background: transparent;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  color: var(--charcoal);
+  padding: 3px 8px;
+  min-width: 180px;
+  max-width: 320px;
+  outline: none;
+  transition: border-color 0.25s;
+}
+
+.grammar-field:focus {
+  border-bottom-color: var(--gold);
+}
+
+.grammar-field.right {
+  border-bottom-color: var(--emerald);
+  color: var(--emerald);
+}
+
+.grammar-field.wrong {
+  border-bottom-color: var(--burgundy);
+  color: var(--burgundy);
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.check-one {
+  padding: 10px 20px;
+  background: var(--ivory);
+  border: 1px solid var(--taupe);
+  border-radius: 6px;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--slate);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.check-one:hover {
+  background: var(--sand);
+  border-color: var(--gold);
+}
+
+.status-badge {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 14px;
+  display: none;
+  font-family: 'Lato', sans-serif;
+}
+
+.status-right {
+  background: var(--emerald-light);
+  color: var(--emerald);
+}
+
+.status-wrong {
+  background: var(--burgundy-light);
+  color: var(--burgundy);
+}
+
+.status-ans {
+  background: var(--navy-light);
+  color: var(--navy);
+}
+
+.check-all {
+  width: 100%;
+  padding: 16px;
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: all 0.25s;
+}
+
+.check-all:hover {
+  background: #234a65;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(26, 58, 82, 0.2);
+}
+
+/* DISCUSSION */
+.disc-card {
+  background: #ffffff;
+  border: 1px solid var(--taupe);
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.disc-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.disc-toggle {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 1.3rem 1.8rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Lato', sans-serif;
+}
+
+.disc-badge {
+  flex-shrink: 0;
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--gold-dark);
+  background: var(--gold-light);
+  padding: 5px 12px;
+  border-radius: 14px;
+  margin-top: 3px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.disc-prompt {
+  flex: 1;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  line-height: 1.6;
+}
+
+.disc-chevron {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--warmgray);
+  transition: transform 0.35s;
+  margin-top: 5px;
+}
+
+.disc-card.expanded .disc-chevron {
+  transform: rotate(180deg);
+}
+
+.disc-expand {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.disc-card.expanded .disc-expand {
+  max-height: 900px;
+}
+
+.disc-inside {
+  padding: 0 1.8rem 1.8rem;
+  border-top: 1px solid var(--ivory);
+  padding-top: 1.5rem;
+}
+
+.disc-guide {
+  background: var(--gold-light);
+  border-left: 3px solid var(--gold);
+  padding: 1.2rem 1.5rem;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #5a4d2a;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+
+.disc-example {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: var(--slate);
+  line-height: 1.9;
+}
+
+.disc-example strong {
+  color: var(--charcoal);
+  font-weight: 700;
+}
+
+/* GRAMMAR BOX */
+.grammar-box {
+  background: linear-gradient(135deg, var(--navy) 0%, #234a65 100%);
+  border-radius: 8px;
+  padding: 2.2rem 2.5rem;
+  margin-bottom: 2.5rem;
+  color: white;
+}
+
+.grammar-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.grammar-box p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+
+.grammar-box p:last-child {
+  margin-bottom: 0;
+}
+
+.grammar-grid {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.2rem;
+  font-size: 14px;
+}
+
+.grammar-grid th {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: 'Lato', sans-serif;
+}
+
+.grammar-grid td {
+  padding: 12px 16px;
+  color: rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.grammar-grid td:first-child {
+  font-family: 'Courier Prime', monospace;
+  color: var(--gold);
+  font-size: 13px;
+}
+
+.grammar-grid tr:last-child td {
+  border-bottom: none;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 4rem 2rem;
+  font-size: 14px;
+  color: var(--warmgray);
+  border-top: 1px solid var(--sand);
+}
+
+footer p {
+  margin-bottom: 0.6rem;
+}
+
+.footer-credit {
+  font-family: 'Courier Prime', monospace;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+  .header {
+    padding: 3rem 1.5rem 3rem;
+  }
+  
+  .main {
+    padding: 2rem 1.5rem 4rem;
+  }
+  
+  .header-meta {
+    gap: 2rem;
+  }
+  
+  .grammar-field {
+    min-width: 140px;
+    max-width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-badge">
+      <span class="badge-dot"></span>
+      <span class="badge-text">B2 Upper-Intermediate English</span>
+    </div>
+    <h1>Level-<em>Five</em> Leadership</h1>
+    <p class="header-desc">Discover what separates good leaders from great ones through Jim Collins' groundbreaking research on executive excellence and organizational transformation.</p>
+    <div class="header-meta">
+      <div class="meta-item">
+        <span class="meta-value">2:13</span>
+        <span class="meta-label">Video Length</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-value">B2</span>
+        <span class="meta-label">CEFR Level</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-value">5</span>
+        <span class="meta-label">Learning Sections</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nav-container">
+  <nav class="nav">
+    <button class="nav-item active" onclick="switchSection('reading', this)">Reading</button>
+    <button class="nav-item" onclick="switchSection('vocabulary', this)">Vocabulary</button>
+    <button class="nav-item" onclick="switchSection('comprehension', this)">Comprehension</button>
+    <button class="nav-item" onclick="switchSection('grammar', this)">Grammar</button>
+    <button class="nav-item" onclick="switchSection('discussion', this)">Discussion</button>
+    <div class="nav-spacer"></div>
+    <button class="reset-all" onclick="resetEverything()">↺ Reset All</button>
+  </nav>
+</div>
+
+<div class="main">
+
+<!-- READING SECTION -->
+<section id="reading" class="section active">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2 class="section-title">Watch & Read</h2>
+  </div>
+  
+  <div class="video-wrapper featured-video">
+    <a href="https://www.youtube.com/watch?v=lAuNz0Mk2Ws" target="_blank" rel="noopener" class="video-link" aria-label="Watch Level 5 Leadership by Jim Collins on YouTube">
+      <div class="video-thumbnail">
+        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85" alt="Business leaders discussing strategy in a modern meeting room">
+        <div class="video-title-overlay">
+          <span class="eyebrow">Jim Collins Research</span>
+          <h3>Level 5 Leadership</h3>
+        </div>
+        <div class="play-overlay">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="white">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="video-details">
+        <span class="video-tag">Business Strategy</span>
+        <div class="video-name">Level 5 Leadership by Jim Collins</div>
+        <div class="video-author">From "Good to Great" Research Study</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="transcript-box">
+    <div class="transcript-header">
+      <div class="transcript-icon"></div>
+      <div class="transcript-label">Video Transcript</div>
+    </div>
+    <div class="transcript-content">
+      <p>What makes some companies go from good to great? Jim Collins and his research team examined 30 years of data from over a thousand companies and identified factors that contributed to <span class="vocab-hl" title="exceptionally large or significant">outsized</span> market performance, including one they termed <span class="vocab-hl" title="level-five leadership">level-five leadership</span>.</p>
+
+      <p>Leadership ability ranges from highly capable individuals at level one to contributing team members, competent managers, effective leaders, and finally, the fifth and final level, effective executives. Being a <span class="vocab-hl" title="complete, fully developed">full-fledged</span> level-five leader requires the capabilities of all the lower levels, such as the level-four ability to both improve company performance and paint a clear and <span class="vocab-hl" title="convincing, persuasive">compelling</span> vision, but level-five leaders have something special that separates them from the rest, namely the rare combination of <span class="vocab-hl" title="intense, determined">fierce</span> resolve and personal <span class="vocab-hl" title="modesty, lack of arrogance">humility</span>.</p>
+
+      <p>When faced with setbacks, they look in the mirror, blaming themselves for underperformance, never external factors or bad luck. When their companies succeed, however, the mirror turns into a window and they give credit to others. The funny thing is this does not reflect reality. According to the research, the level-five leaders were responsible for their company's success, but they would never admit it. In fact, although they're very ambitious, level-five leaders rarely talk about themselves. Instead, they <span class="vocab-hl" title="direct, focus energy toward">channel</span> their ambition into something bigger than personal achievement.</p>
+
+      <p>To grasp this concept, consider US president Abraham Lincoln, a reserved, even shy leader who nonetheless held the country together during the Civil War. Despite <span class="vocab-hl" title="extremely important or significant">monumental</span> losses on both sides, his <span class="vocab-hl" title="determined, unwavering">resolute</span> determination to unify the country resulted in the reunited nation becoming a world power.</p>
+
+      <p>It might be a stretch to compare a great CEO to a president like Lincoln, but the level-five leaders in the study displayed the same kind of <span class="vocab-hl" title="having two contrasting qualities">duality</span>, modest yet willful, quiet yet fierce. If you're thinking that sounds like a rare combination of traits, you're right. Ironically, the drive that often <span class="vocab-hl" title="pushes or drives forward">propels</span> people into level-four leadership stands at odds with the humility required to rise to level five, and too many companies reward <span class="vocab-hl" title="outgoing, socially confident">extroverted</span> style over <span class="vocab-hl" title="real value or quality">substance</span>.</p>
+
+      <p>To help your company go from good to great, seek out the fierce but humble leaders you may have overlooked.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-body">
+      <strong style="color: var(--navy);">Learning Tip:</strong> Hover over <span class="vocab-hl" style="pointer-events: none;">highlighted words</span> in the transcript to see their definitions. Then test your knowledge in the Vocabulary section.
+    </div>
+  </div>
+</section>
+
+<!-- VOCABULARY SECTION -->
+<section id="vocabulary" class="section">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Vocabulary Matching</h2>
+  </div>
+  
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-heading">Match Words to Definitions</div>
+      <div class="panel-subhead">Select a word, then click its matching definition</div>
+    </div>
+    <div class="panel-body">
+      <div class="match-layout">
+        <div>
+          <div class="match-col-head">Words & Phrases</div>
+          <div id="words-area"></div>
+        </div>
+        <div>
+          <div class="match-col-head">Definitions</div>
+          <div id="defs-area"></div>
+        </div>
+      </div>
+      <div class="match-actions">
+        <button class="btn-verify" onclick="verifyMatches()">Check Answers</button>
+        <button class="btn-restart" onclick="restartMatching()">Reset</button>
+        <span class="match-result" id="match-score"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPREHENSION SECTION -->
+<section id="comprehension" class="section">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2 class="section-title">Comprehension Questions</h2>
+  </div>
+  
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-heading">Multiple Choice Questions</div>
+      <div class="panel-subhead">Answer based on the video content</div>
+    </div>
+    <div class="panel-body" id="comp-area"></div>
+  </div>
+</section>
+
+<!-- GRAMMAR SECTION -->
+<section id="grammar" class="section">
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <h2 class="section-title">Grammar Practice</h2>
+  </div>
+  
+  <div class="grammar-box">
+    <h3>Mixed Grammar Review</h3>
+    <p>These exercises focus on advanced grammar structures including reported speech, causative forms, conditionals, and advanced verb patterns as they relate to leadership and business contexts.</p>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-heading">Exercise 1: Reported Speech</div>
+      <div class="panel-subhead">Transform direct speech into reported speech</div>
+    </div>
+    <div class="panel-body" id="gram1-area"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-heading">Exercise 2: Causative Structures</div>
+      <div class="panel-subhead">Complete with have/get + object + past participle</div>
+    </div>
+    <div class="panel-body" id="gram2-area"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <div class="panel-heading">Exercise 3: Advanced Conditionals</div>
+      <div class="panel-subhead">Complete the mixed and advanced conditional sentences</div>
+    </div>
+    <div class="panel-body" id="gram3-area"></div>
+  </div>
+</section>
+
+<!-- DISCUSSION SECTION -->
+<section id="discussion" class="section">
+  <div class="section-header">
+    <span class="section-number">05</span>
+    <h2 class="section-title">Critical Thinking & Discussion</h2>
+  </div>
+  
+  <div id="disc-area"></div>
+</section>
+
+</div>
+
+<footer>
+  <p>B2 Interactive English Lesson • Level-Five Leadership</p>
+  <p class="footer-credit">Video content © Jim Collins / "Good to Great"</p>
+</footer>
+
+<script>
+// NAVIGATION
+function switchSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function resetEverything() {
+  if (confirm('This will reset all your progress. Continue?')) {
+    location.reload();
+  }
+}
+
+// ===== VOCABULARY MATCHING =====
+const vocabList = [
+  { word: 'outsized', def: 'Exceptionally large or significantly greater than normal' },
+  { word: 'full-fledged', def: 'Completely developed or established; fully qualified' },
+  { word: 'compelling', def: 'Convincing, persuasive, or evoking strong interest' },
+  { word: 'fierce', def: 'Showing intense determination, passion, or strength' },
+  { word: 'humility', def: 'The quality of being modest and free from arrogance' },
+  { word: 'channel', def: 'To direct or guide toward a particular purpose or activity' },
+  { word: 'monumental', def: 'Extremely important, significant, or of great scale' },
+  { word: 'resolute', def: 'Admirably determined and unwavering in purpose' },
+  { word: 'duality', def: 'The state of having two contrasting aspects or qualities' },
+  { word: 'propels', def: 'Drives or pushes something forward with force' }
+];
+
+let chosenWord = null;
+let pairings = {};
+
+function setupVocabulary() {
+  const wordsArea = document.getElementById('words-area');
+  const defsArea = document.getElementById('defs-area');
+  
+  const mixedWords = [...vocabList].sort(() => Math.random() - 0.5);
+  const mixedDefs = [...vocabList].sort(() => Math.random() - 0.5);
+  
+  mixedWords.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'word-box';
+    div.dataset.word = item.word;
+    div.innerHTML = `<span>${item.word}</span><span class="word-tag">click</span>`;
+    div.onclick = () => pickWord(item.word);
+    wordsArea.appendChild(div);
+  });
+  
+  mixedDefs.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'def-box';
+    div.dataset.answer = item.word;
+    div.innerHTML = `<div class="def-description">${item.def}</div><div class="def-placed"></div>`;
+    div.onclick = () => assignWord(item.word);
+    defsArea.appendChild(div);
+  });
+}
+
+function pickWord(word) {
+  if (document.querySelector(`.word-box[data-word="${word}"]`).classList.contains('matched')) return;
+  
+  document.querySelectorAll('.word-box').forEach(w => w.classList.remove('chosen'));
+  chosenWord = word;
+  document.querySelector(`.word-box[data-word="${word}"]`).classList.add('chosen');
+}
+
+function assignWord(answer) {
+  if (!chosenWord) return;
+  
+  const box = document.querySelector(`.def-box[data-answer="${answer}"]`);
+  if (box.classList.contains('frozen')) return;
+  
+  // Clear previous
+  if (pairings[answer]) {
+    const prev = pairings[answer];
+    document.querySelector(`.word-box[data-word="${prev}"]`).classList.remove('matched');
+  }
+  
+  pairings[answer] = chosenWord;
+  
+  const wordEl = document.querySelector(`.word-box[data-word="${chosenWord}"]`);
+  wordEl.classList.add('matched');
+  wordEl.classList.remove('chosen');
+  
+  const placedArea = box.querySelector('.def-placed');
+  placedArea.innerHTML = `<div class="placed-badge" onclick="clearPair('${answer}')">${chosenWord} ×</div>`;
+  
+  chosenWord = null;
+}
+
+function clearPair(answer) {
+  const word = pairings[answer];
+  if (!word) return;
+  
+  const box = document.querySelector(`.def-box[data-answer="${answer}"]`);
+  if (box.classList.contains('frozen')) return;
+  
+  document.querySelector(`.word-box[data-word="${word}"]`).classList.remove('matched');
+  box.querySelector('.def-placed').innerHTML = '';
+  delete pairings[answer];
+}
+
+function verifyMatches() {
+  let score = 0;
+  
+  Object.entries(pairings).forEach(([answer, word]) => {
+    const wordEl = document.querySelector(`.word-box[data-word="${word}"]`);
+    const defBox = document.querySelector(`.def-box[data-answer="${answer}"]`);
+    
+    if (answer === word) {
+      wordEl.classList.add('match-right');
+      defBox.classList.add('frozen');
+      const res = document.createElement('div');
+      res.className = 'def-result right';
+      res.textContent = '✓ Correct';
+      defBox.querySelector('.def-placed').appendChild(res);
+      score++;
+    } else {
+      wordEl.classList.add('match-wrong');
+      defBox.classList.add('frozen');
+      const res = document.createElement('div');
+      res.className = 'def-result wrong';
+      res.textContent = `✗ Wrong (Answer: ${answer})`;
+      defBox.querySelector('.def-placed').appendChild(res);
+    }
+  });
+  
+  const scoreEl = document.getElementById('match-score');
+  scoreEl.textContent = `Score: ${score}/${vocabList.length}`;
+  scoreEl.style.display = 'inline-block';
+}
+
+function restartMatching() {
+  document.querySelectorAll('.word-box').forEach(w => {
+    w.classList.remove('matched', 'match-right', 'match-wrong', 'chosen');
+  });
+  
+  document.querySelectorAll('.def-box').forEach(d => {
+    d.classList.remove('frozen');
+    d.querySelector('.def-placed').innerHTML = '';
+  });
+  
+  pairings = {};
+  chosenWord = null;
+  document.getElementById('match-score').style.display = 'none';
+}
+
+// ===== COMPREHENSION =====
+const compQuestions = [
+  {
+    num: 1,
+    text: 'What did Jim Collins and his team study to identify level-five leadership?',
+    options: [
+      'Leadership training programs at universities',
+      '30 years of data from over a thousand companies',
+      'Interviews with Fortune 500 CEOs',
+      'Case studies of failed businesses'
+    ],
+    answer: 1,
+    explanation: 'The research examined 30 years of data from over a thousand companies to identify factors contributing to outsized market performance.'
+  },
+  {
+    num: 2,
+    text: 'What is the key characteristic that separates level-five leaders from level-four leaders?',
+    options: [
+      'Superior technical skills and knowledge',
+      'The ability to paint a compelling vision',
+      'The combination of fierce resolve and personal humility',
+      'Strong financial management abilities'
+    ],
+    answer: 2,
+    explanation: 'Level-five leaders possess the rare combination of fierce resolve and personal humility that separates them from level-four leaders.'
+  },
+  {
+    num: 3,
+    text: 'How do level-five leaders respond to company setbacks?',
+    options: [
+      'They blame external factors and bad luck',
+      'They look in the mirror and blame themselves',
+      'They immediately replace underperforming team members',
+      'They hire external consultants'
+    ],
+    answer: 1,
+    explanation: 'When faced with setbacks, level-five leaders look in the mirror and blame themselves for underperformance, never external factors.'
+  },
+  {
+    num: 4,
+    text: 'What example does the text use to illustrate level-five leadership?',
+    options: [
+      'A Fortune 500 CEO',
+      'A successful entrepreneur',
+      'Abraham Lincoln',
+      'A sports team coach'
+    ],
+    answer: 2,
+    explanation: 'The text uses Abraham Lincoln as an example—a reserved, shy leader who showed resolute determination during the Civil War.'
+  },
+  {
+    num: 5,
+    text: 'What irony does the text mention about level-five leadership?',
+    options: [
+      'Level-five leaders are often the youngest executives',
+      'The drive that propels people to level four stands at odds with the humility needed for level five',
+      'Level-five leaders typically have less education',
+      'Companies prefer to hire level-four leaders'
+    ],
+    answer: 1,
+    explanation: 'The drive and personal ambition that often propels people into level-four leadership conflicts with the humility required to reach level five.'
+  },
+  {
+    num: 6,
+    text: 'According to the text, what mistake do too many companies make?',
+    options: [
+      'They invest too much in training programs',
+      'They promote people too quickly',
+      'They reward extroverted style over substance',
+      'They focus too much on financial performance'
+    ],
+    answer: 2,
+    explanation: 'Too many companies reward extroverted style over substance, potentially overlooking humble but fierce level-five leaders.'
+  }
+];
+
+function setupComprehension() {
+  const area = document.getElementById('comp-area');
+  
+  compQuestions.forEach(q => {
+    const div = document.createElement('div');
+    div.className = 'q-item';
+    
+    let html = `
+      <div class="q-label">Question ${q.num}</div>
+      <div class="q-question">${q.text}</div>
+      <div class="choices">
+    `;
+    
+    q.options.forEach((opt, idx) => {
+      const mark = String.fromCharCode(65 + idx);
+      html += `
+        <button class="choice" onclick="submitChoice(${q.num}, ${idx})">
+          <span class="choice-mark">${mark}</span>
+          <span>${opt}</span>
+        </button>
+      `;
+    });
+    
+    html += `
+      </div>
+      <div class="answer-note" id="note-${q.num}"></div>
+    `;
+    
+    div.innerHTML = html;
+    area.appendChild(div);
+  });
+}
+
+function submitChoice(qNum, idx) {
+  const q = compQuestions.find(item => item.num === qNum);
+  const choices = document.querySelectorAll(`.q-item:nth-child(${qNum}) .choice`);
+  const note = document.getElementById(`note-${qNum}`);
+  
+  choices.forEach(c => c.disabled = true);
+  
+  const correct = idx === q.answer;
+  
+  choices[idx].classList.add(correct ? 'correct' : 'incorrect');
+  
+  if (!correct) {
+    choices[q.answer].classList.add('correct');
+  }
+  
+  note.className = `answer-note show ${correct ? 'correct' : 'incorrect'}`;
+  note.textContent = (correct ? '✓ Correct! ' : '✗ Incorrect. ') + q.explanation;
+}
+
+// ===== GRAMMAR =====
+
+// Grammar 1: Reported Speech
+const gram1Set = [
+  {
+    num: 1,
+    direct: '"Level-five leaders channel their ambition into something bigger," the researcher said.',
+    hint: 'reported speech',
+    answer: 'The researcher said that level-five leaders channeled their ambition into something bigger',
+    explanation: 'Reported speech: shift present → past, remove quotation marks.'
+  },
+  {
+    num: 2,
+    direct: '"I will examine the leadership data," Collins explained.',
+    hint: 'reported speech',
+    answer: 'Collins explained that he would examine the leadership data',
+    explanation: 'Reported speech: will → would, shift pronouns appropriately.'
+  },
+  {
+    num: 3,
+    direct: '"We have identified eleven great companies," they announced.',
+    hint: 'reported speech',
+    answer: 'They announced that they had identified eleven great companies',
+    explanation: 'Reported speech: present perfect → past perfect.'
+  }
+];
+
+// Grammar 2: Causative
+const gram2Set = [
+  {
+    num: 1,
+    sentence: 'The CEO _____ (have) the company vision _____ (communicate) to all employees.',
+    answer: 'had communicated',
+    explanation: 'Causative: have + object + past participle (had the vision communicated).'
+  },
+  {
+    num: 2,
+    sentence: 'Level-five leaders _____ (get) their teams _____ (motivate) through personal example.',
+    answer: 'get motivated',
+    explanation: 'Causative: get + object + past participle (get teams motivated).'
+  },
+  {
+    num: 3,
+    sentence: 'The board _____ (have) a consultant _____ (analyze) the leadership structure.',
+    answer: 'had analyze',
+    explanation: 'Causative: have + object + base verb for active meaning (had a consultant analyze).'
+  }
+];
+
+// Grammar 3: Advanced Conditionals
+const gram3Set = [
+  {
+    num: 1,
+    sentence: 'If companies _____ (understand) level-five leadership better, they would hire different executives.',
+    answer: 'understood',
+    explanation: 'Second conditional (hypothetical present): If + past simple, would + infinitive.'
+  },
+  {
+    num: 2,
+    sentence: 'If Collins _____ (not conduct) this research, we might never have known about level-five leadership.',
+    answer: 'had not conducted',
+    explanation: 'Third conditional (hypothetical past): If + past perfect, might + have + past participle.'
+  },
+  {
+    num: 3,
+    sentence: 'If a leader _____ (be) truly humble now, they would not have sought such a high position in the past.',
+    answer: 'were',
+    explanation: 'Mixed conditional: If + past simple (present hypothetical), would + have + past participle (past result). Use "were" for formal/subjunctive.'
+  },
+  {
+    num: 4,
+    sentence: 'Companies _____ (achieve) greater success if they prioritized humility in their leaders.',
+    answer: 'would achieve',
+    explanation: 'Second conditional without "if" clause shown: would + infinitive.'
+  }
+];
+
+function setupGrammar1() {
+  const area = document.getElementById('gram1-area');
+  
+  gram1Set.forEach(q => {
+    const div = document.createElement('div');
+    div.className = 'q-item';
+    div.innerHTML = `
+      <div class="q-label">Question ${q.num}</div>
+      <div class="grammar-statement">Direct: ${q.direct}</div>
+      <div style="font-size: 14px; color: var(--warmgray); margin-bottom: 1rem;">Transform into reported speech:</div>
+      <div class="input-group">
+        <input class="grammar-field" id="gr1-${q.num}" placeholder="${q.hint}..." autocomplete="off" spellcheck="false" style="min-width: 280px; max-width: 100%;">
+        <button class="check-one" onclick="checkGram1(${q.num})">Check</button>
+        <span class="status-badge status-right" id="gr1ok-${q.num}">✓ Correct</span>
+        <span class="status-badge status-wrong" id="gr1no-${q.num}"></span>
+        <span class="status-badge status-ans" id="gr1ans-${q.num}">Answer: ${q.answer}</span>
+      </div>
+      <div class="answer-note" id="gr1note-${q.num}"></div>
+    `;
+    area.appendChild(div);
+  });
+  
+  const btn = document.createElement('button');
+  btn.className = 'check-all';
+  btn.textContent = '✓ Check All Answers';
+  btn.onclick = () => gram1Set.forEach(q => checkGram1(q.num));
+  area.appendChild(btn);
+}
+
+function checkGram1(num) {
+  const q = gram1Set.find(item => item.num === num);
+  const input = document.getElementById(`gr1-${num}`);
+  if (input.disabled) return;
+  
+  const userAns = input.value.trim().toLowerCase().replace(/\s+/g, ' ').replace(/[.,;:!?]$/g, '');
+  const correctAns = q.answer.toLowerCase().replace(/\s+/g, ' ').replace(/[.,;:!?]$/g, '');
+  const correct = userAns === correctAns;
+  
+  input.classList.add(correct ? 'right' : 'wrong');
+  input.disabled = true;
+  
+  const okBadge = document.getElementById(`gr1ok-${num}`);
+  const noBadge = document.getElementById(`gr1no-${num}`);
+  const ansBadge = document.getElementById(`gr1ans-${num}`);
+  const note = document.getElementById(`gr1note-${num}`);
+  
+  if (correct) {
+    okBadge.style.display = 'inline-block';
+    note.className = 'answer-note show correct';
+    note.textContent = '✓ ' + q.explanation;
+  } else {
+    noBadge.textContent = userAns ? `✗ "${userAns}"` : '✗ No answer';
+    noBadge.style.display = 'inline-block';
+    ansBadge.style.display = 'inline-block';
+    note.className = 'answer-note show incorrect';
+    note.textContent = q.explanation;
+  }
+}
+
+function setupGrammar2() {
+  const area = document.getElementById('gram2-area');
+  
+  gram2Set.forEach(q => {
+    const div = document.createElement('div');
+    div.className = 'q-item';
+    div.innerHTML = `
+      <div class="q-label">Question ${q.num}</div>
+      <div class="grammar-statement">${q.sentence}</div>
+      <div class="input-group">
+        <input class="grammar-field" id="gr2-${q.num}" placeholder="type answer..." autocomplete="off" spellcheck="false">
+        <button class="check-one" onclick="checkGram2(${q.num})">Check</button>
+        <span class="status-badge status-right" id="gr2ok-${q.num}">✓ Correct</span>
+        <span class="status-badge status-wrong" id="gr2no-${q.num}"></span>
+        <span class="status-badge status-ans" id="gr2ans-${q.num}">Answer: ${q.answer}</span>
+      </div>
+      <div class="answer-note" id="gr2note-${q.num}"></div>
+    `;
+    area.appendChild(div);
+  });
+  
+  const btn = document.createElement('button');
+  btn.className = 'check-all';
+  btn.textContent = '✓ Check All Answers';
+  btn.onclick = () => gram2Set.forEach(q => checkGram2(q.num));
+  area.appendChild(btn);
+}
+
+function checkGram2(num) {
+  const q = gram2Set.find(item => item.num === num);
+  const input = document.getElementById(`gr2-${num}`);
+  if (input.disabled) return;
+  
+  const userAns = input.value.trim().toLowerCase().replace(/\s+/g, ' ');
+  const correctAns = q.answer.toLowerCase().replace(/\s+/g, ' ');
+  const correct = userAns === correctAns;
+  
+  input.classList.add(correct ? 'right' : 'wrong');
+  input.disabled = true;
+  
+  const okBadge = document.getElementById(`gr2ok-${num}`);
+  const noBadge = document.getElementById(`gr2no-${num}`);
+  const ansBadge = document.getElementById(`gr2ans-${num}`);
+  const note = document.getElementById(`gr2note-${num}`);
+  
+  if (correct) {
+    okBadge.style.display = 'inline-block';
+    note.className = 'answer-note show correct';
+    note.textContent = '✓ ' + q.explanation;
+  } else {
+    noBadge.textContent = userAns ? `✗ "${userAns}"` : '✗ No answer';
+    noBadge.style.display = 'inline-block';
+    ansBadge.style.display = 'inline-block';
+    note.className = 'answer-note show incorrect';
+    note.textContent = q.explanation;
+  }
+}
+
+function setupGrammar3() {
+  const area = document.getElementById('gram3-area');
+  
+  gram3Set.forEach(q => {
+    const div = document.createElement('div');
+    div.className = 'q-item';
+    div.innerHTML = `
+      <div class="q-label">Question ${q.num}</div>
+      <div class="grammar-statement">${q.sentence}</div>
+      <div class="input-group">
+        <input class="grammar-field" id="gr3-${q.num}" placeholder="type answer..." autocomplete="off" spellcheck="false">
+        <button class="check-one" onclick="checkGram3(${q.num})">Check</button>
+        <span class="status-badge status-right" id="gr3ok-${q.num}">✓ Correct</span>
+        <span class="status-badge status-wrong" id="gr3no-${q.num}"></span>
+        <span class="status-badge status-ans" id="gr3ans-${q.num}">Answer: ${q.answer}</span>
+      </div>
+      <div class="answer-note" id="gr3note-${q.num}"></div>
+    `;
+    area.appendChild(div);
+  });
+  
+  const btn = document.createElement('button');
+  btn.className = 'check-all';
+  btn.textContent = '✓ Check All Answers';
+  btn.onclick = () => gram3Set.forEach(q => checkGram3(q.num));
+  area.appendChild(btn);
+}
+
+function checkGram3(num) {
+  const q = gram3Set.find(item => item.num === num);
+  const input = document.getElementById(`gr3-${num}`);
+  if (input.disabled) return;
+  
+  const userAns = input.value.trim().toLowerCase().replace(/\s+/g, ' ');
+  const correctAns = q.answer.toLowerCase().replace(/\s+/g, ' ');
+  const correct = userAns === correctAns;
+  
+  input.classList.add(correct ? 'right' : 'wrong');
+  input.disabled = true;
+  
+  const okBadge = document.getElementById(`gr3ok-${num}`);
+  const noBadge = document.getElementById(`gr3no-${num}`);
+  const ansBadge = document.getElementById(`gr3ans-${num}`);
+  const note = document.getElementById(`gr3note-${num}`);
+  
+  if (correct) {
+    okBadge.style.display = 'inline-block';
+    note.className = 'answer-note show correct';
+    note.textContent = '✓ ' + q.explanation;
+  } else {
+    noBadge.textContent = userAns ? `✗ "${userAns}"` : '✗ No answer';
+    noBadge.style.display = 'inline-block';
+    ansBadge.style.display = 'inline-block';
+    note.className = 'answer-note show incorrect';
+    note.textContent = q.explanation;
+  }
+}
+
+// ===== DISCUSSION =====
+const discTopics = [
+  {
+    type: 'Analysis',
+    question: 'The video states that level-five leaders look in the mirror during failures but out the window during successes. Why do you think this behavior is so rare among leaders?',
+    guide: 'Consider using phrases like: <em>One possible explanation is... / This behavior is rare because... / Human nature tends to... / In contrast to... / From a psychological perspective...</em>',
+    example: '<strong>Sample response:</strong> "One possible explanation is that this behavior conflicts with fundamental human psychology. Human nature tends to protect our ego by attributing successes to our own abilities while blaming failures on external circumstances—a phenomenon psychologists call the self-serving bias. Level-five leaders have somehow overcome this deeply ingrained tendency, which requires exceptional self-awareness and emotional maturity. In contrast to most executives who are rewarded for projecting confidence and taking credit, level-five leaders prioritize organizational success over personal recognition."'
+  },
+  {
+    type: 'Personal Reflection',
+    question: 'Think of a leader you admire or have worked with. Do they exhibit any level-five characteristics? What impact did their leadership style have on their team or organization?',
+    guide: 'Try: <em>The person who comes to mind is... / What struck me most about their leadership was... / They demonstrated [characteristic] by... / The impact on the team was... / Looking back, I realize...</em>',
+    example: '<strong>Sample response:</strong> "The person who comes to mind is my former manager at a nonprofit organization. What struck me most about their leadership was how they consistently deflected praise to the team while personally taking responsibility when projects faced challenges. They demonstrated fierce resolve by working tirelessly on our mission, often staying late and taking on the most difficult tasks, yet they never sought recognition. The impact on the team was profound—we felt valued and empowered, which created an incredibly loyal and motivated group. Looking back, I realize their humility actually made them more influential than any charismatic leader I\'ve encountered."'
+  },
+  {
+    type: 'Critical Thinking',
+    question: 'The text mentions that companies often reward "extroverted style over substance." What are the potential dangers of this approach, and how might organizations change their leadership selection processes?',
+    guide: 'Consider: <em>The primary danger is... / This approach can lead to... / Organizations might instead... / A more effective selection process would... / By prioritizing...</em>',
+    example: '<strong>Sample response:</strong> "The primary danger is that charismatic but self-focused leaders may prioritize short-term visibility over long-term organizational health. This approach can lead to a culture of showmanship rather than genuine performance, where leaders focus on appearing successful rather than building sustainable success. Organizations might instead implement multi-stage assessment processes that evaluate candidates\' track records of building teams and crediting others. A more effective selection process would include 360-degree feedback from subordinates, peers, and supervisors, rather than relying solely on interviews where extroverts naturally excel. By prioritizing evidence of past collaborative success over presentation skills, companies could identify those rare level-five candidates."'
+  },
+  {
+    type: 'Application',
+    question: 'If you were in a leadership position, which aspect of level-five leadership would be most challenging for you to develop: the fierce resolve or the personal humility? Why?',
+    guide: 'Useful language: <em>I believe the most challenging aspect would be... / This is difficult for me because... / I tend to... / Developing this quality would require... / To overcome this, I would need to...</em>',
+    example: '<strong>Sample response:</strong> "I believe the most challenging aspect would be maintaining personal humility, particularly in competitive professional environments. This is difficult for me because I tend to seek external validation and recognition for my achievements. In cultures that celebrate individual success, it feels almost counterintuitive to deflect credit to others, even when it\'s appropriate. Developing this quality would require a fundamental shift in how I define success—measuring achievement by the team\'s growth rather than personal accolades. To overcome this, I would need to actively practice attributing successes to specific team members and consciously resist the urge to highlight my own contributions in meetings and presentations."'
+  },
+  {
+    type: 'Debate',
+    question: 'Some argue that level-five leadership is culturally specific and may not be valued or effective in all business cultures. Do you agree or disagree? Support your position with examples.',
+    guide: 'Try: <em>I tend to agree/disagree because... / While it\'s true that... / However, one must consider... / Evidence suggests... / In cultures where... / A counterargument might be...</em>',
+    example: '<strong>Sample response:</strong> "I tend to partially agree with this perspective. While it\'s true that humility is valued differently across cultures—for instance, many East Asian cultures already emphasize collective success over individual achievement—I believe the core principle transcends cultural boundaries. However, one must consider that the expression of level-five leadership might look different in different contexts. In more hierarchical cultures, \'looking in the mirror\' during failures might be seen as weakness rather than responsibility. Evidence suggests that successful leaders in all cultures combine determination with some form of stakeholder focus, though the balance and outward expression vary. A counterargument might be that truly transformative leaders throughout history, from Gandhi to Mandela, have demonstrated this duality regardless of their cultural context."'
+  }
+];
+
+function setupDiscussion() {
+  const area = document.getElementById('disc-area');
+  
+  discTopics.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'disc-card';
+    div.innerHTML = `
+      <button class="disc-toggle" onclick="this.closest('.disc-card').classList.toggle('expanded')">
+        <span class="disc-badge">${item.type}</span>
+        <span class="disc-prompt">${item.question}</span>
+        <svg class="disc-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="5 8 10 13 15 8"/>
+        </svg>
+      </button>
+      <div class="disc-expand">
+        <div class="disc-inside">
+          <div class="disc-guide">${item.guide}</div>
+          <div class="disc-example">${item.example}</div>
+        </div>
+      </div>
+    `;
+    area.appendChild(div);
+  });
+}
+
+// Initialize
+setupVocabulary();
+setupComprehension();
+setupGrammar1();
+setupGrammar2();
+setupGrammar3();
+setupDiscussion();
+</script>
+
+</body>
+</html>
