@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professional Networking — B2 Lesson</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#fff;--bg2:#f6f5f2;--bg3:#f0ede8;--txt:#1a1a18;--txt2:#6b6a66;--bdr:rgba(0,0,0,0.12);--bdr2:rgba(0,0,0,0.22);--rm:8px;--rl:12px}
+  @media(prefers-color-scheme:dark){:root{--bg:#1c1c1a;--bg2:#252523;--bg3:#2e2e2b;--txt:#f0ede8;--txt2:#9a9891;--bdr:rgba(255,255,255,0.12);--bdr2:rgba(255,255,255,0.22)}}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--txt);min-height:100vh;padding:2rem 1rem}
+  .outer{max-width:720px;margin:0 auto}
+  .ph{text-align:center;margin-bottom:2rem}.ph h1{font-size:22px;font-weight:500;margin-bottom:4px}.ph p{font-size:14px;color:var(--txt2)}
+  .lw{background:var(--bg);border-radius:var(--rl);border:0.5px solid var(--bdr);padding:2rem}
+  .pb{display:flex;align-items:center;gap:8px;margin-bottom:2rem}
+  .sd{width:28px;height:28px;border-radius:50%;border:0.5px solid var(--bdr2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--txt2);background:var(--bg2);cursor:pointer;transition:all .2s;flex-shrink:0}
+  .sd.active{background:#7B3FC4;color:#fff;border-color:#7B3FC4}.sd.done{background:#EAF3DE;color:#3B6D11;border-color:#639922}
+  .sl{flex:1;height:0.5px;background:var(--bdr)}
+  .sec{display:none}.sec.active{display:block}
+  .sh{font-size:11px;font-weight:500;color:#7B3FC4;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+  .st{font-size:20px;font-weight:500;color:var(--txt);margin-bottom:4px}.ss{font-size:13px;color:var(--txt2);margin-bottom:1.5rem}
+  .card{background:var(--bg);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:12px}
+  .card-m{background:var(--bg2);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:12px}
+  .vg{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px;margin-bottom:16px}
+  .vc{background:#F2EBFC;border:0.5px solid #C9A8F0;border-radius:var(--rm);padding:7px 10px;font-size:13px;font-weight:500;color:#4A1980;text-align:center;cursor:pointer;transition:all .15s;user-select:none}
+  .vc:hover{background:#C9A8F0}.vc.used{background:var(--bg2);color:var(--txt2);border-color:var(--bdr);opacity:.5}.vc.selected{outline:2px solid #7B3FC4}
+  .gs{font-size:15px;color:var(--txt);line-height:2.2;margin-bottom:10px}
+  .gap{display:inline-block;min-width:120px;height:26px;border-bottom:2px solid #7B3FC4;margin:0 4px;text-align:center;font-weight:500;color:#7B3FC4;font-size:14px;cursor:pointer;vertical-align:bottom;padding:0 4px;transition:all .15s}
+  .gap.correct{border-bottom-color:#639922;color:#3B6D11;background:#EAF3DE;border-radius:4px 4px 0 0}
+  .gap.wrong{border-bottom-color:#E24B4A;color:#A32D2D;background:#FCEBEB;border-radius:4px 4px 0 0;animation:shake .3s}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .fm{font-size:13px;padding:10px 14px;border-radius:var(--rm);margin-bottom:12px;display:none}
+  .fm.show{display:block}.fm.ok{background:#EAF3DE;color:#3B6D11;border:0.5px solid #C0DD97}.fm.err{background:#FCEBEB;color:#A32D2D;border:0.5px solid #F7C1C1}
+  .dq{font-size:15px;font-weight:500;color:var(--txt);margin-bottom:14px;line-height:1.6}
+  .do{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  @media(max-width:500px){.do{grid-template-columns:1fr}}
+  .ob{background:var(--bg);border:0.5px solid var(--bdr2);border-radius:var(--rm);padding:10px 14px;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s;text-align:left;line-height:1.5}
+  .ob:hover:not(:disabled){background:var(--bg2)}.ob.correct{background:#EAF3DE;border-color:#639922;color:#3B6D11}.ob.wrong{background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}.ob:disabled{cursor:default}
+  .pc{font-size:12px;color:var(--txt2);margin-bottom:8px}
+  .nr{display:flex;gap:8px;margin-top:1.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .nrr{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .btn{background:var(--bg);border:0.5px solid var(--bdr2);border-radius:var(--rm);padding:9px 20px;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s}
+  .btn:hover{background:var(--bg2)}.btn.p{background:#7B3FC4;color:#fff;border-color:#7B3FC4}.btn.p:hover{background:#5A2B96}
+  .tb{font-size:11px;color:var(--txt2);background:var(--bg2);border:0.5px solid var(--bdr);border-radius:var(--rm);padding:5px 10px}
+  .rb{border-left:3px solid #7B3FC4;background:#F2EBFC;border-radius:0 var(--rm) var(--rm) 0;padding:12px 16px;margin-bottom:10px}
+  .rl2{font-size:11px;font-weight:500;color:#7B3FC4;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .rt{font-size:14px;color:#4A1980;line-height:1.7}
+  .ib{border-left:3px solid #BA7517;background:#FAEEDA;border-radius:0 var(--rm) var(--rm) 0;padding:12px 16px;margin-bottom:10px}
+  .il{font-size:11px;font-weight:500;color:#633806;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .it{font-size:14px;color:#412402;line-height:1.7}
+  .tip{background:#FAEEDA;border:0.5px solid #FAC775;border-radius:var(--rm);padding:10px 14px;font-size:13px;color:#633806;margin-bottom:14px}
+  .sc{width:84px;height:84px;border-radius:50%;border:3px solid #7B3FC4;display:flex;align-items:center;justify-content:center;flex-direction:column;margin:0 auto 18px}
+  .sn{font-size:24px;font-weight:500;color:#7B3FC4}.sl2{font-size:10px;color:var(--txt2)}
+  .tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 9px;border-radius:var(--rm);margin-right:4px;margin-bottom:4px}
+  .tp{background:#F2EBFC;color:#4A1980;border:0.5px solid #C9A8F0}.tg{background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97}.ta{background:#FAEEDA;color:#633806;border:0.5px solid #FAC775}
+  .br{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
+  .bd{margin-top:6px;width:6px;height:6px;border-radius:50%;flex-shrink:0}
+  .eb{font-size:13px;padding:10px 14px;border-radius:var(--rm);margin-top:8px;display:none}
+  .rcg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+  @media(max-width:480px){.rcg{grid-template-columns:1fr}}
+  .rc{border-radius:var(--rl);padding:1rem 1.25rem;border:0.5px solid}
+  .rca{background:#F2EBFC;border-color:#C9A8F0}.rcb{background:#FAEEDA;border-color:#FAC775}
+  .rct{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+  .rca .rct{color:#7B3FC4}.rcb .rct{color:#633806}
+  .rc p{font-size:13px;line-height:1.7}.rca p{color:#4A1980}.rcb p{color:#412402}
+  .lvl{display:inline-block;background:#7B3FC4;color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:8px;letter-spacing:.04em}
+
+  body{background:linear-gradient(180deg,#f3efe8 0%,#ece7df 100%)}
+  .outer{max-width:860px}
+  .ph{margin-bottom:1.25rem}
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch;margin-bottom:18px}
+  @media(max-width:760px){.hero{grid-template-columns:1fr}}
+  .hero-img{position:relative;overflow:hidden;border-radius:20px;min-height:280px;border:1px solid rgba(0,0,0,.08);box-shadow:0 18px 40px rgba(0,0,0,.08);background:#ddd}
+  .hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.45))}
+  .hero-caption{position:absolute;left:18px;right:18px;bottom:16px;color:#fff}
+  .hero-caption h2{font-size:24px;line-height:1.2;margin-bottom:6px;font-weight:600}
+  .hero-caption p{font-size:13px;line-height:1.5;opacity:.96}
+  .preview-card{background:linear-gradient(180deg,#ffffff 0%,#faf7ff 100%);border:1px solid rgba(123,63,196,.16);border-radius:20px;padding:18px;box-shadow:0 18px 40px rgba(80,40,120,.08)}
+  .preview-kicker{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7B3FC4;margin-bottom:8px}
+  .preview-title{font-size:20px;font-weight:600;color:var(--txt);margin-bottom:10px}
+  .preview-list{display:grid;gap:8px;margin:12px 0 14px}
+  .preview-item{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--txt);line-height:1.5}
+  .preview-dot{width:8px;height:8px;border-radius:999px;background:#7B3FC4;flex:0 0 8px;margin-top:6px}
+  .preview-meta{display:flex;flex-wrap:wrap;gap:8px}
+  .meta-pill{font-size:11px;font-weight:600;padding:5px 10px;border-radius:999px;background:#f2ebfc;color:#4A1980;border:1px solid #d9c2f4}
+  .lw{border:none;box-shadow:0 24px 60px rgba(0,0,0,.08);padding:1.4rem}
+  @media(min-width:700px){.lw{padding:2rem}}
+  .pb{margin-bottom:1.5rem}
+  .card,.card-m,.tip,.rc,.rb,.ib,.pcard{box-shadow:0 8px 20px rgba(0,0,0,.04)}
+  .card,.card-m,.tip,.rc,.rb,.ib,.pcard,.btn,.tb,.vc,.ob{border-radius:16px}
+  .btn{padding:10px 18px}
+  .btn.p{box-shadow:0 10px 20px rgba(123,63,196,.22)}
+
+</style>
+</head>
+<body>
+<div class="outer">
+  <div class="ph">
+    <div class="lvl">B2 — Upper Intermediate</div>
+    <h1>Professional Networking</h1>
+    <p>B2 level &nbsp;·&nbsp; 40-minute interactive lesson</p>
+  </div>
+  <div class="lw">
+    <div class="pb" id="pb">
+      <div class="sd active" onclick="goTo(0)">1</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(1)">2</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(2)">3</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(3)">4</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(4)">5</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(5)">6</div>
+    </div>
+
+    <div class="sec active" id="sec0">
+      <div class="sh">Stage 1 — Warm-up</div>
+      <div class="st">Strategic networking in English</div>
+      <div class="ss">5 minutes · Critical discussion</div>
+      <div class="hero">
+        <div class="hero-img">
+          <img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1200&q=80" alt="Professionals talking at a networking event">
+          <div class="hero-overlay"></div>
+          <div class="hero-caption">
+            <h2>Build better professional conversations</h2>
+            <p>Practise strategic introductions, insightful questions, rapport-building, and a graceful close in a realistic conference setting.</p>
+          </div>
+        </div>
+        <div class="preview-card">
+          <div class="preview-kicker">Lesson preview</div>
+          <div class="preview-title">What learners will do</div>
+          <div class="preview-list">
+            <div class="preview-item"><span class="preview-dot"></span><span>Learn advanced networking vocabulary and polished conference language.</span></div>
+            <div class="preview-item"><span class="preview-dot"></span><span>Practise value propositions, objection handling, and follow-up moves.</span></div>
+            <div class="preview-item"><span class="preview-dot"></span><span>Complete a B2 role play between a founder and a potential enterprise client.</span></div>
+          </div>
+          <div class="preview-meta">
+            <span class="meta-pill">B2 speaking</span>
+            <span class="meta-pill">Business English</span>
+            <span class="meta-pill">~40 minutes</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-m">
+        <p style="font-size:14px;font-weight:500;margin-bottom:10px">Discuss with your partner:</p>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:4px">1. What distinguishes a high-quality professional connection from a superficial one? How do you tell the difference in the first five minutes?</p>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:4px">2. How do you gracefully exit a conversation at a networking event when you want to move on?</p>
+        <p style="font-size:14px;line-height:1.8">3. What are the cultural differences in networking between English-speaking countries and your own? How might this affect your approach?</p>
+      </div>
+      <div class="tip"><strong>Teacher note:</strong> At B2, move beyond the mechanics of introduction to strategic communication: value articulation, active listening signals, pivoting topics, managing awkward silences, and the graceful exit. Focus on register flexibility — knowing when to be formal vs. conversational.</div>
+      <div class="card">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:10px">Today's scenario — a high-profile industry conference: <strong>Future of Work Summit, London</strong>:</p>
+        <div class="rcg" style="margin-bottom:8px">
+          <div class="rc rca"><div class="rct">Student A — Dr. Priya Mehta</div><p>Head of People &amp; Culture at a FTSE 250 firm. Expert in organisational psychology and hybrid work strategy. Here to find research partners and explore speaking opportunities at similar events.</p></div>
+          <div class="rc rcb"><div class="rct">Student B — Tom Ashworth</div><p>Founder of a HR-tech startup. Built an AI-powered employee engagement platform. Actively seeking enterprise clients and strategic advisors. Has heard of Priya's firm and considers it a target client.</p></div>
+        </div>
+        <div><span class="tag tp">Strategic networking</span><span class="tag tg">Value articulation</span><span class="tag ta">Graceful exit</span></div>
+      </div>
+      <div class="nr"><span class="tb">5 min</span><button class="btn p" onclick="goTo(1)">Next: vocabulary &#x2192;</button></div>
+    </div>
+
+    <div class="sec" id="sec1">
+      <div class="sh">Stage 2 — Vocabulary</div>
+      <div class="st">Advanced networking vocabulary</div>
+      <div class="ss">10 minutes · Gap-fill exercise</div>
+      <div class="tip">Click a word from the box, then click a blank. Hover for definitions.</div>
+      <div class="vg" id="wordBank"></div>
+      <div id="gapFeedback" class="fm"></div>
+      <div class="card">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:14px">Complete the sentences with the correct word from the box.</p>
+        <div id="gapSentences"></div>
+      </div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(0)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">10 min</span><button class="btn" onclick="checkGaps()">Check answers</button><button class="btn p" onclick="goTo(2)">Next &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec2">
+      <div class="sh">Stage 3 — Functional language</div>
+      <div class="st">Sophisticated networking language</div>
+      <div class="ss">8 minutes · Study and practise</div>
+      <div id="funcContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(1)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">8 min</span><button class="btn p" onclick="goTo(3)">Next &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec3">
+      <div class="sh">Stage 4 — Language in use</div>
+      <div class="st">B2 networking language drill</div>
+      <div class="ss">10 minutes · Multiple choice</div>
+      <div id="drillWrap"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(2)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">10 min</span><button class="btn p" id="drillNextBtn" onclick="goTo(4)" style="display:none">Next: role play &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec4">
+      <div class="sh">Stage 5 — Role play</div>
+      <div class="st">The conference conversation</div>
+      <div class="ss">12 minutes · Pair work</div>
+      <div class="tip"><strong>How to use:</strong> Student A = Dr. Priya Mehta (potential client). Student B = Tom Ashworth (founder, wants Priya as a client). Tom must build rapport, articulate value, handle objections, and close for a follow-up — without being pushy. Priya must be interested but discerning.</div>
+      <div id="roleplayContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(3)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">12 min</span><button class="btn p" onclick="goTo(5)">Finish &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec5">
+      <div class="sh">Stage 6 — Summary</div>
+      <div class="st">Lesson complete!</div>
+      <div class="ss">5 minutes · Review</div>
+      <div id="summaryContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(4)">&#x2190; back</button>
+        <button class="btn p" onclick="restartLesson()">Start again &#x21BA;</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+let cs=0,sw=null,ga={},ds=0,di=0,dd=false;
+const WORDS=[
+  {word:'stakeholder',     def:'a person with an interest or involvement in a project or organisation'},
+  {word:'proposition',     def:'a proposal or offer, especially one with a specific value attached'},
+  {word:'traction',        def:'progress or momentum, especially for a startup or new idea'},
+  {word:'leverage',        def:'to use something to maximum advantage'},
+  {word:'pain point',      def:'a specific problem or frustration experienced by a customer'},
+  {word:'thought leader',  def:'a person recognised as an expert whose ideas influence others'},
+  {word:'pipeline',        def:'a set of prospective clients or opportunities at various stages'},
+  {word:'due diligence',   def:'careful investigation before entering into an agreement'},
+];
+const GAPS=[
+  {id:'g0',before:'It would be valuable to get the key ',blank:'stakeholder',after:'s in the room before we progress further.'},
+  {id:'g1',before:'Our value ',blank:'proposition',after:' is simple: we reduce employee churn by an average of 23% within twelve months.'},
+  {id:'g2',before:'We have significant ',blank:'traction',after:' already — seventeen enterprise clients signed in the last two quarters.'},
+  {id:'g3',before:'We are looking to ',blank:'leverage',after:' our existing relationships in the financial sector to expand into professional services.'},
+  {id:'g4',before:'The core ',blank:'pain point',after:' we address is the disconnect between what managers think their teams need and what employees actually report.'},
+  {id:'g5',before:'She is a recognised ',blank:'thought leader',after:' in the hybrid work space — her research is widely cited.'},
+  {id:'g6',before:'We have a strong ',blank:'pipeline',after:' of enterprise conversations at the moment, but we are selective about who we bring on.'},
+  {id:'g7',before:'Before we commit to anything, our procurement team would need to conduct ',blank:'due diligence',after:' on any new vendor.'},
+];
+const FUNC_CATS=[
+  {label:'Articulating your value proposition',phrases:['What we do, at its core, is help organisations close the gap between management perception and employee reality.','We\'ve been able to demonstrate a measurable ROI — typically within the first two quarters.','Our differentiator is the combination of AI-driven insights with human-centred design principles.','What sets us apart is that we don\'t just provide data — we provide the interpretive framework alongside it.']},
+  {label:'Asking insightful questions',phrases:['What would you say is the single biggest friction point in your current people strategy?','To what extent does your current toolset give you real-time visibility into engagement?','I\'m curious — how are you currently measuring the impact of hybrid working on your teams?','What would a successful outcome look like for you in this space over the next twelve months?']},
+  {label:'Building rapport at senior level',phrases:['I\'ve actually followed your work in this area — your piece on psychological safety in hybrid teams was really thought-provoking.','It\'s rare to find someone who approaches this topic from both a commercial and an academic angle.','We seem to be looking at this from very complementary perspectives.','I suspect there may be more overlap between what we each do than first appears.']},
+  {label:'Handling hesitation and closing for a follow-up',phrases:['I completely understand — due diligence is essential for a decision of this scale.','I\'m not suggesting anything committed at this stage — simply a conversation to explore the fit.','Would it be worth arranging a brief call with your team to explore whether there might be a genuine alignment?','I\'d be happy to share a short case study from a comparable organisation before we speak again.']},
+  {label:'Graceful exit',phrases:['I\'ve really valued this conversation and I don\'t want to take up too much of your evening.','I can see there are a few other people I should catch up with — shall we exchange details and continue this properly?','Before I let you go — would it be appropriate to follow up via LinkedIn?','It\'s been genuinely interesting speaking with you. I hope our paths cross again soon.']},
+];
+const DRILL_QS=[
+  {q:'You want to describe your company\'s core value at B2 register. Which is most appropriate?',
+   opts:['We help companies keep staff.','At its core, we help organisations close the gap between management perception and employee reality.','Our company is good for staff retention.','We make employees happy and they stay longer.'],
+   ans:1,explain:'B2 professional register uses abstract noun phrases and precise framing: "close the gap between X and Y" is a sophisticated, memorable way to articulate value.'},
+  {q:'You want to ask an insightful question that shows strategic thinking. Which is best?',
+   opts:['Do you have an engagement problem?','What\'s your biggest HR issue?','To what extent does your current toolset give you real-time visibility into engagement?','Do you know what your staff think?'],
+   ans:2,explain:'"To what extent...?" is a sophisticated question form that invites nuanced reflection rather than a yes/no answer — characteristic of B2 professional discourse.'},
+  {q:'The person seems hesitant. Which response manages this most skillfully?',
+   opts:['Don\'t worry about it.','I understand your concern.','I completely understand — due diligence is essential for a decision of this scale. I\'m not suggesting anything committed at this stage.','OK, no problem.'],
+   ans:2,explain:'Acknowledging the concern specifically ("due diligence is essential") and then reframing the ask ("not suggesting anything committed") is skilled B2 objection handling.'},
+  {q:'You want to end the conversation gracefully. Which phrase is most natural at B2?',
+   opts:['I have to go now.','Nice talking. Bye.','I\'ve really valued this conversation and I don\'t want to take up too much of your evening.','I need to talk to other people.'],
+   ans:2,explain:'"I\'ve valued this conversation and don\'t want to take up too much of your evening" is warm, respectful, and socially sophisticated — the hallmark of B2 register.'},
+  {q:'Which sentence correctly uses a perfect infinitive to express a past possibility?',
+   opts:['There may be more overlap than first appears.','There may have been more overlap than first appeared.','There might be more overlap in the past.','There could be had more overlap.'],
+   ans:1,explain:'"May have been" is the perfect modal infinitive — expressing a past possibility or retrospective observation. Appropriate in reflective professional discourse.'},
+  {q:'You want to frame a proposal as exploratory, not committal. Which is correct?',
+   opts:['Let\'s work together.','I\'m not suggesting anything committed at this stage — simply a conversation to explore the fit.','Maybe we could try something.','I would like to propose a partnership.'],
+   ans:1,explain:'The phrase "not suggesting anything committed... simply exploring the fit" uses negative framing to reduce perceived pressure — a sophisticated persuasion technique.'},
+];
+const ROLEPLAY=[
+  {speaker:'A',text:'[You notice Tom at the conference. He approaches you. Let him introduce himself first, then respond with your own introduction — include your title and your area of focus at the firm.]'},
+  {speaker:'B',text:'Dr. Mehta — I\'ve been hoping to cross paths with you this evening. I\'m Tom Ashworth, founder of Engagify. I\'ve followed your work on psychological safety in hybrid teams with a great deal of interest.'},
+  {speaker:'A',text:'[React with measured appreciation. Ask what Engagify does — but frame the question thoughtfully, showing you want more than a standard pitch.]'},
+  {speaker:'B',text:'[Give a concise, compelling value proposition. Mention the core pain point you address. Quote one piece of evidence — the 23% churn reduction stat. Then ask Priya a strategic question about her current challenges.]'},
+  {speaker:'A',text:'[Engage genuinely with the question. Describe one real challenge your firm faces around hybrid engagement measurement. Show intellectual curiosity about his approach without committing to anything.]'},
+  {speaker:'B',text:'[Reflect the challenge back. Show you understand it deeply. Mention a comparable client case without naming them. Build on the common ground. Then ask what the ideal outcome looks like for her.]'},
+  {speaker:'A',text:'[Describe an ideal outcome: better real-time data, fewer surprises in engagement surveys, clearer ROI on wellbeing investment. Then raise a practical concern: procurement and due diligence take time at your firm.]'},
+  {speaker:'B',text:'[Handle the objection professionally. Acknowledge the due diligence requirement. Reframe the ask as low-stakes: not a proposal, just an exploratory conversation. Offer to share a relevant case study in advance.]'},
+  {speaker:'A',text:'[Express genuine interest but stay appropriately cautious. Say you would be open to a conversation. Ask who else at Tom\'s firm you might need to involve on their side.]'},
+  {speaker:'B',text:'[Answer clearly: just him and possibly the Head of Customer Success. Propose a specific, low-commitment next step: a 30-minute call with you and one colleague.]'},
+  {speaker:'A',text:'[Agree to the call. Discuss when works. Then — noticing someone across the room — execute a graceful exit. Make it feel natural, not rushed. Close warmly.]'},
+  {speaker:'B',text:'[Respond with warmth. Connect on LinkedIn. Confirm the follow-up. Exit with a phrase that leaves a strong last impression.]'},
+];
+function goTo(n){
+  document.querySelectorAll('.sec').forEach((s,i)=>s.classList.toggle('active',i===n));
+  document.querySelectorAll('.sd').forEach((d,i)=>{d.classList.remove('active','done');if(i===n)d.classList.add('active');else if(i<n)d.classList.add('done');});
+  cs=n;if(n===1)bG();if(n===2)bF();if(n===3&&!dd)bD();if(n===4)bR();if(n===5)bS();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function bG(){
+  const bank=document.getElementById('wordBank');bank.innerHTML='';
+  WORDS.forEach(w=>{const c=document.createElement('div');c.className='vc';c.textContent=w.word;c.id='chip_'+w.word.replace(/\s/g,'_');c.title=w.def;c.onclick=()=>selW(w.word);bank.appendChild(c);});
+  const ct=document.getElementById('gapSentences');ct.innerHTML='';
+  GAPS.forEach(g=>{const p=document.createElement('p');p.className='gs';p.innerHTML=(g.before||'')+`<span class="gap" id="${g.id}" onclick="fG('${g.id}')"></span>`+(g.after||'');ct.appendChild(p);});
+}
+function selW(w){
+  document.querySelectorAll('.vc').forEach(c=>c.classList.remove('selected'));
+  if(sw===w){sw=null;return;}sw=w;const key=w.replace(/\s/g,'_');const c=document.getElementById('chip_'+key);if(c)c.classList.add('selected');
+}
+function fG(gid){
+  const gap=document.getElementById(gid);if(!gap)return;
+  const cur=gap.textContent.trim();
+  if(cur){const key=cur.replace(/\s/g,'_');const c=document.getElementById('chip_'+key);if(c)c.classList.remove('used');gap.textContent='';gap.classList.remove('correct','wrong');delete ga[gid];return;}
+  if(!sw)return;const key=sw.replace(/\s/g,'_');const chip=document.getElementById('chip_'+key);if(chip&&chip.classList.contains('used'))return;
+  gap.textContent=sw;ga[gid]=sw;if(chip)chip.classList.add('used');sw=null;document.querySelectorAll('.vc').forEach(c=>c.classList.remove('selected'));
+}
+function checkGaps(){
+  let ok=0;GAPS.forEach(g=>{const gap=document.getElementById(g.id);const val=gap?gap.textContent.trim():'';if(val===g.blank){gap.classList.add('correct');gap.classList.remove('wrong');ok++;}else if(val){gap.classList.add('wrong');gap.classList.remove('correct');}});
+  const fb=document.getElementById('gapFeedback');fb.className='fm show '+(ok===GAPS.length?'ok':'err');
+  fb.textContent=ok===GAPS.length?`All ${GAPS.length} correct! Excellent work.`:`${ok} of ${GAPS.length} correct. Check highlighted answers and try again.`;
+}
+function bF(){
+  const w=document.getElementById('funcContent');w.innerHTML='';
+  FUNC_CATS.forEach(cat=>{let h=`<div class="card"><p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--txt2);margin-bottom:10px">${cat.label}</p>`;cat.phrases.forEach(ph=>{h+=`<div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">${ph}</span></div>`;});h+='</div>';w.innerHTML+=h;});
+  w.innerHTML+=`<div class="tip">At B2, the most powerful networking skill is asking questions that make the other person think. "To what extent...?" and "What would success look like for you?" signal that you are a serious, thoughtful professional — not just someone collecting business cards.</div>`;
+}
+function bD(){di=0;ds=0;rDQ();}
+function rDQ(){
+  const w=document.getElementById('drillWrap');
+  if(di>=DRILL_QS.length){dd=true;document.getElementById('drillNextBtn').style.display='inline-block';w.innerHTML=`<div class="card" style="text-align:center;padding:2rem 1.25rem"><p style="font-size:13px;color:var(--txt2);margin-bottom:14px">Quiz complete!</p><div class="sc"><span class="sn">${ds}/${DRILL_QS.length}</span><span class="sl2">score</span></div><p style="font-size:15px;font-weight:500;color:var(--txt)">${ds===DRILL_QS.length?'Excellent!':ds>=4?'Very good!':'Good effort! Review and try again.'}</p></div>`;return;}
+  const q=DRILL_QS[di];
+  w.innerHTML=`<p class="pc">Question ${di+1} of ${DRILL_QS.length}</p><div class="card"><p class="dq">${q.q}</p><div class="do">${q.opts.map((o,i)=>`<button class="ob" onclick="aD(${i})">${o}</button>`).join('')}</div><div id="de" class="eb"></div><button id="dc" style="display:none;margin-top:14px" class="btn p" onclick="nDQ()">Next &#x2192;</button></div>`;
+}
+function aD(ch){
+  const q=DRILL_QS[di];document.querySelectorAll('.ob').forEach(b=>b.disabled=true);document.querySelectorAll('.ob')[q.ans].classList.add('correct');
+  const e=document.getElementById('de');e.style.display='block';
+  if(ch===q.ans){ds++;e.style.background='#EAF3DE';e.style.color='#27500A';e.style.border='0.5px solid #C0DD97';e.textContent='Correct! '+q.explain;}
+  else{document.querySelectorAll('.ob')[ch].classList.add('wrong');e.style.background='#FCEBEB';e.style.color='#A32D2D';e.style.border='0.5px solid #F7C1C1';e.textContent='Not quite. '+q.explain;}
+  document.getElementById('dc').style.display='inline-block';
+}
+function nDQ(){di++;rDQ();}
+function bR(){
+  const w=document.getElementById('roleplayContent');w.innerHTML='';
+  ROLEPLAY.forEach(line=>{if(line.speaker==='B'){w.innerHTML+=`<div class="ib"><div class="il">Tom — Student B</div><div class="it">${line.text}</div></div>`;}else{w.innerHTML+=`<div class="rb"><div class="rl2">Priya — Student A</div><div class="rt">${line.text}</div></div>`;}});
+  w.innerHTML+=`<div style="margin-top:14px"><div class="card-m"><p style="font-size:14px;font-weight:500;margin-bottom:6px">Extension: the awkward exit</p><p style="font-size:13px;color:var(--txt2)">Swap roles. This time, after 5 minutes Priya realises Tom is not a good fit — the product does not address her firm's actual needs. She must disengage gracefully and honestly, without burning the relationship. Tom must accept this professionally and leave the door open for the future.</p></div></div>`;
+}
+function bS(){
+  const items=['8 high-level business vocabulary words: stakeholder, proposition, traction, leverage, pain point, and more','Sophisticated phrases for 5 networking functions: value articulation, insightful questions, rapport-building, objection handling, and graceful exit','6 B2 grammar drills: perfect modal infinitives, abstract noun phrases, negative framing, "To what extent...?" question form','A high-stakes conference role play requiring strategic communication and objection handling'];
+  const hw=['Write a concise value proposition (60-80 words) for yourself or your organisation. Focus on the specific pain point you address and the measurable outcome you deliver.','Write a post-event follow-up email (100-120 words) from Tom to Priya, referencing the conversation specifically and proposing a concrete next step.','Analyse a TED Talk or conference keynote. Identify 5 phrases the speaker uses that you could adapt for your own professional introductions.'];
+  document.getElementById('summaryContent').innerHTML=`<div class="card" style="text-align:center;padding:1.75rem 1.25rem"><p style="font-size:13px;color:var(--txt2);margin-bottom:10px">Today\'s lesson</p><div class="lvl">B2 — Upper Intermediate</div><p style="font-size:22px;font-weight:500;margin:8px 0 4px">Professional Networking</p><p style="font-size:13px;color:var(--txt2)">~40 minutes</p></div><div class="card"><p style="font-size:13px;font-weight:500;margin-bottom:10px">What you practised:</p>${items.map(i=>`<div class="br"><span class="bd" style="background:#639922"></span><span style="font-size:14px;color:var(--txt)">${i}</span></div>`).join('')}</div><div class="card-m"><p style="font-size:13px;font-weight:500;margin-bottom:8px">Homework ideas:</p>${hw.map((h,i)=>`<div class="br"><span class="bd" style="background:#7B3FC4;margin-top:7px"></span><span style="font-size:13px;color:var(--txt2);line-height:1.7">${i+1}. ${h}</span></div>`).join('')}</div><div class="tip" style="margin-bottom:0">Excellent work! At B2, networking is not just conversation — it is strategic communication. The ability to articulate value, ask penetrating questions, and exit gracefully separates memorable professionals from forgettable ones.</div>`;
+}
+function restartLesson(){dd=false;ds=0;di=0;ga={};sw=null;goTo(0);}
+bG();bF();bR();bS();
+</script>
+</body>
+</html>

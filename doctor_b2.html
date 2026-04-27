@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Going to the Doctor — B2 Lesson</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#fff;--bg2:#f6f5f2;--bg3:#f0ede8;--txt:#1a1a18;--txt2:#6b6a66;--bdr:rgba(0,0,0,0.12);--bdr2:rgba(0,0,0,0.22);--rm:8px;--rl:12px}
+  @media(prefers-color-scheme:dark){:root{--bg:#1c1c1a;--bg2:#252523;--bg3:#2e2e2b;--txt:#f0ede8;--txt2:#9a9891;--bdr:rgba(255,255,255,0.12);--bdr2:rgba(255,255,255,0.22)}}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--txt);min-height:100vh;padding:2rem 1rem}
+  .outer{max-width:720px;margin:0 auto}
+  .ph{text-align:center;margin-bottom:2rem}.ph h1{font-size:22px;font-weight:500;margin-bottom:4px}.ph p{font-size:14px;color:var(--txt2)}
+  .lw{background:var(--bg);border-radius:var(--rl);border:0.5px solid var(--bdr);padding:2rem}
+  .pb{display:flex;align-items:center;gap:8px;margin-bottom:2rem}
+  .sd{width:28px;height:28px;border-radius:50%;border:0.5px solid var(--bdr2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--txt2);background:var(--bg2);cursor:pointer;transition:all .2s;flex-shrink:0}
+  .sd.active{background:#7B3FC4;color:#fff;border-color:#7B3FC4}.sd.done{background:#EAF3DE;color:#3B6D11;border-color:#639922}
+  .sl{flex:1;height:0.5px;background:var(--bdr)}
+  .sec{display:none}.sec.active{display:block}
+  .sh{font-size:11px;font-weight:500;color:#7B3FC4;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+  .st{font-size:20px;font-weight:500;color:var(--txt);margin-bottom:4px}.ss{font-size:13px;color:var(--txt2);margin-bottom:1.5rem}
+  .card{background:var(--bg);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:12px}
+  .card-m{background:var(--bg2);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:12px}
+  .vg{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:16px}
+  .vc{background:#F2EBFC;border:0.5px solid #C9A8F0;border-radius:var(--rm);padding:7px 10px;font-size:13px;font-weight:500;color:#4A1980;text-align:center;cursor:pointer;transition:all .15s;user-select:none}
+  .vc:hover{background:#C9A8F0}.vc.used{background:var(--bg2);color:var(--txt2);border-color:var(--bdr);opacity:.5}.vc.selected{outline:2px solid #7B3FC4}
+  .gs{font-size:15px;color:var(--txt);line-height:2.2;margin-bottom:10px}
+  .gap{display:inline-block;min-width:120px;height:26px;border-bottom:2px solid #7B3FC4;margin:0 4px;text-align:center;font-weight:500;color:#7B3FC4;font-size:14px;cursor:pointer;vertical-align:bottom;padding:0 4px;transition:all .15s}
+  .gap.correct{border-bottom-color:#639922;color:#3B6D11;background:#EAF3DE;border-radius:4px 4px 0 0}
+  .gap.wrong{border-bottom-color:#E24B4A;color:#A32D2D;background:#FCEBEB;border-radius:4px 4px 0 0;animation:shake .3s}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .fm{font-size:13px;padding:10px 14px;border-radius:var(--rm);margin-bottom:12px;display:none}
+  .fm.show{display:block}.fm.ok{background:#EAF3DE;color:#3B6D11;border:0.5px solid #C0DD97}.fm.err{background:#FCEBEB;color:#A32D2D;border:0.5px solid #F7C1C1}
+  .dq{font-size:15px;font-weight:500;color:var(--txt);margin-bottom:14px;line-height:1.6}
+  .do{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  @media(max-width:500px){.do{grid-template-columns:1fr}}
+  .ob{background:var(--bg);border:0.5px solid var(--bdr2);border-radius:var(--rm);padding:10px 14px;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s;text-align:left;line-height:1.5}
+  .ob:hover:not(:disabled){background:var(--bg2)}.ob.correct{background:#EAF3DE;border-color:#639922;color:#3B6D11}.ob.wrong{background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}.ob:disabled{cursor:default}
+  .pc{font-size:12px;color:var(--txt2);margin-bottom:8px}
+  .nr{display:flex;gap:8px;margin-top:1.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .nrr{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .btn{background:var(--bg);border:0.5px solid var(--bdr2);border-radius:var(--rm);padding:9px 20px;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s}
+  .btn:hover{background:var(--bg2)}.btn.p{background:#7B3FC4;color:#fff;border-color:#7B3FC4}.btn.p:hover{background:#5A2B96}
+  .tb{font-size:11px;color:var(--txt2);background:var(--bg2);border:0.5px solid var(--bdr);border-radius:var(--rm);padding:5px 10px}
+  .rb{border-left:3px solid #7B3FC4;background:#F2EBFC;border-radius:0 var(--rm) var(--rm) 0;padding:12px 16px;margin-bottom:10px}
+  .rl2{font-size:11px;font-weight:500;color:#7B3FC4;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .rt{font-size:14px;color:#4A1980;line-height:1.7}
+  .ib{border-left:3px solid #639922;background:#EAF3DE;border-radius:0 var(--rm) var(--rm) 0;padding:12px 16px;margin-bottom:10px}
+  .il{font-size:11px;font-weight:500;color:#3B6D11;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .it{font-size:14px;color:#27500A;line-height:1.7}
+  .tip{background:#FAEEDA;border:0.5px solid #FAC775;border-radius:var(--rm);padding:10px 14px;font-size:13px;color:#633806;margin-bottom:14px}
+  .sc{width:84px;height:84px;border-radius:50%;border:3px solid #7B3FC4;display:flex;align-items:center;justify-content:center;flex-direction:column;margin:0 auto 18px}
+  .sn{font-size:24px;font-weight:500;color:#7B3FC4}.sl2{font-size:10px;color:var(--txt2)}
+  .tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 9px;border-radius:var(--rm);margin-right:4px;margin-bottom:4px}
+  .tp{background:#F2EBFC;color:#4A1980;border:0.5px solid #C9A8F0}.tg{background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97}.ta{background:#FAEEDA;color:#633806;border:0.5px solid #FAC775}
+  .br{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
+  .bd{margin-top:6px;width:6px;height:6px;border-radius:50%;flex-shrink:0}
+  .eb{font-size:13px;padding:10px 14px;border-radius:var(--rm);margin-top:8px;display:none}
+  .rcg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+  @media(max-width:480px){.rcg{grid-template-columns:1fr}}
+  .rc{border-radius:var(--rl);padding:1rem 1.25rem;border:0.5px solid}
+  .rca{background:#F2EBFC;border-color:#C9A8F0}.rcb{background:#EAF3DE;border-color:#C0DD97}
+  .rct{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+  .rca .rct{color:#7B3FC4}.rcb .rct{color:#3B6D11}
+  .rc p{font-size:13px;line-height:1.7}.rca p{color:#4A1980}.rcb p{color:#27500A}
+  .lvl{display:inline-block;background:#7B3FC4;color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:8px;letter-spacing:.04em}
+  .pcard{background:#FCEBEB;border:0.5px solid #F7C1C1;border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:12px}
+  .pcl{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:#A32D2D;margin-bottom:8px}
+  .pcr{display:flex;gap:10px;margin-bottom:5px;font-size:13px}
+  .pck{color:#A32D2D;font-weight:500;min-width:110px;flex-shrink:0}
+  .pcv{color:#501313;line-height:1.5}
+
+  body{background:linear-gradient(180deg,#f4efe8 0%,#ece6dd 100%)}
+  .outer{max-width:860px}
+  .ph{margin-bottom:1.25rem}
+  .ph h1{font-size:30px;font-weight:700;letter-spacing:-0.02em}
+  .ph p{font-size:15px}
+  .lw{box-shadow:0 18px 40px rgba(0,0,0,0.08);border:none;padding:2.2rem;background:rgba(255,255,255,0.9);backdrop-filter:blur(4px)}
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch;margin-bottom:18px}
+  .hero-img{min-height:280px;border-radius:18px;overflow:hidden;position:relative;background:
+    linear-gradient(135deg,rgba(123,63,196,.16),rgba(123,63,196,.02)),
+    url('https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+    box-shadow:0 10px 24px rgba(0,0,0,.12)}
+  .hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.05),rgba(0,0,0,0.28))}
+  .hero-card{background:linear-gradient(180deg,#fff 0%,#f8f5fc 100%);border:1px solid rgba(123,63,196,.16);border-radius:18px;padding:20px 20px 16px;box-shadow:0 8px 20px rgba(123,63,196,.08)}
+  .hero-card h3{font-size:18px;margin-bottom:8px;color:#4A1980}
+  .hero-meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}
+  .hero-pill{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:#F2EBFC;color:#7B3FC4;border:1px solid #D7BDF4}
+  .hero-card p{font-size:13px;line-height:1.7;color:#5a5860}
+  .preview-list{margin-top:12px}
+  .preview-item{display:flex;gap:10px;align-items:flex-start;margin-bottom:9px;font-size:13px;color:#322f36;line-height:1.5}
+  .preview-dot{width:8px;height:8px;border-radius:50%;background:#7B3FC4;flex:0 0 8px;margin-top:6px}
+  .card,.card-m,.pcard,.rc{box-shadow:0 6px 14px rgba(0,0,0,0.04)}
+  .btn{font-weight:600}
+  .pb{margin-bottom:1.5rem}
+  .sd{width:32px;height:32px;font-size:12px}
+  .ss{margin-bottom:1.1rem}
+  @media(max-width:760px){.hero{grid-template-columns:1fr}.hero-img{min-height:220px}}
+
+</style>
+</head>
+<body>
+<div class="outer">
+  <div class="ph">
+    <div class="lvl">B2 — Upper Intermediate</div>
+    <h1>Going to the Doctor</h1>
+    <p>B2 level &nbsp;·&nbsp; 40-minute interactive lesson</p>
+  </div>
+  <div class="lw">
+    <div class="pb" id="pb">
+      <div class="sd active" onclick="goTo(0)">1</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(1)">2</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(2)">3</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(3)">4</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(4)">5</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(5)">6</div>
+    </div>
+
+    <div class="sec active" id="sec0">
+
+      <div class="hero">
+        <div class="hero-img" aria-label="Doctor consultation photo"></div>
+        <div class="hero-card">
+          <div class="hero-pill">Lesson preview</div>
+          <h3>What students will do</h3>
+          <p>This lesson practises high-level medical English for describing symptoms precisely, asking informed questions, and handling a referral conversation with confidence.</p>
+          <div class="hero-meta">
+            <span class="hero-pill">B2</span>
+            <span class="hero-pill">40 minutes</span>
+            <span class="hero-pill">Medical English</span>
+          </div>
+          <div class="preview-list">
+            <div class="preview-item"><span class="preview-dot"></span><span>advanced vocabulary for symptoms, triggers, referrals, and treatment</span></div>
+            <div class="preview-item"><span class="preview-dot"></span><span>functional language for self-advocacy and clarification</span></div>
+            <div class="preview-item"><span class="preview-dot"></span><span>a realistic GP consultation with follow-up planning</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sh">Stage 1 — Warm-up</div>
+      <div class="st">Navigating healthcare in English</div>
+      <div class="ss">5 minutes · Critical discussion</div>
+      <div class="card-m">
+        <p style="font-size:14px;font-weight:500;margin-bottom:10px">Discuss with your partner:</p>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:4px">1. What challenges might someone face when visiting a doctor in a foreign country, beyond language?</p>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:4px">2. How might a patient advocate effectively for themselves if they feel their concerns are not being taken seriously?</p>
+        <p style="font-size:14px;line-height:1.8">3. What is the difference between a GP, a specialist, and a consultant in the UK system?</p>
+      </div>
+      <div class="tip"><strong>Teacher note:</strong> At B2, push beyond basic symptom description. Focus on hedging language, discourse markers, and nuanced vocabulary: intermittent, exacerbated, onset, recurrence. Students should be able to give precise accounts, challenge a diagnosis politely, and ask for referrals.</div>
+      <div class="card">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:10px">Today's scenario — a complex consultation at <strong>St. Bartholomew's Walk-in Centre</strong>:</p>
+        <div class="pcard">
+          <div class="pcl">Patient information — Student A</div>
+          <div class="pcr"><span class="pck">Main complaint</span><span class="pcv">Recurring migraines, 3-4 times per month for the past six months. Previously managed with over-the-counter medication, now ineffective.</span></div>
+          <div class="pcr"><span class="pck">Associated symptoms</span><span class="pcv">Visual disturbances (aura), nausea, photosensitivity. Attacks last 4-12 hours. Exacerbated by stress and screen time.</span></div>
+          <div class="pcr"><span class="pck">Medical history</span><span class="pcv">Mild hypertension (treated). No migraines in family history. Two previous GP consultations — given ibuprofen, no further investigation.</span></div>
+          <div class="pcr"><span class="pck">Patient concern</span><span class="pcv">Worried about the frequency and impact on work. Wants referral to a neurologist and to discuss preventative medication.</span></div>
+        </div>
+        <div><span class="tag tp">Complex consultation</span><span class="tag tg">Specialist referral</span><span class="tag ta">Self-advocacy</span></div>
+      </div>
+      <div class="nr"><span class="tb">5 min</span><button class="btn p" onclick="goTo(1)">Next: vocabulary &#x2192;</button></div>
+    </div>
+
+    <div class="sec" id="sec1">
+      <div class="sh">Stage 2 — Vocabulary</div>
+      <div class="st">Advanced medical vocabulary</div>
+      <div class="ss">10 minutes · Gap-fill exercise</div>
+      <div class="tip">Click a word from the box, then click a blank. Hover for definitions. These words appear frequently in authentic medical consultations.</div>
+      <div class="vg" id="wordBank"></div>
+      <div id="gapFeedback" class="fm"></div>
+      <div class="card">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:14px">Complete the sentences with the correct word from the box.</p>
+        <div id="gapSentences"></div>
+      </div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(0)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">10 min</span><button class="btn" onclick="checkGaps()">Check answers</button><button class="btn p" onclick="goTo(2)">Next &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec2">
+      <div class="sh">Stage 3 — Functional language</div>
+      <div class="st">Precise and assertive medical language</div>
+      <div class="ss">8 minutes · Study and practise</div>
+      <div id="funcContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(1)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">8 min</span><button class="btn p" onclick="goTo(3)">Next &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec3">
+      <div class="sh">Stage 4 — Language in use</div>
+      <div class="st">B2 medical English drill</div>
+      <div class="ss">10 minutes · Multiple choice</div>
+      <div id="drillWrap"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(2)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">10 min</span><button class="btn p" id="drillNextBtn" onclick="goTo(4)" style="display:none">Next: role play &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec4">
+      <div class="sh">Stage 5 — Role play</div>
+      <div class="st">The specialist referral consultation</div>
+      <div class="ss">12 minutes · Pair work</div>
+      <div class="tip"><strong>How to use:</strong> Student A = Patient seeking a specialist referral. Student B = GP who must balance proper process with the patient's clear need. Both should use precise language and appropriate hedging. The patient must advocate assertively but respectfully.</div>
+      <div id="roleplayContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(3)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">12 min</span><button class="btn p" onclick="goTo(5)">Finish &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec5">
+      <div class="sh">Stage 6 — Summary</div>
+      <div class="st">Lesson complete!</div>
+      <div class="ss">5 minutes · Review</div>
+      <div id="summaryContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(4)">&#x2190; back</button>
+        <button class="btn p" onclick="restartLesson()">Start again &#x21BA;</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+let cs=0,sw=null,ga={},ds=0,di=0,dd=false;
+const WORDS=[
+  {word:'intermittent',def:'stopping and starting at irregular intervals'},
+  {word:'exacerbate',  def:'to make a condition worse'},
+  {word:'onset',       def:'the beginning or first appearance of a condition'},
+  {word:'recurrence',  def:'the return of a condition after a period of improvement'},
+  {word:'aura',        def:'warning symptoms (e.g. visual disturbances) before a migraine'},
+  {word:'referral',    def:'when a GP sends a patient to see a specialist'},
+  {word:'prophylactic',def:'taken to prevent a condition rather than treat it'},
+  {word:'contraindication',def:'a reason why a treatment should not be used for a patient'},
+];
+const GAPS=[
+  {id:'g0',before:'The headaches are ',blank:'intermittent',after:' — sometimes I have three in a week, then nothing for ten days.'},
+  {id:'g1',before:'Prolonged screen time tends to ',blank:'exacerbate',after:' the migraines significantly.'},
+  {id:'g2',before:'The ',blank:'onset',after:' is usually gradual — I notice visual disturbances about twenty minutes before the pain begins.'},
+  {id:'g3',before:'I am concerned about the ',blank:'recurrence',after:' of these episodes — they are happening far more frequently than before.'},
+  {id:'g4',before:'I experience a visual ',blank:'aura',after:' — zigzag patterns across my field of vision — which precedes each attack.'},
+  {id:'g5',before:'I would like to discuss the possibility of a ',blank:'referral',after:' to a neurologist for further investigation.'},
+  {id:'g6',before:'My GP mentioned ',blank:'prophylactic',after:' medication to reduce the frequency of attacks rather than treating them after they start.'},
+  {id:'g7',before:'Given my hypertension, certain triptans may be a ',blank:'contraindication',after:', so I wanted to discuss the options carefully.'},
+];
+const FUNC_CATS=[
+  {label:'Giving a precise account of symptoms',phrases:[
+    'The attacks occur approximately three to four times per month.',
+    'Each episode typically lasts between four and twelve hours.',
+    'The pain is predominantly on one side — a throbbing, pulsating sensation.',
+    'I notice a visual aura roughly twenty minutes before onset.']},
+  {label:'Explaining the history and impact',phrases:[
+    'I have been managing this with over-the-counter medication, which has now become ineffective.',
+    'This has been ongoing for approximately six months.',
+    'The condition is significantly affecting my ability to function at work.',
+    'I had two previous consultations where ibuprofen was prescribed, but there was no further investigation.']},
+  {label:'Advocating for yourself',phrases:[
+    'I would like to explore the possibility of a referral to a neurologist.',
+    'I feel the current treatment plan is not adequate given the frequency of the attacks.',
+    'I would appreciate a more thorough investigation into what might be triggering these episodes.',
+    'Could we discuss preventative medication as an option?']},
+  {label:'Handling the doctor\'s response',phrases:[
+    'I understand your position, but I would like to make clear how much this is impacting my daily life.',
+    'With respect, I have been experiencing this for six months now without resolution.',
+    'Is there a reason why a referral would not be appropriate at this stage?',
+    'I would like that concern noted in my records, please.']},
+  {label:'Clarifying and confirming',phrases:[
+    'Could you elaborate on the potential side effects of that medication?',
+    'Am I correct in understanding that this is a preventative rather than acute treatment?',
+    'I would like to make sure I understand the next steps clearly before I leave.',
+    'Could I have a summary of today\'s consultation in writing?']},
+];
+const DRILL_QS=[
+  {q:'You want to describe a worsening pattern precisely. Which sentence is most appropriate at B2?',
+   opts:['It gets worse and worse.','The frequency of episodes has increased considerably over the past six months.','It is more bad now.','The attacks are more frequent.'],
+   ans:1,explain:'B2 requires precise, formal register: "the frequency of episodes has increased considerably" uses noun phrases and adverbs naturally.'},
+  {q:'You feel the doctor is not taking your symptoms seriously. Which response is most assertive yet professional?',
+   opts:['You are not listening to me.','I understand your view, but I would like to make clear how significantly this is affecting my daily functioning.','This is not good enough.','I think you are wrong.'],
+   ans:1,explain:'Acknowledging the doctor\'s view before asserting your own position is the professional approach at B2. Use "I would like to make clear that..."'},
+  {q:'Which sentence correctly uses a passive construction to describe medical history?',
+   opts:['Two times a GP gave me ibuprofen.','Ibuprofen was prescribed on two previous occasions, with no further investigation.','The GP prescribing ibuprofen twice to me.','I was giving ibuprofen two times.'],
+   ans:1,explain:'The passive "was prescribed... with no further investigation" is the formal, precise construction used in medical and professional contexts.'},
+  {q:'You want to ask about side effects using a formal indirect question. Which is correct?',
+   opts:['What are side effects?','Could you elaborate on the potential side effects of that medication?','Side effects — what are they?','Could you tell me what are the side effects?'],
+   ans:1,explain:'"Could you elaborate on...?" is a formal B2 request for more detail. Note: "Could you tell me what the side effects are?" (statement order) is also correct.'},
+  {q:'You want to request a referral diplomatically. Which sentence is most appropriate?',
+   opts:['Send me to a specialist.','I need a referral.','I would like to explore the possibility of a referral to a neurologist for further investigation.','Can you refer me?'],
+   ans:2,explain:'"I would like to explore the possibility of..." is a highly diplomatic and formal way to make a request — appropriate for a professional medical context.'},
+  {q:'Which sentence correctly uses a conditional perfect to describe what should have happened?',
+   opts:['If they investigated earlier, it would help.','Had the underlying cause been investigated earlier, we might have avoided this situation.','If they had investigated, it will be better.','If investigation happened, things be better.'],
+   ans:1,explain:'"Had + past participle... would have + past participle" is the inverted third conditional — a formal structure used in advanced spoken and written English.'},
+];
+const ROLEPLAY=[
+  {speaker:'Doctor',text:'Good morning. I see from your notes that you\'ve been experiencing headaches. Can you tell me more about what\'s been happening?'},
+  {speaker:'Patient',text:'[Give a precise account: recurring migraines 3-4 times per month for six months, visual aura, nausea, photosensitivity. Attacks last 4-12 hours. Mention that over-the-counter medication is no longer effective.]'},
+  {speaker:'Doctor',text:'I see. And what have you been taking for them? Have you noticed any particular triggers?'},
+  {speaker:'Patient',text:'[Explain you have been using ibuprofen and paracetamol, now ineffective. Triggers: stress and screen time. Mention you have had two previous consultations where no further investigation was offered.]'},
+  {speaker:'Doctor',text:'I understand. These do sound like migraines. I could prescribe triptans, which are more effective for acute migraine management than over-the-counter options.'},
+  {speaker:'Patient',text:'[Ask about potential contraindications given your hypertension. Request clarification on whether triptans are preventative or acute treatments.]'},
+  {speaker:'Doctor',text:'Triptans are for acute treatment — you take them when an attack starts. You\'re right to flag the hypertension. Some triptans are contraindicated, but we can find one that\'s suitable.'},
+  {speaker:'Patient',text:'[Acknowledge this is useful. Now advocate assertively for a referral to a neurologist. Explain the frequency and impact on your work. Use a diplomatic request form.]'},
+  {speaker:'Doctor',text:'A referral is possible, but NICE guidelines suggest trying prescription medication first. Let\'s try the triptans for two months and reassess. If there\'s no improvement, I\'ll refer you.'},
+  {speaker:'Patient',text:'[Respond with controlled disagreement. Explain you have already waited six months. Ask whether preventative medication could be considered now rather than waiting further.]'},
+  {speaker:'Doctor',text:'That\'s a fair point. We could start a low-dose beta-blocker as a prophylactic. That\'s commonly used for migraine prevention and compatible with your hypertension treatment.'},
+  {speaker:'Patient',text:'[Express measured agreement. Ask for full information on the beta-blocker: dosage, side effects, how long before effects are noticeable. Also request the consultation notes in writing.]'},
+  {speaker:'Doctor',text:'Of course. I\'ll arrange a follow-up in six weeks. If things haven\'t improved by then, I will refer you to neurology without hesitation.'},
+  {speaker:'Patient',text:'[Confirm the plan clearly. Check: beta-blocker prescription, triptans for acute attacks, follow-up in six weeks, referral if no improvement. Thank the doctor professionally.]'},
+];
+function goTo(n){
+  document.querySelectorAll('.sec').forEach((s,i)=>s.classList.toggle('active',i===n));
+  document.querySelectorAll('.sd').forEach((d,i)=>{d.classList.remove('active','done');if(i===n)d.classList.add('active');else if(i<n)d.classList.add('done');});
+  cs=n;if(n===1)bG();if(n===2)bF();if(n===3&&!dd)bD();if(n===4)bR();if(n===5)bS();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function bG(){
+  const bank=document.getElementById('wordBank');bank.innerHTML='';
+  WORDS.forEach(w=>{const c=document.createElement('div');c.className='vc';c.textContent=w.word;c.id='chip_'+w.word.replace(/\s/g,'_');c.title=w.def;c.onclick=()=>selW(w.word);bank.appendChild(c);});
+  const ct=document.getElementById('gapSentences');ct.innerHTML='';
+  GAPS.forEach(g=>{const p=document.createElement('p');p.className='gs';p.innerHTML=(g.before||'')+`<span class="gap" id="${g.id}" onclick="fG('${g.id}')"></span>`+(g.after||'');ct.appendChild(p);});
+}
+function selW(w){
+  document.querySelectorAll('.vc').forEach(c=>c.classList.remove('selected'));
+  if(sw===w){sw=null;return;}sw=w;const key=w.replace(/\s/g,'_');const c=document.getElementById('chip_'+key);if(c)c.classList.add('selected');
+}
+function fG(gid){
+  const gap=document.getElementById(gid);if(!gap)return;
+  const cur=gap.textContent.trim();
+  if(cur){const key=cur.replace(/\s/g,'_');const c=document.getElementById('chip_'+key);if(c)c.classList.remove('used');gap.textContent='';gap.classList.remove('correct','wrong');delete ga[gid];return;}
+  if(!sw)return;const key=sw.replace(/\s/g,'_');const chip=document.getElementById('chip_'+key);if(chip&&chip.classList.contains('used'))return;
+  gap.textContent=sw;ga[gid]=sw;if(chip)chip.classList.add('used');sw=null;document.querySelectorAll('.vc').forEach(c=>c.classList.remove('selected'));
+}
+function checkGaps(){
+  let ok=0;GAPS.forEach(g=>{const gap=document.getElementById(g.id);const val=gap?gap.textContent.trim():'';if(val===g.blank){gap.classList.add('correct');gap.classList.remove('wrong');ok++;}else if(val){gap.classList.add('wrong');gap.classList.remove('correct');}});
+  const fb=document.getElementById('gapFeedback');fb.className='fm show '+(ok===GAPS.length?'ok':'err');
+  fb.textContent=ok===GAPS.length?`All ${GAPS.length} correct! Excellent work.`:`${ok} of ${GAPS.length} correct. Check highlighted answers and try again.`;
+}
+function bF(){
+  const w=document.getElementById('funcContent');w.innerHTML='';
+  FUNC_CATS.forEach(cat=>{let h=`<div class="card"><p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--txt2);margin-bottom:10px">${cat.label}</p>`;cat.phrases.forEach(ph=>{h+=`<div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">${ph}</span></div>`;});h+='</div>';w.innerHTML+=h;});
+  w.innerHTML+=`<div class="tip">At B2, doctors expect patients to describe symptoms with precision and chronology. Use: frequency ("three to four times per month"), duration ("lasting up to twelve hours"), and character ("throbbing, unilateral pain"). Vague descriptions delay diagnosis.</div>`;
+}
+function bD(){di=0;ds=0;rDQ();}
+function rDQ(){
+  const w=document.getElementById('drillWrap');
+  if(di>=DRILL_QS.length){dd=true;document.getElementById('drillNextBtn').style.display='inline-block';w.innerHTML=`<div class="card" style="text-align:center;padding:2rem 1.25rem"><p style="font-size:13px;color:var(--txt2);margin-bottom:14px">Quiz complete!</p><div class="sc"><span class="sn">${ds}/${DRILL_QS.length}</span><span class="sl2">score</span></div><p style="font-size:15px;font-weight:500;color:var(--txt)">${ds===DRILL_QS.length?'Excellent!':ds>=4?'Very good!':'Good effort! Review and try again.'}</p></div>`;return;}
+  const q=DRILL_QS[di];
+  w.innerHTML=`<p class="pc">Question ${di+1} of ${DRILL_QS.length}</p><div class="card"><p class="dq">${q.q}</p><div class="do">${q.opts.map((o,i)=>`<button class="ob" onclick="aD(${i})">${o}</button>`).join('')}</div><div id="de" class="eb"></div><button id="dc" style="display:none;margin-top:14px" class="btn p" onclick="nDQ()">Next &#x2192;</button></div>`;
+}
+function aD(ch){
+  const q=DRILL_QS[di];document.querySelectorAll('.ob').forEach(b=>b.disabled=true);document.querySelectorAll('.ob')[q.ans].classList.add('correct');
+  const e=document.getElementById('de');e.style.display='block';
+  if(ch===q.ans){ds++;e.style.background='#EAF3DE';e.style.color='#27500A';e.style.border='0.5px solid #C0DD97';e.textContent='Correct! '+q.explain;}
+  else{document.querySelectorAll('.ob')[ch].classList.add('wrong');e.style.background='#FCEBEB';e.style.color='#A32D2D';e.style.border='0.5px solid #F7C1C1';e.textContent='Not quite. '+q.explain;}
+  document.getElementById('dc').style.display='inline-block';
+}
+function nDQ(){di++;rDQ();}
+function bR(){
+  const w=document.getElementById('roleplayContent');w.innerHTML='';
+  w.innerHTML+=`<div class="rcg"><div class="rc rca"><div class="rct">Student A — Patient</div><p>Recurring migraines (3-4/month, 6 months). Visual aura, nausea, photosensitivity. OTC meds ineffective. Previous consultations insufficient. You want: preventative medication AND a neurology referral. You have mild hypertension.</p></div><div class="rc rcb"><div class="rct">Student B — Doctor (GP)</div><p>Follow NICE guidelines: suggest triptans first, then reassess. Be open to prophylactic beta-blockers. Referral is possible but you need to follow process. Be professional — the patient is well-informed and assertive.</p></div></div>`;
+  ROLEPLAY.forEach(line=>{if(line.speaker==='Doctor'){w.innerHTML+=`<div class="ib"><div class="il">Doctor — Student B</div><div class="it">${line.text}</div></div>`;}else{w.innerHTML+=`<div class="rb"><div class="rl2">Patient — Student A</div><div class="rt">${line.text}</div></div>`;}});
+  w.innerHTML+=`<div style="margin-top:14px"><div class="card-m"><p style="font-size:14px;font-weight:500;margin-bottom:6px">Extension: the second opinion</p><p style="font-size:13px;color:var(--txt2)">Student A is now a patient who disagrees with a diagnosis of anxiety given to explain their chest pains. They want to request cardiac tests. Student B is a specialist who must balance thoroughness with resource constraints. Both use B2 register throughout.</p></div></div>`;
+}
+function bS(){
+  const items=['8 advanced medical terms: intermittent, exacerbate, aura, prophylactic, contraindication and more','Functional phrases for 5 stages: precise symptom description, medical history, self-advocacy, controlled disagreement, and confirmation','6 B2 drills: passives, inverted conditionals, noun phrases, indirect requests, formal register','A complex referral consultation requiring assertive patient self-advocacy'];
+  const hw=['Write a formal letter (120-150 words) to your GP summarising your symptoms and requesting a specialist referral. Use formal register throughout.','Research the difference between acute and preventative migraine treatments. Write 5 sentences comparing them using appropriate medical vocabulary.','Practise describing a complex medical situation using the SOCRATES framework: Site, Onset, Character, Radiation, Associated symptoms, Timing, Exacerbating/relieving factors, Severity.'];
+  document.getElementById('summaryContent').innerHTML=`<div class="card" style="text-align:center;padding:1.75rem 1.25rem"><p style="font-size:13px;color:var(--txt2);margin-bottom:10px">Today\'s lesson</p><div class="lvl">B2 — Upper Intermediate</div><p style="font-size:22px;font-weight:500;margin:8px 0 4px">Going to the Doctor</p><p style="font-size:13px;color:var(--txt2)">~40 minutes</p></div><div class="card"><p style="font-size:13px;font-weight:500;margin-bottom:10px">What you practised:</p>${items.map(i=>`<div class="br"><span class="bd" style="background:#639922"></span><span style="font-size:14px;color:var(--txt)">${i}</span></div>`).join('')}</div><div class="card-m"><p style="font-size:13px;font-weight:500;margin-bottom:8px">Homework ideas:</p>${hw.map((h,i)=>`<div class="br"><span class="bd" style="background:#7B3FC4;margin-top:7px"></span><span style="font-size:13px;color:var(--txt2);line-height:1.7">${i+1}. ${h}</span></div>`).join('')}</div><div class="tip" style="margin-bottom:0">Excellent work! At B2, the ability to advocate for yourself in a medical context — precisely, calmly, and professionally — is a high-value skill. You now have the language to do exactly that.</div>`;
+}
+function restartLesson(){dd=false;ds=0;di=0;ga={};sw=null;goTo(0);}
+bG();bF();bR();bS();
+</script>
+</body>
+</html>

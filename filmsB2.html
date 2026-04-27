@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talking About Films and TV — B2 Lesson</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#fff;--bg2:#f6f5f2;--bg3:#f0ede8;--txt:#1a1a18;--txt2:#6b6a66;--bdr:rgba(0,0,0,0.12);--bdr2:rgba(0,0,0,0.22);--rm:8px;--rl:12px}
+  @media(prefers-color-scheme:dark){:root{--bg:#1c1c1a;--bg2:#252523;--bg3:#2e2e2b;--txt:#f0ede8;--txt2:#9a9891;--bdr:rgba(255,255,255,0.12);--bdr2:rgba(255,255,255,0.22)}}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--txt);min-height:100vh;padding:2rem 1rem}
+  .outer{max-width:720px;margin:0 auto}
+  .ph{text-align:center;margin-bottom:2rem}.ph h1{font-size:22px;font-weight:500;margin-bottom:4px}.ph p{font-size:14px;color:var(--txt2)}
+  .lw{background:var(--bg);border-radius:var(--rl);border:0.5px solid var(--bdr);padding:2rem}
+  .pb{display:flex;align-items:center;gap:8px;margin-bottom:2rem}
+  .sd{width:28px;height:28px;border-radius:50%;border:0.5px solid var(--bdr2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--txt2);background:var(--bg2);cursor:pointer;transition:all .2s;flex-shrink:0}
+  .sd.active{background:#7B3FC4;color:#fff;border-color:#7B3FC4}.sd.done{background:#EAF3DE;color:#3B6D11;border-color:#639922}
+  .sl{flex:1;height:0.5px;background:var(--bdr)}
+  .sec{display:none}.sec.active{display:block}
+  .sh{font-size:11px;font-weight:500;color:#7B3FC4;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+  .st{font-size:20px;font-weight:500;color:var(--txt);margin-bottom:4px}.ss{font-size:13px;color:var(--txt2);margin-bottom:1.5rem}
+  .card{background:var(--bg);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:12px}
+  .card-m{background:var(--bg2);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:12px}
+  .vg{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-bottom:16px}
+  .vc{background:#F2EBFC;border:0.5px solid #C9A8F0;border-radius:var(--rm);padding:7px 10px;font-size:13px;font-weight:500;color:#4A1980;text-align:center;cursor:pointer;transition:all .15s;user-select:none}
+  .vc:hover{background:#C9A8F0}.vc.used{background:var(--bg2);color:var(--txt2);border-color:var(--bdr);opacity:.5}.vc.selected{outline:2px solid #7B3FC4}
+  .gs{font-size:15px;color:var(--txt);line-height:2.2;margin-bottom:10px}
+  .gap{display:inline-block;min-width:120px;height:26px;border-bottom:2px solid #7B3FC4;margin:0 4px;text-align:center;font-weight:500;color:#7B3FC4;font-size:14px;cursor:pointer;vertical-align:bottom;padding:0 4px;transition:all .15s}
+  .gap.correct{border-bottom-color:#639922;color:#3B6D11;background:#EAF3DE;border-radius:4px 4px 0 0}
+  .gap.wrong{border-bottom-color:#E24B4A;color:#A32D2D;background:#FCEBEB;border-radius:4px 4px 0 0;animation:shake .3s}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .fm{font-size:13px;padding:10px 14px;border-radius:var(--rm);margin-bottom:12px;display:none}
+  .fm.show{display:block}.fm.ok{background:#EAF3DE;color:#3B6D11;border:0.5px solid #C0DD97}.fm.err{background:#FCEBEB;color:#A32D2D;border:0.5px solid #F7C1C1}
+  .dq{font-size:15px;font-weight:500;color:var(--txt);margin-bottom:14px;line-height:1.6}
+  .do{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  @media(max-width:500px){.do{grid-template-columns:1fr}}
+  .ob{background:var(--bg);border:0.5px solid var(--bdr2);border-radius:var(--rm);padding:10px 14px;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s;text-align:left;line-height:1.5}
+  .ob:hover:not(:disabled){background:var(--bg2)}.ob.correct{background:#EAF3DE;border-color:#639922;color:#3B6D11}.ob.wrong{background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}.ob:disabled{cursor:default}
+  .pc{font-size:12px;color:var(--txt2);margin-bottom:8px}
+  .nr{display:flex;gap:8px;margin-top:1.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .nrr{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .btn{background:var(--bg);border:0.5px solid var(--bdr2);border-radius:var(--rm);padding:9px 20px;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s}
+  .btn:hover{background:var(--bg2)}.btn.p{background:#7B3FC4;color:#fff;border-color:#7B3FC4}.btn.p:hover{background:#5A2B96}
+  .tb{font-size:11px;color:var(--txt2);background:var(--bg2);border:0.5px solid var(--bdr);border-radius:var(--rm);padding:5px 10px}
+  .rb{border-left:3px solid #7B3FC4;background:#F2EBFC;border-radius:0 var(--rm) var(--rm) 0;padding:12px 16px;margin-bottom:10px}
+  .rl2{font-size:11px;font-weight:500;color:#7B3FC4;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .rt{font-size:14px;color:#4A1980;line-height:1.7}
+  .ib{border-left:3px solid #639922;background:#EAF3DE;border-radius:0 var(--rm) var(--rm) 0;padding:12px 16px;margin-bottom:10px}
+  .il{font-size:11px;font-weight:500;color:#3B6D11;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .it{font-size:14px;color:#27500A;line-height:1.7}
+  .tip{background:#FAEEDA;border:0.5px solid #FAC775;border-radius:var(--rm);padding:10px 14px;font-size:13px;color:#633806;margin-bottom:14px}
+  .sc{width:84px;height:84px;border-radius:50%;border:3px solid #7B3FC4;display:flex;align-items:center;justify-content:center;flex-direction:column;margin:0 auto 18px}
+  .sn{font-size:24px;font-weight:500;color:#7B3FC4}.sl2{font-size:10px;color:var(--txt2)}
+  .tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 9px;border-radius:var(--rm);margin-right:4px;margin-bottom:4px}
+  .tp{background:#F2EBFC;color:#4A1980;border:0.5px solid #C9A8F0}.tg{background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97}.ta{background:#FAEEDA;color:#633806;border:0.5px solid #FAC775}
+  .br{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
+  .bd{margin-top:6px;width:6px;height:6px;border-radius:50%;flex-shrink:0}
+  .eb{font-size:13px;padding:10px 14px;border-radius:var(--rm);margin-top:8px;display:none}
+  .rcg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+  @media(max-width:480px){.rcg{grid-template-columns:1fr}}
+  .rc{border-radius:var(--rl);padding:1rem 1.25rem;border:0.5px solid}
+  .rca{background:#F2EBFC;border-color:#C9A8F0}.rcb{background:#EAF3DE;border-color:#C0DD97}
+  .rct{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+  .rca .rct{color:#7B3FC4}.rcb .rct{color:#3B6D11}
+  .rc p{font-size:13px;line-height:1.7}.rca p{color:#4A1980}.rcb p{color:#27500A}
+  .lvl{display:inline-block;background:#7B3FC4;color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:8px;letter-spacing:.04em}
+  .qblock{background:var(--bg2);border-left:3px solid #7B3FC4;border-radius:0 var(--rm) var(--rm) 0;padding:12px 16px;margin-bottom:10px;font-size:14px;color:var(--txt);line-height:1.7;font-style:italic}
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background:
+      radial-gradient(circle at top left, rgba(123,63,196,0.15), transparent 28%),
+      radial-gradient(circle at top right, rgba(99,57,146,0.10), transparent 24%),
+      linear-gradient(180deg, #f5f2fb, #ece6f7);
+    padding: 32px 18px 56px;
+  }
+  .outer{max-width:920px}
+  .ph{
+    position:relative;overflow:hidden;text-align:left;margin-bottom:22px;padding:34px 30px;border-radius:30px;
+    background:linear-gradient(135deg, rgba(48,23,86,0.96), rgba(123,63,196,0.88)), linear-gradient(135deg, #4b237d, #7B3FC4);
+    color:#fff;box-shadow:0 18px 48px rgba(56,27,99,0.18);border:1px solid rgba(255,255,255,0.08)
+  }
+  .ph::before,.ph::after{content:"";position:absolute;border-radius:50%;pointer-events:none;opacity:.34}
+  .ph::before{width:280px;height:280px;right:-80px;top:-110px;background:radial-gradient(circle, rgba(255,255,255,.35), transparent 68%)}
+  .ph::after{width:220px;height:220px;left:-50px;bottom:-120px;background:radial-gradient(circle, rgba(255,255,255,.18), transparent 70%)}
+  .ph h1{position:relative;z-index:1;font-size:clamp(2rem,4vw,3rem);line-height:1.08;font-weight:700;letter-spacing:-0.03em;max-width:650px;margin-bottom:10px}
+  .ph p{position:relative;z-index:1;font-size:15px;color:rgba(255,255,255,.82);margin-bottom:0}
+  .ph p::before{content:'Interactive lesson';display:inline-block;margin-right:10px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.18);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;vertical-align:middle}
+  .lvl{background:#fff;color:#5a2b96;position:relative;z-index:1}
+  .hero-spotlight{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch;margin:0 0 26px}
+  .hero-image-card{overflow:hidden;border-radius:24px;background:var(--bg);border:1px solid var(--bdr);box-shadow:0 10px 30px rgba(56,27,99,.12);min-height:280px}
+  .hero-image-card img{width:100%;height:100%;min-height:280px;object-fit:cover;display:block}
+  .hero-copy-card{background:linear-gradient(180deg, #fff, #f7f2fc);border:1px solid var(--bdr);border-radius:24px;box-shadow:0 10px 30px rgba(56,27,99,.08);padding:24px;display:flex;flex-direction:column;justify-content:center}
+  .eyebrow{display:inline-block;align-self:flex-start;margin-bottom:10px;padding:6px 12px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7B3FC4;background:#F2EBFC;border:1px solid rgba(123,63,196,.15);border-radius:999px}
+  .hero-copy-card h2{font-size:clamp(1.5rem,2.6vw,2.15rem);line-height:1.12;margin-bottom:10px;letter-spacing:-.03em;color:var(--txt)}
+  .hero-copy-card p{font-size:14px;line-height:1.75;color:var(--txt2)}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .hero-stat{padding:10px 12px;border-radius:14px;background:#fff;border:1px solid var(--bdr);font-size:12px;color:var(--txt2)}
+  .hero-stat strong{display:block;font-size:14px;color:var(--txt);margin-bottom:2px}
+  .lw{backdrop-filter: blur(14px);background:rgba(255,255,255,.92);border-radius:30px;border:1px solid var(--bdr);box-shadow:0 18px 48px rgba(56,27,99,.10);padding:28px}
+  .pb{display:flex;align-items:center;gap:10px;margin-bottom:30px;padding:16px;background:var(--bg2);border:1px solid var(--bdr);border-radius:22px}
+  .sd{width:34px;height:34px;border-radius:50%;border:1px solid var(--bdr2);font-size:12px;font-weight:700;background:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+  .sd.active{background:linear-gradient(135deg,#7B3FC4,#5A2B96);box-shadow:0 10px 20px rgba(123,63,196,.28)}
+  .sd.done{background:linear-gradient(135deg,#78b95c,#639922)}
+  .sl{height:2px;background:linear-gradient(90deg,var(--bdr),transparent);border-radius:999px}
+  .sec.active{animation:fadeUp .28s ease}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  .sh{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.12em;padding:6px 12px;border-radius:999px;background:#F2EBFC;border:1px solid rgba(123,63,196,.14);margin-bottom:10px}
+  .st{font-size:clamp(1.7rem,3vw,2.2rem);font-weight:600;line-height:1.14;letter-spacing:-.02em;margin-bottom:8px}
+  .ss{font-size:14px;margin-bottom:22px}
+  .card,.card-m{border-radius:22px;padding:18px 20px;margin-bottom:14px;border:1px solid var(--bdr);box-shadow:0 10px 30px rgba(56,27,99,.06)}
+  .card{background:#fff}.card-m{background:linear-gradient(180deg,var(--bg2),rgba(255,255,255,.4))}
+  .vc{background:linear-gradient(180deg,#F2EBFC,rgba(255,255,255,.8));box-shadow:0 8px 18px rgba(123,63,196,.08);padding:11px 12px;font-weight:700}
+  .vc:hover{transform:translateY(-1px);box-shadow:0 12px 22px rgba(123,63,196,.12)}
+  .gap{min-width:128px;min-height:28px;border-radius:8px 8px 0 0;background:rgba(123,63,196,.04)}
+  .btn,.ob{transition:transform .16s ease, background .16s ease, box-shadow .16s ease, border-color .16s ease}
+  .btn:hover,.ob:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 10px 20px rgba(56,27,99,.08)}
+  .btn.p{background:linear-gradient(135deg,#7B3FC4,#5A2B96);box-shadow:0 12px 24px rgba(123,63,196,.24)}
+  .tb{border-radius:999px;padding:7px 12px}
+  @media(max-width:760px){.hero-spotlight,.rcg{grid-template-columns:1fr}.hero-image-card,.hero-image-card img{min-height:220px}.lw{padding:18px}.pb{padding:12px;gap:8px;overflow-x:auto}.sl{min-width:20px}}
+
+</style>
+</head>
+<body>
+<div class="outer">
+  <div class="ph">
+    <div class="lvl">B2 — Upper Intermediate</div>
+    <h1>Talking About Films and TV</h1>
+    <p>B2 level &nbsp;·&nbsp; 40-minute interactive lesson</p>
+  </div>
+  <div class="lw">
+    <div class="pb" id="pb">
+      <div class="sd active" onclick="goTo(0)">1</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(1)">2</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(2)">3</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(3)">4</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(4)">5</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(5)">6</div>
+    </div>
+
+    <div class="sec active" id="sec0">
+      <div class="sh">Stage 1 — Warm-up</div>
+      <div class="st">Film as art and entertainment</div>
+      <div class="ss">5 minutes · Critical discussion</div>
+      <div class="hero-spotlight">
+        <div class="hero-image-card">
+          <img src="https://images.pexels.com/photos/7991579/pexels-photo-7991579.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="People at a cinema or screening event watching a film">
+        </div>
+        <div class="hero-copy-card">
+          <span class="eyebrow">Lesson preview</span>
+          <h2>Analyse films, defend opinions, and debate style versus substance</h2>
+          <p>This lesson helps learners discuss cinema and television with more precision, using critical vocabulary, hedged opinions, and structured argument. The first page sets the tone with a stronger visual introduction.</p>
+          <div class="hero-stats">
+            <div class="hero-stat"><strong>B2</strong>CEFR level</div>
+            <div class="hero-stat"><strong>40 min</strong>Interactive lesson</div>
+            <div class="hero-stat"><strong>6 stages</strong>Film discussion flow</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-m">
+        <p style="font-size:14px;font-weight:500;margin-bottom:10px">Discuss with your partner:</p>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:4px">1. Can a film be both critically acclaimed and genuinely entertaining? Or does artistic ambition often come at the cost of accessibility?</p>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:4px">2. What distinguishes a director's personal vision from a commercially driven product? Does it matter to you as a viewer?</p>
+        <p style="font-size:14px;line-height:1.8">3. Is prestige television — long-form TV drama with cinematic production values — a superior storytelling format to feature films? Why or why not?</p>
+      </div>
+      <div class="tip"><strong>Teacher note:</strong> At B2 the focus shifts to critical analysis: cinematic technique (cinematography, mise-en-scène, non-linear narrative), cultural significance, auteur theory, and nuanced hedged opinion. Students should be able to argue a position, acknowledge counterarguments, and use register-appropriate language throughout.</div>
+      <div class="card">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:10px">Today's scenario — a post-screening discussion at a film society meeting:</p>
+        <div class="rcg" style="margin-bottom:8px">
+          <div class="rc rca"><div class="rct">Student A — Advocate</div><p>You believe the film you just watched (<em>Parallax</em> — a fictional art-house thriller) is a masterpiece of contemporary cinema. You want to argue its case: its non-linear structure, visual symbolism, and moral ambiguity elevate it beyond genre filmmaking.</p></div>
+          <div class="rc rcb"><div class="rct">Student B — Sceptic</div><p>You found <em>Parallax</em> self-indulgent and inaccessible. You respect the craft but feel the film prioritises style over substance. You want to challenge the notion that deliberate obscurity equals artistic merit.</p></div>
+        </div>
+        <div><span class="tag tp">Film criticism</span><span class="tag tg">Auteur theory</span><span class="tag ta">Hedged argument</span></div>
+      </div>
+      <div class="nr"><span class="tb">5 min</span><button class="btn p" onclick="goTo(1)">Next: vocabulary &#x2192;</button></div>
+    </div>
+
+    <div class="sec" id="sec1">
+      <div class="sh">Stage 2 — Vocabulary</div>
+      <div class="st">Advanced film criticism vocabulary</div>
+      <div class="ss">10 minutes · Gap-fill exercise</div>
+      <div class="tip">Click a word from the box, then click a blank. Hover for definitions. These terms appear in quality film journalism and criticism.</div>
+      <div class="vg" id="wordBank"></div>
+      <div id="gapFeedback" class="fm"></div>
+      <div class="card">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:14px">Complete the sentences with the correct word from the box.</p>
+        <div id="gapSentences"></div>
+      </div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(0)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">10 min</span><button class="btn" onclick="checkGaps()">Check answers</button><button class="btn p" onclick="goTo(2)">Next &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec2">
+      <div class="sh">Stage 3 — Functional language</div>
+      <div class="st">Critical and analytical language for film</div>
+      <div class="ss">8 minutes · Study and practise</div>
+      <div id="funcContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(1)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">8 min</span><button class="btn p" onclick="goTo(3)">Next &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec3">
+      <div class="sh">Stage 4 — Language in use</div>
+      <div class="st">B2 film criticism language drill</div>
+      <div class="ss">10 minutes · Multiple choice</div>
+      <div id="drillWrap"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(2)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">10 min</span><button class="btn p" id="drillNextBtn" onclick="goTo(4)" style="display:none">Next: role play &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec4">
+      <div class="sh">Stage 5 — Role play</div>
+      <div class="st">The post-screening debate</div>
+      <div class="ss">12 minutes · Pair work</div>
+      <div class="tip"><strong>How to use:</strong> Student A defends the film as a work of art. Student B argues it is self-indulgent. Both must use specific cinematic language, acknowledge each other's arguments fairly, and use hedged opinion structures throughout. Avoid simple "I liked it / I didn't like it" language entirely.</div>
+      <div id="roleplayContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(3)">&#x2190; back</button>
+        <div class="nrr"><span class="tb">12 min</span><button class="btn p" onclick="goTo(5)">Finish &#x2192;</button></div>
+      </div>
+    </div>
+
+    <div class="sec" id="sec5">
+      <div class="sh">Stage 6 — Summary</div>
+      <div class="st">Lesson complete!</div>
+      <div class="ss">5 minutes · Review</div>
+      <div id="summaryContent"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(4)">&#x2190; back</button>
+        <button class="btn p" onclick="restartLesson()">Start again &#x21BA;</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+let cs=0,sw=null,ga={},ds=0,di=0,dd=false;
+const WORDS=[
+  {word:'auteur',         def:'a director whose personal vision and style dominate their films'},
+  {word:'mise-en-scene',  def:'everything visible in a film frame: setting, lighting, composition'},
+  {word:'non-linear',     def:'a narrative that does not follow chronological order'},
+  {word:'subtext',        def:'the underlying meaning beneath the surface of the dialogue or plot'},
+  {word:'cinematography', def:'the art and technique of film photography and visual storytelling'},
+  {word:'self-indulgent', def:'prioritising personal artistic expression over the audience\'s experience'},
+  {word:'ambiguity',      def:'the quality of being open to more than one interpretation'},
+  {word:'cultural lens',  def:'the perspective shaped by one\'s cultural background and experience'},
+];
+const GAPS=[
+  {id:'g0',before:'The director is considered a true ',blank:'auteur',after:' — every frame reflects her singular creative vision.'},
+  {id:'g1',before:'The ',blank:'mise-en-scene',after:' is extraordinarily controlled — every object in the frame carries symbolic weight.'},
+  {id:'g2',before:'The film\'s ',blank:'non-linear',after:' structure initially feels confusing, but on reflection it mirrors the protagonist\'s fragmented memory.'},
+  {id:'g3',before:'The real drama operates at the level of ',blank:'subtext',after:' — what remains unsaid between the characters is far more powerful than the dialogue itself.'},
+  {id:'g4',before:'The ',blank:'cinematography',after:' is breathtaking — the long, unbroken takes create an almost hypnotic sense of unease.'},
+  {id:'g5',before:'Critics have accused the film of being ',blank:'self-indulgent',after:' — more interested in its own technique than in engaging the audience emotionally.'},
+  {id:'g6',before:'The film resists resolution — its deliberate ',blank:'ambiguity',after:' invites multiple readings rather than providing easy answers.'},
+  {id:'g7',before:'It is worth considering the film through a postcolonial ',blank:'cultural lens',after:' — the power dynamics it depicts are far from accidental.'},
+];
+const FUNC_CATS=[
+  {label:'Making a critical argument',phrases:[
+    'What the film achieves, above all else, is a systematic dismantling of its own genre conventions.',
+    'The non-linear structure is not a stylistic affectation — it is the formal expression of the film\'s central thesis.',
+    'One could argue that the film\'s apparent obscurity is in fact a deliberate demand on the viewer\'s attention.',
+    'The visual language operates in dialogue with the dialogue — the two rarely align, which creates productive tension.']},
+  {label:'Challenging an argument with nuance',phrases:[
+    'I take your point, but I would argue that accessibility and artistic ambition are not mutually exclusive.',
+    'That reading is certainly valid, though I wonder whether it gives the director rather too much credit.',
+    'There is a distinction, I think, between productive ambiguity and mere narrative incoherence.',
+    'The film\'s detractors tend to conflate difficulty with failure — which seems to me a category error.']},
+  {label:'Hedging critical opinions',phrases:[
+    'It strikes me as one of the more formally rigorous films of recent years, though I recognise that is not a universal view.',
+    'I am inclined to read the final sequence as an act of deliberate provocation rather than directorial uncertainty.',
+    'It would be overly reductive to dismiss the film simply because it refuses easy interpretation.',
+    'Whether or not one finds it emotionally satisfying, its technical accomplishment is difficult to dispute.']},
+  {label:'Discussing cultural significance',phrases:[
+    'The film works as both a personal story and a broader meditation on collective memory.',
+    'It sits within a recognisable tradition of European art cinema while simultaneously subverting it.',
+    'The way it handles its subject matter — with restraint rather than spectacle — feels politically significant.',
+    'There is something almost ethnographic about its approach to its characters and their world.']},
+  {label:'Closing an argument or conceding a point',phrases:[
+    'I think we may simply have to accept that this film will divide audiences, and that is perhaps its intention.',
+    'You have given me something to think about — I may have been too quick to defend the structural choices.',
+    'I concede that the pacing in the second act is genuinely problematic, regardless of one\'s broader position.',
+    'Perhaps the most honest response is that it is a film that demands a second viewing before one can judge it fairly.']},
+];
+const DRILL_QS=[
+  {q:'You want to describe the director\'s total creative control in B2 register. Which is most precise?',
+   opts:['The director controlled everything.','She is an auteur — every frame reflects her singular vision.','The director made all the decisions.','It is her film entirely.'],
+   ans:1,explain:'"Auteur" is the precise critical term for a director whose personal vision dominates. "Singular vision" is a natural collocate at B2 critical register.'},
+  {q:'You want to argue that difficulty in a film is intentional and valuable. Which sentence is most sophisticated?',
+   opts:['Hard films can be good.','Difficult films are better than easy ones.','One could argue that the film\'s apparent obscurity is a deliberate demand on the viewer\'s attention.','The film is difficult on purpose.'],
+   ans:2,explain:'"One could argue that..." is a B2 hedging structure. "Apparent obscurity" and "deliberate demand" use precise noun phrases rather than simple adjectives.'},
+  {q:'Your partner praises the cinematography. You want to agree but add a qualification. Which is best?',
+   opts:['Yes, I agree totally.','The cinematography is very beautiful.','The cinematography is undeniably accomplished, though I found it occasionally overwhelmed the emotional content.','Yes it is good but also not perfect.'],
+   ans:2,explain:'"Undeniably accomplished, though..." concedes the point strongly before adding a nuanced qualification — characteristic of B2 critical discourse.'},
+  {q:'You want to say the film\'s meaning is deliberately open to interpretation. Which is correct?',
+   opts:['The film has many meanings.','The film\'s deliberate ambiguity invites multiple readings rather than providing easy answers.','The film is confusing in many ways.','I don\'t know what the film means.'],
+   ans:1,explain:'"Deliberate ambiguity... invites multiple readings" is precise critical language. "Rather than providing easy answers" frames this as a conscious artistic choice, not a failure.'},
+  {q:'You want to concede a point while maintaining your overall argument. Which is most skilled?',
+   opts:['OK you are right about that.','I concede that the pacing in the second act is problematic, though this does not undermine the film\'s broader achievement.','That point is correct but I still think it is a good film.','Yes that is true, but I like it anyway.'],
+   ans:1,explain:'"I concede that X... though this does not undermine Y" is the formal structure for partial concession — acknowledging a weakness without abandoning your position.'},
+  {q:'Which sentence correctly uses a passive construction to discuss how a film is perceived?',
+   opts:['Critics consider it a masterpiece.','It is widely regarded as one of the defining works of contemporary European cinema.','Everyone considers it very important.','The film is a masterpiece according to critics.'],
+   ans:1,explain:'"Is widely regarded as" is an impersonal passive that attributes a view to a broad critical consensus without claiming it as your own — essential in nuanced B2 academic-style discussion.'},
+];
+const ROLEPLAY=[
+  {speaker:'A',text:'[Open the discussion. State your overall position on Parallax clearly but with appropriate hedging — you consider it a significant work of contemporary cinema, and you want to explore why.]'},
+  {speaker:'B',text:'I respect the ambition, and I\'ll acknowledge the cinematography is extraordinary. But I found myself increasingly frustrated — it felt as though the director was more interested in demonstrating her own intelligence than in telling a story.'},
+  {speaker:'A',text:'[Challenge this directly. Argue that the film\'s structure IS the story — the form and content are inseparable. Use the term "auteur" and refer to the non-linear narrative as a deliberate formal choice.]'},
+  {speaker:'B',text:'But there\'s a distinction between form serving content and form replacing it. The subtext you keep referring to — I\'m not sure it\'s actually there, or whether we\'re projecting it onto what is essentially an empty aesthetic exercise.'},
+  {speaker:'A',text:'[Defend the subtext reading with a specific example: a recurring visual motif in the film. Argue that the mise-en-scène is doing significant narrative work. Use precise cinematic vocabulary.]'},
+  {speaker:'B',text:'I\'ll grant you the visual symbolism — that final sequence is genuinely striking. But does striking cinematography constitute meaning? I\'d argue the film mistakes beauty for profundity.'},
+  {speaker:'A',text:'[Acknowledge this is a legitimate tension in art cinema generally. But argue that the film\'s ambiguity is productive — it invites re-reading. Mention its cultural significance in the context of European art cinema.]'},
+  {speaker:'B',text:'Cultural significance is one thing, but accessibility is another. A film that only rewards those already fluent in film theory risks becoming an exclusive, self-congratulatory artefact. Does that concern you at all?'},
+  {speaker:'A',text:'[Engage with this seriously. Concede that the film is demanding and that this is a valid criticism. But argue that demanding art is not inherently elitist — it simply asks more of its audience.]'},
+  {speaker:'B',text:'Perhaps. I think my real objection is this: the film never seems to trust its audience. It withholds not to create tension, but to appear more serious than it is. That, to me, is the definition of self-indulgence.'},
+  {speaker:'A',text:'[This is the most interesting challenge yet. Respond thoughtfully — either defend the withholding as an act of respect for the audience\'s intelligence, or concede the point partially and suggest the film\'s faults do not diminish its achievements. Close the debate generously.]'},
+  {speaker:'B',text:'[Acknowledge the quality of the debate. Suggest you may need to watch it again before reaching a final verdict. Leave the argument genuinely open — neither of you has "won".]'},
+];
+function goTo(n){
+  document.querySelectorAll('.sec').forEach((s,i)=>s.classList.toggle('active',i===n));
+  document.querySelectorAll('.sd').forEach((d,i)=>{d.classList.remove('active','done');if(i===n)d.classList.add('active');else if(i<n)d.classList.add('done');});
+  cs=n;if(n===1)bG();if(n===2)bF();if(n===3&&!dd)bD();if(n===4)bR();if(n===5)bS();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function bG(){
+  const bank=document.getElementById('wordBank');bank.innerHTML='';
+  WORDS.forEach(w=>{const c=document.createElement('div');c.className='vc';c.textContent=w.word;c.id='chip_'+w.word.replace(/\s/g,'_');c.title=w.def;c.onclick=()=>selW(w.word);bank.appendChild(c);});
+  const ct=document.getElementById('gapSentences');ct.innerHTML='';
+  GAPS.forEach(g=>{const p=document.createElement('p');p.className='gs';p.innerHTML=(g.before||'')+`<span class="gap" id="${g.id}" onclick="fG('${g.id}')"></span>`+(g.after||'');ct.appendChild(p);});
+}
+function selW(w){
+  document.querySelectorAll('.vc').forEach(c=>c.classList.remove('selected'));
+  if(sw===w){sw=null;return;}sw=w;const key=w.replace(/\s/g,'_');const c=document.getElementById('chip_'+key);if(c)c.classList.add('selected');
+}
+function fG(gid){
+  const gap=document.getElementById(gid);if(!gap)return;
+  const cur=gap.textContent.trim();
+  if(cur){const key=cur.replace(/\s/g,'_');const c=document.getElementById('chip_'+key);if(c)c.classList.remove('used');gap.textContent='';gap.classList.remove('correct','wrong');delete ga[gid];return;}
+  if(!sw)return;const key=sw.replace(/\s/g,'_');const chip=document.getElementById('chip_'+key);if(chip&&chip.classList.contains('used'))return;
+  gap.textContent=sw;ga[gid]=sw;if(chip)chip.classList.add('used');sw=null;document.querySelectorAll('.vc').forEach(c=>c.classList.remove('selected'));
+}
+function checkGaps(){
+  let ok=0;GAPS.forEach(g=>{const gap=document.getElementById(g.id);const val=gap?gap.textContent.trim():'';if(val===g.blank){gap.classList.add('correct');gap.classList.remove('wrong');ok++;}else if(val){gap.classList.add('wrong');gap.classList.remove('correct');}});
+  const fb=document.getElementById('gapFeedback');fb.className='fm show '+(ok===GAPS.length?'ok':'err');
+  fb.textContent=ok===GAPS.length?`All ${GAPS.length} correct! Excellent work.`:`${ok} of ${GAPS.length} correct. Check highlighted answers and try again.`;
+}
+function bF(){
+  const w=document.getElementById('funcContent');w.innerHTML='';
+  FUNC_CATS.forEach(cat=>{let h=`<div class="card"><p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--txt2);margin-bottom:10px">${cat.label}</p>`;cat.phrases.forEach(ph=>{h+=`<div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">${ph}</span></div>`;});h+='</div>';w.innerHTML+=h;});
+  w.innerHTML+=`<div class="tip">At B2, critical discussion is not about winning — it is about thinking out loud with precision. The most impressive speakers acknowledge strong counterarguments before dismantling them. Phrases like "I concede that... though..." and "That reading is valid, however..." signal intellectual confidence, not weakness.</div>`;
+}
+function bD(){di=0;ds=0;rDQ();}
+function rDQ(){
+  const w=document.getElementById('drillWrap');
+  if(di>=DRILL_QS.length){dd=true;document.getElementById('drillNextBtn').style.display='inline-block';w.innerHTML=`<div class="card" style="text-align:center;padding:2rem 1.25rem"><p style="font-size:13px;color:var(--txt2);margin-bottom:14px">Quiz complete!</p><div class="sc"><span class="sn">${ds}/${DRILL_QS.length}</span><span class="sl2">score</span></div><p style="font-size:15px;font-weight:500;color:var(--txt)">${ds===DRILL_QS.length?'Excellent!':ds>=4?'Very good!':'Good effort! Review and try again.'}</p></div>`;return;}
+  const q=DRILL_QS[di];
+  w.innerHTML=`<p class="pc">Question ${di+1} of ${DRILL_QS.length}</p><div class="card"><p class="dq">${q.q}</p><div class="do">${q.opts.map((o,i)=>`<button class="ob" onclick="aD(${i})">${o}</button>`).join('')}</div><div id="de" class="eb"></div><button id="dc" style="display:none;margin-top:14px" class="btn p" onclick="nDQ()">Next &#x2192;</button></div>`;
+}
+function aD(ch){
+  const q=DRILL_QS[di];document.querySelectorAll('.ob').forEach(b=>b.disabled=true);document.querySelectorAll('.ob')[q.ans].classList.add('correct');
+  const e=document.getElementById('de');e.style.display='block';
+  if(ch===q.ans){ds++;e.style.background='#EAF3DE';e.style.color='#27500A';e.style.border='0.5px solid #C0DD97';e.textContent='Correct! '+q.explain;}
+  else{document.querySelectorAll('.ob')[ch].classList.add('wrong');e.style.background='#FCEBEB';e.style.color='#A32D2D';e.style.border='0.5px solid #F7C1C1';e.textContent='Not quite. '+q.explain;}
+  document.getElementById('dc').style.display='inline-block';
+}
+function nDQ(){di++;rDQ();}
+function bR(){
+  const w=document.getElementById('roleplayContent');w.innerHTML='';
+  ROLEPLAY.forEach(line=>{if(line.speaker==='B'){w.innerHTML+=`<div class="ib"><div class="il">Student B — Sceptic</div><div class="it">${line.text}</div></div>`;}else{w.innerHTML+=`<div class="rb"><div class="rl2">Student A — Advocate</div><div class="rt">${line.text}</div></div>`;}});
+  w.innerHTML+=`<div style="margin-top:14px"><div class="card-m"><p style="font-size:14px;font-weight:500;margin-bottom:6px">Extension: the broader debate</p><p style="font-size:13px;color:var(--txt2)">Swap positions. Now debate a broader question: "Prestige television has surpassed cinema as the dominant art form of our era." Student A argues in favour, Student B argues against. Neither student should express their genuine personal opinion — argue the assigned position as rigorously as possible.</p></div></div>`;
+}
+function bS(){
+  const items=['8 advanced film criticism vocabulary words: auteur, mise-en-scène, non-linear, subtext, cinematography, ambiguity','Functional phrases for 5 critical functions: making an argument, challenging with nuance, hedging, discussing cultural significance, conceding a point','6 B2 drills: impersonal passives, hedging structures, partial concession, noun phrases, "one could argue that..."','A high-level post-screening debate requiring B2 critical language, specific cinematic vocabulary, and sophisticated argumentation'];
+  const hw=['Write a 150-200 word critical review of a film you have seen recently. Use at least 6 vocabulary words from this lesson. Include your argument, a counterargument, and a conclusion.','Find a written film review in an English publication (The Guardian, Sight & Sound, Little White Lies). Identify 3 hedging phrases and 3 critical opinion structures. Write them down and explain what function each serves.','Choose one of these questions and write a structured argument (120-150 words): (a) "The best films are always uncomfortable." (b) "A film\'s cultural significance matters more than whether it is enjoyable." Use B2 register throughout.'];
+  document.getElementById('summaryContent').innerHTML=`<div class="card" style="text-align:center;padding:1.75rem 1.25rem"><p style="font-size:13px;color:var(--txt2);margin-bottom:10px">Today\'s lesson</p><div class="lvl">B2 — Upper Intermediate</div><p style="font-size:22px;font-weight:500;margin:8px 0 4px">Talking About Films and TV</p><p style="font-size:13px;color:var(--txt2)">~40 minutes</p></div><div class="card"><p style="font-size:13px;font-weight:500;margin-bottom:10px">What you practised:</p>${items.map(i=>`<div class="br"><span class="bd" style="background:#639922"></span><span style="font-size:14px;color:var(--txt)">${i}</span></div>`).join('')}</div><div class="card-m"><p style="font-size:13px;font-weight:500;margin-bottom:8px">Homework ideas:</p>${hw.map((h,i)=>`<div class="br"><span class="bd" style="background:#7B3FC4;margin-top:7px"></span><span style="font-size:13px;color:var(--txt2);line-height:1.7">${i+1}. ${h}</span></div>`).join('')}</div><div class="tip" style="margin-bottom:0">Exceptional work. Discussing film at this level requires intellectual confidence, linguistic precision, and the ability to hold a position while genuinely listening to a counterargument. Those are rare skills in any language.</div>`;
+}
+function restartLesson(){dd=false;ds=0;di=0;ga={};sw=null;goTo(0);}
+bG();bF();bR();bS();
+</script>
+</body>
+</html>
