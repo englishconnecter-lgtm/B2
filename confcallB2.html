@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://englishconnecter-lgtm.github.io/B2/calls_b2.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conference Calls — B2 Lesson</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#fff;--bg2:#f6f5f2;--bg3:#f0ede8;--txt:#1a1a18;--txt2:#6b6a66;--bdr:rgba(0,0,0,0.12);--bdr2:rgba(0,0,0,0.22);--rm:8px;--rl:12px}
+  @media(prefers-color-scheme:dark){:root{--bg:#1c1c1a;--bg2:#252523;--bg3:#2e2e2b;--txt:#f0ede8;--txt2:#9a9891;--bdr:rgba(255,255,255,0.12);--bdr2:rgba(255,255,255,0.22)}}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg3);color:var(--txt);min-height:100vh;padding:2rem 1rem}
+  .outer{max-width:720px;margin:0 auto}
+  .ph{text-align:center;margin-bottom:2rem}.ph h1{font-size:22px;font-weight:500;margin-bottom:4px}.ph p{font-size:14px;color:var(--txt2)}
+  .lw{background:var(--bg);border-radius:var(--rl);border:0.5px solid var(--bdr);padding:2rem}
+  .pb{display:flex;align-items:center;gap:8px;margin-bottom:2rem}
+  .sd{width:28px;height:28px;border-radius:50%;border:0.5px solid var(--bdr2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--txt2);background:var(--bg2);cursor:pointer;transition:all .2s;flex-shrink:0}
+  .sd.active{background:#7B3FC4;color:#fff;border-color:#7B3FC4}.sd.done{background:#EAF3DE;color:#3B6D11;border-color:#639922}
+  .sl{flex:1;height:0.5px;background:var(--bdr)}
+  .sec{display:none}.sec.active{display:block}
+  .sh{font-size:11px;font-weight:500;color:#7B3FC4;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+  .st{font-size:20px;font-weight:500;color:var(--txt);margin-bottom:4px}.ss{font-size:13px;color:var(--txt2);margin-bottom:1.5rem}
+  .card{background:var(--bg);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:12px}
+  .card-m{background:var(--bg2);border:0.5px solid var(--bdr);border-radius:var(--rl);padding:1rem 1.25rem;margin-bottom:12px}
+  .vg{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px;margin-bottom:16px}
+  .vc{background:#F2EBFC;border:0.5px solid #C9A8F0;border-radius:var(--rm);padding:7px 10px;font-size:13px;font-weight:500;color:#4A1980;text-align:center;cursor:pointer;transition:all .15s;user-select:none}
+  .vc:hover{background:#C9A8F0}.vc.used{background:var(--bg2);color:var(--txt2);border-color:var(--bdr);opacity:.5}.vc.selected{outline:2px solid #7B3FC4}
+  .gs{font-size:15px;color:var(--txt);line-height:2.2;margin-bottom:10px}
+  .gap{display:inline-block;min-width:120px;height:26px;border-bottom:2px solid #7B3FC4;margin:0 4px;text-align:center;font-weight:500;color:#7B3FC4;font-size:14px;cursor:pointer;vertical-align:bottom;padding:0 4px;transition:all .15s}
+  .gap.correct{border-bottom-color:#639922;color:#3B6D11;background:#EAF3DE;border-radius:4px 4px 0 0}
+  .gap.wrong{border-bottom-color:#E24B4A;color:#A32D2D;background:#FCEBEB;border-radius:4px 4px 0 0;animation:shake .3s}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  .fm{font-size:13px;padding:10px 14px;border-radius:var(--rm);margin-bottom:12px;display:none}
+  .fm.show{display:block}.fm.ok{background:#EAF3DE;color:#3B6D11;border:0.5px solid #C0DD97}.fm.err{background:#FCEBEB;color:#A32D2D;border:0.5px solid #F7C1C1}
+  .dq{font-size:15px;font-weight:500;color:var(--txt);margin-bottom:14px;line-height:1.6}
+  .do{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  @media(max-width:500px){.do{grid-template-columns:1fr}}
+  .ob{background:var(--bg);border:0.5px solid var(--bdr2);border-radius:var(--rm);padding:10px 14px;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s;text-align:left;line-height:1.5}
+  .ob:hover:not(:disabled){background:var(--bg2)}.ob.correct{background:#EAF3DE;border-color:#639922;color:#3B6D11}.ob.wrong{background:#FCEBEB;border-color:#E24B4A;color:#A32D2D}.ob:disabled{cursor:default}
+  .pc{font-size:12px;color:var(--txt2);margin-bottom:8px}
+  .nr{display:flex;gap:8px;margin-top:1.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .nrr{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .btn{background:var(--bg);border:0.5px solid var(--bdr2);border-radius:var(--rm);padding:9px 20px;font-size:14px;color:var(--txt);cursor:pointer;transition:all .15s}
+  .btn:hover{background:var(--bg2)}.btn.p{background:#7B3FC4;color:#fff;border-color:#7B3FC4}.btn.p:hover{background:#5A2B96}
+  .tb{font-size:11px;color:var(--txt2);background:var(--bg2);border:0.5px solid var(--bdr);border-radius:var(--rm);padding:5px 10px}
+  .rb{border-left:3px solid #7B3FC4;background:#F2EBFC;border-radius:0 var(--rm) var(--rm) 0;padding:12px 16px;margin-bottom:10px}
+  .rl2{font-size:11px;font-weight:500;color:#7B3FC4;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .rt{font-size:14px;color:#4A1980;line-height:1.7}
+  .ib{border-left:3px solid #639922;background:#EAF3DE;border-radius:0 var(--rm) var(--rm) 0;padding:12px 16px;margin-bottom:10px}
+  .il{font-size:11px;font-weight:500;color:#3B6D11;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .it{font-size:14px;color:#27500A;line-height:1.7}
+  .tip{background:#FAEEDA;border:0.5px solid #FAC775;border-radius:var(--rm);padding:10px 14px;font-size:13px;color:#633806;margin-bottom:14px}
+  .sc{width:84px;height:84px;border-radius:50%;border:3px solid #7B3FC4;display:flex;align-items:center;justify-content:center;flex-direction:column;margin:0 auto 18px}
+  .sn{font-size:24px;font-weight:500;color:#7B3FC4}.sl2{font-size:10px;color:var(--txt2)}
+  .tag{display:inline-block;font-size:11px;font-weight:500;padding:3px 9px;border-radius:var(--rm);margin-right:4px;margin-bottom:4px}
+  .tp{background:#F2EBFC;color:#4A1980;border:0.5px solid #C9A8F0}.tg{background:#EAF3DE;color:#27500A;border:0.5px solid #C0DD97}.ta{background:#FAEEDA;color:#633806;border:0.5px solid #FAC775}
+  .br{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
+  .bd{margin-top:6px;width:6px;height:6px;border-radius:50%;flex-shrink:0}
+  .eb{font-size:13px;padding:10px 14px;border-radius:var(--rm);margin-top:8px;display:none}
+  .rcg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+  @media(max-width:480px){.rcg{grid-template-columns:1fr}}
+  .rc{border-radius:var(--rl);padding:1rem 1.25rem;border:0.5px solid}
+  .rca{background:#F2EBFC;border-color:#C9A8F0}.rcb{background:#EAF3DE;border-color:#C0DD97}
+  .rct{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+  .rca .rct{color:#7B3FC4}.rcb .rct{color:#3B6D11}
+  .rc p{font-size:13px;line-height:1.7}.rca p{color:#4A1980}.rcb p{color:#27500A}
+  .lvl{display:inline-block;background:#7B3FC4;color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:8px;letter-spacing:.04em}
+
+
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch;margin-bottom:16px}
+  @media(max-width:700px){.hero{grid-template-columns:1fr}}
+  .hero-img{position:relative;min-height:260px;border-radius:18px;overflow:hidden;border:1px solid var(--bdr);background:
+    linear-gradient(135deg, rgba(123,63,196,.18), rgba(250,238,218,.75)),
+    url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+    box-shadow:0 18px 40px rgba(0,0,0,.10)}
+  .hero-badge{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92);color:#4A1980;border:1px solid rgba(123,63,196,.18);border-radius:999px;padding:6px 10px;font-size:11px;font-weight:700;letter-spacing:.04em}
+  .hero-overlay{position:absolute;inset:auto 0 0 0;padding:18px;background:linear-gradient(to top, rgba(20,20,20,.62), rgba(20,20,20,0))}
+  .hero-overlay h3{font-size:22px;line-height:1.2;color:#fff;margin-bottom:6px}
+  .hero-overlay p{font-size:13px;line-height:1.5;color:rgba(255,255,255,.9)}
+  .preview-card{background:linear-gradient(180deg, var(--bg), var(--bg2));border:1px solid var(--bdr);border-radius:18px;padding:18px;box-shadow:0 12px 28px rgba(0,0,0,.06)}
+  .preview-kicker{font-size:11px;font-weight:700;color:#7B3FC4;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+  .preview-title{font-size:20px;font-weight:600;color:var(--txt);margin-bottom:8px}
+  .preview-text{font-size:13px;color:var(--txt2);line-height:1.6;margin-bottom:12px}
+  .preview-list{display:grid;gap:8px;margin-bottom:14px}
+  .preview-item{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--txt)}
+  .preview-dot{width:8px;height:8px;border-radius:50%;background:#7B3FC4;flex:0 0 8px;margin-top:6px}
+  .preview-pills{display:flex;flex-wrap:wrap;gap:8px}
+  .preview-pill{font-size:11px;font-weight:600;padding:5px 10px;border-radius:999px;background:#F2EBFC;color:#4A1980;border:1px solid #C9A8F0}
+  .ph{margin-bottom:1.25rem}
+  .lw{box-shadow:0 22px 60px rgba(0,0,0,.08)}
+  .card,.card-m,.rc,.tip,.fm,.preview-card{backdrop-filter:saturate(110%)}
+
+</style>
+</head>
+<body>
+<div class="outer">
+  <div class="ph">
+    <div class="lvl">B2 — Upper Intermediate</div>
+    <h1>Conference Calls</h1>
+    <p>B2 level &nbsp;·&nbsp; 40-minute interactive lesson</p>
+  </div>
+  <div class="lw">
+    <div class="pb" id="pb">
+      <div class="sd active" onclick="goTo(0)">1</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(1)">2</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(2)">3</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(3)">4</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(4)">5</div><div class="sl"></div>
+      <div class="sd" onclick="goTo(5)">6</div>
+    </div>
+    <div class="sec active" id="sec0">
+      <div class="sh">Stage 1 — Warm-up</div>
+      <div class="st">High-stakes remote communication</div>
+      <div class="ss">5 minutes · Critical discussion</div>
+      <div class="hero">
+        <div class="hero-img">
+          <div class="hero-badge">Page 1 only</div>
+          <div class="hero-overlay">
+            <h3>Running a difficult executive call</h3>
+            <p>Practise redirecting vague answers, extracting commitments, and closing with precise accountability in a high-pressure QBR.</p>
+          </div>
+        </div>
+        <div class="preview-card">
+          <div class="preview-kicker">Lesson preview</div>
+          <div class="preview-title">What students will do</div>
+          <div class="preview-text">This lesson develops advanced remote-meeting language for calls where timing, clarity, and executive presence all matter.</div>
+          <div class="preview-list">
+            <div class="preview-item"><span class="preview-dot"></span><span>use executive vocabulary for forecasts, optics, and recovery planning</span></div>
+            <div class="preview-item"><span class="preview-dot"></span><span>redirect long or vague answers without embarrassing the speaker</span></div>
+            <div class="preview-item"><span class="preview-dot"></span><span>take accountability and commit to measurable next steps on a live call</span></div>
+            <div class="preview-item"><span class="preview-dot"></span><span>close with written actions, owners, dates, and reporting cadence</span></div>
+          </div>
+          <div class="preview-pills">
+            <span class="preview-pill">B2 speaking</span>
+            <span class="preview-pill">Executive calls</span>
+            <span class="preview-pill">40 minutes</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-m">
+        <p style="font-size:14px;font-weight:500;margin-bottom:10px">Discuss with your partner:</p>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:4px">1. What is lost in a call compared to an in-person meeting — and how do you compensate for it linguistically?</p>
+        <p style="font-size:14px;line-height:1.8;margin-bottom:4px">2. How do you manage a participant who consistently dominates a call, speaking over others and derailing the agenda?</p>
+        <p style="font-size:14px;line-height:1.8">3. When is it appropriate to challenge a senior colleague's position on a call, and how do you frame that challenge so it lands well?</p>
+      </div>
+      <div class="tip"><strong>Teacher note:</strong> At B2, the focus is on the strategic and interpersonal dimensions of remote calls: managing a difficult participant without humiliating them, steering a call back on track under senior scrutiny, framing disagreement diplomatically across cultures, and closing with binding accountability. Emphasise register: confident, precise, and measured.</div>
+      <div class="card">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:10px">Today's scenario — a <strong>quarterly business review call</strong> with the CEO and three regional directors:</p>
+        <div class="rcg" style="margin-bottom:8px">
+          <div class="rc rca"><div class="rct">Student A — CFO (host)</div><p>You chair this call for the CEO. One regional director (APAC) is significantly underperforming and has been talking around the issue for 10 minutes. You need to extract a concrete commitment from them while keeping the CEO reassured and the call on schedule.</p></div>
+          <div class="rc rcb"><div class="rct">Student B — APAC Director</div><p>Your region is 18% below target. You have genuine reasons (supply chain disruption, late product launch) but have been somewhat vague so far. Under direct pressure, you must give a credible explanation, take accountability, and commit to a specific recovery plan.</p></div>
+        </div>
+        <div><span class="tag tp">QBR call</span><span class="tag tg">Executive presence</span><span class="tag ta">Accountability on calls</span></div>
+      </div>
+      <div class="nr"><span class="tb">5 min</span><button class="btn p" onclick="goTo(1)">Next: vocabulary →</button></div>
+    </div>
+    <div class="sec" id="sec1">
+      <div class="sh">Stage 2 — Vocabulary</div>
+      <div class="st">Advanced call and executive vocabulary</div>
+      <div class="ss">10 minutes · Gap-fill</div>
+      <div class="tip">Click a word from the box, then click a blank. Hover for definitions.</div>
+      <div class="vg" id="wordBank"><div class="vc" id="chip_headwinds" title="external conditions making progress more difficult, like economic or market challenges">headwinds</div><div class="vc" id="chip_trajectory" title="the path or direction something is moving, especially over time">trajectory</div><div class="vc" id="chip_granular" title="detailed and specific, broken down into small components">granular</div><div class="vc" id="chip_optics" title="how something appears or is perceived by others, especially stakeholders">optics</div><div class="vc" id="chip_mobilise" title="to organise and deploy resources quickly to address a challenge">mobilise</div><div class="vc" id="chip_recalibrate" title="to adjust a plan, expectation, or approach based on new information">recalibrate</div><div class="vc" id="chip_net_of" title="after accounting for or excluding a specific factor">net of</div><div class="vc" id="chip_bottom-line" title="the final financial result; also used to mean the essential point">bottom-line</div></div>
+      <div id="gapFeedback" class="fm"></div>
+      <div class="card">
+        <p style="font-size:13px;color:var(--txt2);margin-bottom:14px">Complete the sentences with the correct word.</p>
+        <div id="gapSentences"><p class="gs">The APAC shortfall is largely attributable to structural market <span class="gap" id="g0" onclick="fG(&#39;g0&#39;)"></span> — not execution failures within the team.</p><p class="gs">The current <span class="gap" id="g1" onclick="fG(&#39;g1&#39;)"></span> suggests we will recover to within 5% of target by end of Q4, assuming no further disruption.</p><p class="gs">I need something more <span class="gap" id="g2" onclick="fG(&#39;g2&#39;)"></span> than "supply chain issues" — which SKUs were affected, and for how long?</p><p class="gs">The <span class="gap" id="g3" onclick="fG(&#39;g3&#39;)"></span> of missing target by 18% without a credible explanation are not good — we need a clear narrative for the board.</p><p class="gs">We are in the process of mobilising additional field sales resource to <span class="gap" id="g4" onclick="fG(&#39;g4&#39;)"></span> the recovery effort before end of quarter.</p><p class="gs">Given the supply chain disruption, we may need to <span class="gap" id="g5" onclick="fG(&#39;g5&#39;)"></span> the full-year forecast rather than hold the original target.</p><p class="gs"><span class="gap" id="g6" onclick="fG(&#39;g6&#39;)"></span> the product launch delay, APAC's underlying performance is actually only 6% below comparable prior year.</p><p class="gs">The <span class="gap" id="g7" onclick="fG(&#39;g7&#39;)"></span> is this: if the recovery plan is not on track by mid-November, we will need to revise the annual forecast.</p></div>
+      </div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(0)">← back</button>
+        <div class="nrr"><span class="tb">10 min</span><button class="btn" onclick="checkGaps()">Check answers</button><button class="btn p" onclick="goTo(2)">Next →</button></div>
+      </div>
+    </div>
+    <div class="sec" id="sec2">
+      <div class="sh">Stage 3 — Functional language</div>
+      <div class="st">High-stakes call management language</div>
+      <div class="ss">8 minutes · Study and practise</div>
+      <div id="funcContent"><div class="card"><p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--txt2);margin-bottom:10px">Redirecting a vague or evasive answer</p><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">I appreciate the context, but I need a more specific answer: what is the committed number for Q4?</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">You've described the conditions well — could you now quantify the impact so we can assess the recovery plan?</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">I want to make sure we're all clear on this: are you saying the 18% gap is recoverable within this fiscal year, or not?</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">Rather than discussing what caused it, could we focus on what you are committing to from this point forward?</span></div></div><div class="card"><p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--txt2);margin-bottom:10px">Framing a difficult question diplomatically</p><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">I'd like to put a direct question to APAC, if I may — and I'd ask for a direct answer.</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">I want to give you the opportunity to set the record straight on this before the CEO responds.</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">This is a safe space for an honest conversation — I'd rather we surface this here than in the board report.</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">I am not looking for reasons — I am looking for a credible plan. Can you give me that?</span></div></div><div class="card"><p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--txt2);margin-bottom:10px">Taking accountability on a call under pressure</p><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">I want to be clear: I own this number and I own the shortfall. The reasons are real but the accountability is mine.</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">The execution was not where it needed to be in Q2, and I will not try to attribute that entirely to external factors.</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">My commitment to this call is: 8% recovery by November, with weekly progress reporting to the CFO.</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">I would ask for 30 days to demonstrate progress before we consider revising the full-year forecast.</span></div></div><div class="card"><p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--txt2);margin-bottom:10px">Managing a dominant or evasive participant</p><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">I am going to park the context for a moment and ask a binary question: yes or no, is the target recoverable?</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">I want to make sure the CEO has what they need from this call. APAC, can you give us a one-sentence commitment?</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">We are at risk of running over time. I need a number from APAC before we move on.</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">I hear you on the external factors, and we can discuss those in detail separately. For now, I need the recovery figure.</span></div></div><div class="card"><p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--txt2);margin-bottom:10px">Closing a high-stakes call with binding accountability</p><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">To record this for the minutes: APAC commits to an 8% recovery by 30 November, with biweekly reporting to the CFO.</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">I want each of us to leave this call knowing exactly what we are accountable for. Let me read that back.</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">CEO, I will send a written summary of commitments within the hour — I would ask for your sign-off by end of day.</span></div><div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">If any of the commitments made today are at risk, I expect to hear from the relevant director before the risk materialises, not after.</span></div></div><div class="tip">At B2, the most powerful call skill is the ability to redirect without embarrassing. "I appreciate the context, but I need a number" does the same work as "stop avoiding the question" — without the collateral damage. The best facilitators make it impossible to be vague, while making it easy to be honest.</div></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(1)">← back</button>
+        <div class="nrr"><span class="tb">8 min</span><button class="btn p" onclick="goTo(3)">Next →</button></div>
+      </div>
+    </div>
+    <div class="sec" id="sec3">
+      <div class="sh">Stage 4 — Language in use</div>
+      <div class="st">B2 executive call language drill</div>
+      <div class="ss">10 minutes · Multiple choice</div>
+      <div id="drillWrap"></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(2)">← back</button>
+        <div class="nrr"><span class="tb">10 min</span><button class="btn p" id="drillNextBtn" onclick="goTo(4)" style="display:none">Next: role play →</button></div>
+      </div>
+    </div>
+    <div class="sec" id="sec4">
+      <div class="sh">Stage 5 — Role play</div>
+      <div class="st">The quarterly business review</div>
+      <div class="ss">12 minutes · Pair work</div>
+      <div class="tip"><strong>How to use:</strong> Student A must extract a commitment from Student B without humiliating them in front of the CEO. Student B must give a credible account and commit to a specific, measurable recovery plan. Both must maintain composure and executive register throughout.</div>
+      <div id="roleplayContent"><div class="rb"><div class="rl2">Student A — CFO (host)</div><div class="rt">[Open the call. Note the CEO is present. State the purpose: the quarterly business review, with a focus on APAC performance. Say you will move directly to APAC after a brief EMEA update. Set the expectation: you need specific, committed numbers from each region today.]</div></div><div class="ib"><div class="il">Student B — APAC Director</div><div class="it">Thank you. Before we get to the numbers, I want to give some context. APAC faced significant headwinds this quarter — the product launch was delayed by six weeks, and supply chain disruption affected three of our top-five SKUs for most of August.</div></div><div class="rb"><div class="rl2">Student A — CFO (host)</div><div class="rt">[Acknowledge the context briefly. Then redirect with precision: ask for the specific shortfall figure, the percentage below target, and what is recoverable by year-end. Make clear you need numbers, not narrative.]</div></div><div class="ib"><div class="il">Student B — APAC Director</div><div class="it">We are 18% below Q3 target. Net of the launch delay, underlying performance is closer to 6% below comparable prior year. My view is that Q4 is recoverable — but I want to be realistic rather than overpromit.</div></div><div class="rb"><div class="rl2">Student A — CFO (host)</div><div class="rt">[Note the distinction between 18% and 6% net of launch — say you need both figures in the written record. Ask the APAC director to state specifically what they are committing to for Q4, in percentage terms, with a date.]</div></div><div class="ib"><div class="il">Student B — APAC Director</div><div class="it">I am committing to an 8% recovery by 30 November. That brings us to within 10% of full-year target. I would ask for 30 days before any forecast revision is made — I am confident we can demonstrate progress in that time.</div></div><div class="rb"><div class="rl2">Student A — CFO (host)</div><div class="rt">[Acknowledge the commitment. Note it formally for the minutes: 8% by 30 November, biweekly CFO reporting. Ask the CEO if they have any questions for APAC before you close this agenda item.]</div></div><div class="ib"><div class="il">Student B — APAC Director</div><div class="it">[Play the CEO briefly: ask one sharp question — what specifically will change in November that was not in place in Q3? The APAC director must answer concisely and credibly.]</div></div><div class="rb"><div class="rl2">Student A — CFO (host)</div><div class="rt">[After the CEO's question and the APAC response, bring the item to a close. Record the accountability formally. Move to the next agenda item. Close the call with a summary of all commitments and a note that the written record will follow within the hour.]</div></div><div style="margin-top:14px"><div class="card-m"><p style="font-size:14px;font-weight:500;margin-bottom:6px">Extension: the cross-cultural challenge</p><p style="font-size:13px;color:var(--txt2)">Swap roles. This time, Student B plays an EMEA director who is performing well but wants to use the call to raise a sensitive HR concern about their line manager — in front of the CEO. Student A must manage this professionally: acknowledge the concern, prevent a public airing of an internal dispute, and redirect to an appropriate private channel — without dismissing or humiliating Student B.</p></div></div></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(3)">→ back</button>
+        <div class="nrr"><span class="tb">12 min</span><button class="btn p" onclick="goTo(5)">Finish →</button></div>
+      </div>
+    </div>
+    <div class="sec" id="sec5">
+      <div class="sh">Stage 6 — Summary</div>
+      <div class="st">Lesson complete!</div>
+      <div class="ss">5 minutes · Review</div>
+      <div id="summaryContent"><div class="card" style="text-align:center;padding:1.75rem 1.25rem"><p style="font-size:13px;color:var(--txt2);margin-bottom:10px">Today's lesson</p><div class="lvl">B2 — Upper Intermediate</div><p style="font-size:22px;font-weight:500;margin:8px 0 4px">Conference Calls</p><p style="font-size:13px;color:var(--txt2)">~40 minutes</p></div><div class="card"><p style="font-size:13px;font-weight:500;margin-bottom:10px">What you practised:</p><div class="br"><span class="bd" style="background:#639922"></span><span style="font-size:14px;color:var(--txt)">8 advanced executive vocabulary words: headwinds, trajectory, granular, optics, recalibrate, net of, bottom-line</span></div><div class="br"><span class="bd" style="background:#639922"></span><span style="font-size:14px;color:var(--txt)">Phrases for 5 high-stakes call functions: redirecting vagueness, framing hard questions, taking accountability under pressure, managing dominant participants, closing with binding accountability</span></div><div class="br"><span class="bd" style="background:#639922"></span><span style="font-size:14px;color:var(--txt)">6 B2 drills: modal perfect for accountability, passive voice in formal commitments, "binary question" technique, "I appreciate... but" redirection</span></div><div class="br"><span class="bd" style="background:#639922"></span><span style="font-size:14px;color:var(--txt)">A QBR role play requiring executive composure, precise financial language, and binding commitment under senior scrutiny</span></div></div><div class="card-m"><p style="font-size:13px;font-weight:500;margin-bottom:8px">Homework ideas:</p><div class="br"><span class="bd" style="background:#7B3FC4;margin-top:7px"></span><span style="font-size:13px;color:var(--txt2);line-height:1.7">1. Write the formal call summary email (150 words) that the CFO sends to the CEO within one hour of the call ending. Include the APAC commitment, reporting cadence, and any other actions.</span></div><div class="br"><span class="bd" style="background:#7B3FC4;margin-top:7px"></span><span style="font-size:13px;color:var(--txt2);line-height:1.7">2. Write a briefing note (100 words) from the APAC Director to their team after the call, explaining the commitment made and what needs to happen in the next 30 days.</span></div><div class="br"><span class="bd" style="background:#7B3FC4;margin-top:7px"></span><span style="font-size:13px;color:var(--txt2);line-height:1.7">3. Research the expression "managing up" — what does it mean and how do you do it on a call? Write 3 sentences with examples from today's role play.</span></div></div><div class="tip" style="margin-bottom:0">Outstanding. Performing at executive level on a remote call — in a second language, under scrutiny, with precision and composure — is a rare and valuable skill. You have the language to do it now.</div></div>
+      <div class="nr">
+        <button class="btn" onclick="goTo(4)">← back</button>
+        <button class="btn p" onclick="restartLesson()">Start again ↺</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+let cs=0,sw=null,ga={},ds=0,di=0,dd=false;
+const WORDS=[
+  {word:'headwinds',      def:'external conditions making progress more difficult, like economic or market challenges'},
+  {word:'trajectory',    def:'the path or direction something is moving, especially over time'},
+  {word:'granular',      def:'detailed and specific, broken down into small components'},
+  {word:'optics',        def:'how something appears or is perceived by others, especially stakeholders'},
+  {word:'mobilise',      def:'to organise and deploy resources quickly to address a challenge'},
+  {word:'recalibrate',   def:'to adjust a plan, expectation, or approach based on new information'},
+  {word:'net of',        def:'after accounting for or excluding a specific factor'},
+  {word:'bottom-line',   def:'the final financial result; also used to mean the essential point'},
+];
+const GAPS=[
+  {id:'g0',before:'The APAC shortfall is largely attributable to structural market ',blank:'headwinds',after:' — not execution failures within the team.'},
+  {id:'g1',before:'The current ',blank:'trajectory',after:' suggests we will recover to within 5% of target by end of Q4, assuming no further disruption.'},
+  {id:'g2',before:'I need something more ',blank:'granular',after:' than "supply chain issues" — which SKUs were affected, and for how long?'},
+  {id:'g3',before:'The ',blank:'optics',after:' of missing target by 18% without a credible explanation are not good — we need a clear narrative for the board.'},
+  {id:'g4',before:'We are in the process of mobilising additional field sales resource to ',blank:'mobilise',after:' the recovery effort before end of quarter.'},
+  {id:'g5',before:'Given the supply chain disruption, we may need to ',blank:'recalibrate',after:' the full-year forecast rather than hold the original target.'},
+  {id:'g6',before:'',blank:'net of',after:' the product launch delay, APAC\'s underlying performance is actually only 6% below comparable prior year.'},
+  {id:'g7',before:'The ',blank:'bottom-line',after:' is this: if the recovery plan is not on track by mid-November, we will need to revise the annual forecast.'},
+];
+const FUNC_CATS=[
+  {label:'Redirecting a vague or evasive answer',phrases:[
+    'I appreciate the context, but I need a more specific answer: what is the committed number for Q4?',
+    'You\'ve described the conditions well — could you now quantify the impact so we can assess the recovery plan?',
+    'I want to make sure we\'re all clear on this: are you saying the 18% gap is recoverable within this fiscal year, or not?',
+    'Rather than discussing what caused it, could we focus on what you are committing to from this point forward?']},
+  {label:'Framing a difficult question diplomatically',phrases:[
+    'I\'d like to put a direct question to APAC, if I may — and I\'d ask for a direct answer.',
+    'I want to give you the opportunity to set the record straight on this before the CEO responds.',
+    'This is a safe space for an honest conversation — I\'d rather we surface this here than in the board report.',
+    'I am not looking for reasons — I am looking for a credible plan. Can you give me that?']},
+  {label:'Taking accountability on a call under pressure',phrases:[
+    'I want to be clear: I own this number and I own the shortfall. The reasons are real but the accountability is mine.',
+    'The execution was not where it needed to be in Q2, and I will not try to attribute that entirely to external factors.',
+    'My commitment to this call is: 8% recovery by November, with weekly progress reporting to the CFO.',
+    'I would ask for 30 days to demonstrate progress before we consider revising the full-year forecast.']},
+  {label:'Managing a dominant or evasive participant',phrases:[
+    'I am going to park the context for a moment and ask a binary question: yes or no, is the target recoverable?',
+    'I want to make sure the CEO has what they need from this call. APAC, can you give us a one-sentence commitment?',
+    'We are at risk of running over time. I need a number from APAC before we move on.',
+    'I hear you on the external factors, and we can discuss those in detail separately. For now, I need the recovery figure.']},
+  {label:'Closing a high-stakes call with binding accountability',phrases:[
+    'To record this for the minutes: APAC commits to an 8% recovery by 30 November, with biweekly reporting to the CFO.',
+    'I want each of us to leave this call knowing exactly what we are accountable for. Let me read that back.',
+    'CEO, I will send a written summary of commitments within the hour — I would ask for your sign-off by end of day.',
+    'If any of the commitments made today are at risk, I expect to hear from the relevant director before the risk materialises, not after.']},
+];
+const DRILL_QS=[
+  {q:'The APAC director is being vague. Which redirection is most effective at B2?',
+   opts:['Please be more specific.','I appreciate the context, but I need a specific committed number for Q4 before we move on.','You are not answering the question.','Tell us the number.'],
+   ans:1,explain:'"I appreciate the context, but..." validates before redirecting. "Committed number" is precise executive language — far more effective than "specific."'},
+  {q:'You want to ask a hard question diplomatically. Which framing is most sophisticated?',
+   opts:['I have a hard question for you.','I\'d like to put a direct question to APAC, if I may — and I\'d ask for a direct answer.','Answer this directly.','This is a direct question: what is the number?'],
+   ans:1,explain:'"If I may" and "I\'d ask for a direct answer" signal the question is coming and that evasion won\'t be acceptable — without sounding aggressive.'},
+  {q:'The APAC director wants to take personal accountability. Which sentence is most credible?',
+   opts:['This is my fault. I will fix it.','I own this number and I own the shortfall — the reasons are real but the accountability is mine.','It was my mistake.','I take responsibility for the problem.'],
+   ans:1,explain:'"I own this number and I own the shortfall" is a strong, specific accountability statement. Acknowledging the reasons as real while not hiding behind them shows maturity.'},
+  {q:'You want to close the call with binding accountability. Which is most precise?',
+   opts:['We agreed things. I will send notes.','To record for the minutes: APAC commits to an 8% recovery by 30 November, with biweekly reporting to the CFO.','We have a commitment from APAC.','APAC will recover 8% — I will write this down.'],
+   ans:1,explain:'"To record for the minutes" signals formal accountability. Stating the percentage, date, and reporting cadence creates a clear, enforceable commitment.'},
+  {q:'The director has been speaking for 10 minutes without committing. Which interruption is most controlled?',
+   opts:['Stop. We need a number.','I am going to park the context for a moment and ask a binary question: is the target recoverable this fiscal year, yes or no?','Please answer the question now.','Enough context — what is the number?'],
+   ans:1,explain:'"I am going to park the context" is a composed, decisive phrase. A "binary question" (yes/no) makes evasion impossible without appearing unreasonable.'},
+  {q:'Which sentence correctly uses a modal perfect to describe what should have happened earlier?',
+   opts:['The risk should be flagged earlier.','This risk should have been escalated to me at the point it became apparent, not on this call.','We should escalate this earlier.','The risk escalation should happened sooner.'],
+   ans:1,explain:'"Should have been escalated" is the passive modal perfect — formal, precise, and appropriate for B2 accountability language. The passive avoids direct blame while still pointing to a systemic failure.'},
+];
+const ROLEPLAY=[
+  {speaker:'A',text:'[Open the call. Note the CEO is present. State the purpose: the quarterly business review, with a focus on APAC performance. Say you will move directly to APAC after a brief EMEA update. Set the expectation: you need specific, committed numbers from each region today.]'},
+  {speaker:'B',text:'Thank you. Before we get to the numbers, I want to give some context. APAC faced significant headwinds this quarter — the product launch was delayed by six weeks, and supply chain disruption affected three of our top-five SKUs for most of August.'},
+  {speaker:'A',text:'[Acknowledge the context briefly. Then redirect with precision: ask for the specific shortfall figure, the percentage below target, and what is recoverable by year-end. Make clear you need numbers, not narrative.]'},
+  {speaker:'B',text:'We are 18% below Q3 target. Net of the launch delay, underlying performance is closer to 6% below comparable prior year. My view is that Q4 is recoverable — but I want to be realistic rather than overpromit.'},
+  {speaker:'A',text:'[Note the distinction between 18% and 6% net of launch — say you need both figures in the written record. Ask the APAC director to state specifically what they are committing to for Q4, in percentage terms, with a date.]'},
+  {speaker:'B',text:'I am committing to an 8% recovery by 30 November. That brings us to within 10% of full-year target. I would ask for 30 days before any forecast revision is made — I am confident we can demonstrate progress in that time.'},
+  {speaker:'A',text:'[Acknowledge the commitment. Note it formally for the minutes: 8% by 30 November, biweekly CFO reporting. Ask the CEO if they have any questions for APAC before you close this agenda item.]'},
+  {speaker:'B',text:'[Play the CEO briefly: ask one sharp question — what specifically will change in November that was not in place in Q3? The APAC director must answer concisely and credibly.]'},
+  {speaker:'A',text:'[After the CEO\'s question and the APAC response, bring the item to a close. Record the accountability formally. Move to the next agenda item. Close the call with a summary of all commitments and a note that the written record will follow within the hour.]'},
+];
+function goTo(n){
+  document.querySelectorAll('.sec').forEach((s,i)=>s.classList.toggle('active',i===n));
+  document.querySelectorAll('.sd').forEach((d,i)=>{d.classList.remove('active','done');if(i===n)d.classList.add('active');else if(i<n)d.classList.add('done');});
+  cs=n;if(n===1)bG();if(n===2)bF();if(n===3&&!dd)bD();if(n===4)bR();if(n===5)bS();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function bG(){
+  const bank=document.getElementById('wordBank');bank.innerHTML='';
+  WORDS.forEach(w=>{const c=document.createElement('div');c.className='vc';c.textContent=w.word;c.id='chip_'+w.word.replace(/\s/g,'_');c.title=w.def;c.onclick=()=>selW(w.word);bank.appendChild(c);});
+  const ct=document.getElementById('gapSentences');ct.innerHTML='';
+  GAPS.forEach(g=>{const p=document.createElement('p');p.className='gs';p.innerHTML=(g.before||'')+`<span class="gap" id="${g.id}" onclick="fG('${g.id}')"></span>`+(g.after||'');ct.appendChild(p);});
+}
+function selW(w){
+  document.querySelectorAll('.vc').forEach(c=>c.classList.remove('selected'));
+  if(sw===w){sw=null;return;}sw=w;const key=w.replace(/\s/g,'_');const c=document.getElementById('chip_'+key);if(c)c.classList.add('selected');
+}
+function fG(gid){
+  const gap=document.getElementById(gid);if(!gap)return;
+  const cur=gap.textContent.trim();
+  if(cur){const key=cur.replace(/\s/g,'_');const c=document.getElementById('chip_'+key);if(c)c.classList.remove('used');gap.textContent='';gap.classList.remove('correct','wrong');delete ga[gid];return;}
+  if(!sw)return;const key=sw.replace(/\s/g,'_');const chip=document.getElementById('chip_'+key);if(chip&&chip.classList.contains('used'))return;
+  gap.textContent=sw;ga[gid]=sw;if(chip)chip.classList.add('used');sw=null;document.querySelectorAll('.vc').forEach(c=>c.classList.remove('selected'));
+}
+function checkGaps(){
+  let ok=0;GAPS.forEach(g=>{const gap=document.getElementById(g.id);const val=gap?gap.textContent.trim():'';if(val===g.blank){gap.classList.add('correct');gap.classList.remove('wrong');ok++;}else if(val){gap.classList.add('wrong');gap.classList.remove('correct');}});
+  const fb=document.getElementById('gapFeedback');fb.className='fm show '+(ok===GAPS.length?'ok':'err');
+  fb.textContent=ok===GAPS.length?'All '+GAPS.length+' correct! Excellent work.':ok+' of '+GAPS.length+' correct. Check highlighted answers.';
+}
+function bF(){
+  const w=document.getElementById('funcContent');w.innerHTML='';
+  FUNC_CATS.forEach(cat=>{let h='<div class="card"><p style="font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--txt2);margin-bottom:10px">'+cat.label+'</p>';cat.phrases.forEach(ph=>{h+='<div class="br"><span class="bd" style="background:#7B3FC4"></span><span style="font-size:14px;color:var(--txt);line-height:1.6">'+ph+'</span></div>';});h+='</div>';w.innerHTML+=h;});
+  w.innerHTML+='<div class="tip">At B2, the most powerful call skill is the ability to redirect without embarrassing. "I appreciate the context, but I need a number" does the same work as "stop avoiding the question" — without the collateral damage. The best facilitators make it impossible to be vague, while making it easy to be honest.</div>';
+}
+function bD(){di=0;ds=0;rDQ();}
+function rDQ(){
+  const w=document.getElementById('drillWrap');
+  if(di>=DRILL_QS.length){dd=true;document.getElementById('drillNextBtn').style.display='inline-block';w.innerHTML='<div class="card" style="text-align:center;padding:2rem 1.25rem"><p style="font-size:13px;color:var(--txt2);margin-bottom:14px">Quiz complete!</p><div class="sc"><span class="sn">'+ds+'/'+DRILL_QS.length+'</span><span class="sl2">score</span></div><p style="font-size:15px;font-weight:500;color:var(--txt)">'+(ds===DRILL_QS.length?'Excellent!':ds>=4?'Very good!':'Good effort!')+'</p></div>';return;}
+  const q=DRILL_QS[di];
+  w.innerHTML='<p class="pc">Question '+(di+1)+' of '+DRILL_QS.length+'</p><div class="card"><p class="dq">'+q.q+'</p><div class="do">'+q.opts.map((o,i)=>'<button class="ob" onclick="aD('+i+'">'+o+'</button>').join('')+'</div><div id="de" class="eb"></div><button id="dc" style="display:none;margin-top:14px" class="btn p" onclick="nDQ()">Next &#x2192;</button></div>';
+}
+function aD(ch){
+  const q=DRILL_QS[di];document.querySelectorAll('.ob').forEach(b=>b.disabled=true);document.querySelectorAll('.ob')[q.ans].classList.add('correct');
+  const e=document.getElementById('de');e.style.display='block';
+  if(ch===q.ans){ds++;e.style.background='#EAF3DE';e.style.color='#27500A';e.style.border='0.5px solid #C0DD97';e.textContent='Correct! '+q.explain;}
+  else{document.querySelectorAll('.ob')[ch].classList.add('wrong');e.style.background='#FCEBEB';e.style.color='#A32D2D';e.style.border='0.5px solid #F7C1C1';e.textContent='Not quite. '+q.explain;}
+  document.getElementById('dc').style.display='inline-block';
+}
+function nDQ(){di++;rDQ();}
+function bR(){
+  const w=document.getElementById('roleplayContent');w.innerHTML='';
+  ROLEPLAY.forEach(line=>{if(line.speaker==='B'){w.innerHTML+='<div class="ib"><div class="il">Student B — APAC Director</div><div class="it">'+line.text+'</div></div>';}else{w.innerHTML+='<div class="rb"><div class="rl2">Student A — CFO (host)</div><div class="rt">'+line.text+'</div></div>';}});
+  w.innerHTML+='<div style="margin-top:14px"><div class="card-m"><p style="font-size:14px;font-weight:500;margin-bottom:6px">Extension: the cross-cultural challenge</p><p style="font-size:13px;color:var(--txt2)">Swap roles. This time, Student B plays an EMEA director who is performing well but wants to use the call to raise a sensitive HR concern about their line manager — in front of the CEO. Student A must manage this professionally: acknowledge the concern, prevent a public airing of an internal dispute, and redirect to an appropriate private channel — without dismissing or humiliating Student B.</p></div></div>';
+}
+function bS(){
+  const items=['8 advanced executive vocabulary words: headwinds, trajectory, granular, optics, recalibrate, net of, bottom-line','Phrases for 5 high-stakes call functions: redirecting vagueness, framing hard questions, taking accountability under pressure, managing dominant participants, closing with binding accountability','6 B2 drills: modal perfect for accountability, passive voice in formal commitments, "binary question" technique, "I appreciate... but" redirection','A QBR role play requiring executive composure, precise financial language, and binding commitment under senior scrutiny'];
+  const hw=['Write the formal call summary email (150 words) that the CFO sends to the CEO within one hour of the call ending. Include the APAC commitment, reporting cadence, and any other actions.','Write a briefing note (100 words) from the APAC Director to their team after the call, explaining the commitment made and what needs to happen in the next 30 days.','Research the expression "managing up" — what does it mean and how do you do it on a call? Write 3 sentences with examples from today\'s role play.'];
+  document.getElementById('summaryContent').innerHTML='<div class="card" style="text-align:center;padding:1.75rem 1.25rem"><p style="font-size:13px;color:var(--txt2);margin-bottom:10px">Today\'s lesson</p><div class="lvl">B2 — Upper Intermediate</div><p style="font-size:22px;font-weight:500;margin:8px 0 4px">Conference Calls</p><p style="font-size:13px;color:var(--txt2)">~40 minutes</p></div><div class="card"><p style="font-size:13px;font-weight:500;margin-bottom:10px">What you practised:</p>'+items.map(i=>'<div class="br"><span class="bd" style="background:#639922"></span><span style="font-size:14px;color:var(--txt)">'+i+'</span></div>').join('')+'</div><div class="card-m"><p style="font-size:13px;font-weight:500;margin-bottom:8px">Homework ideas:</p>'+hw.map((h,i)=>'<div class="br"><span class="bd" style="background:#7B3FC4;margin-top:7px"></span><span style="font-size:13px;color:var(--txt2);line-height:1.7">'+(i+1)+'. '+h+'</span></div>').join('')+'</div><div class="tip" style="margin-bottom:0">Outstanding. Performing at executive level on a remote call — in a second language, under scrutiny, with precision and composure — is a rare and valuable skill. You have the language to do it now.</div>';
+}
+function restartLesson(){dd=false;ds=0;di=0;ga={};sw=null;goTo(0);}
+bG();bF();bR();bS();
+</script>
+
+
+</body></html>
